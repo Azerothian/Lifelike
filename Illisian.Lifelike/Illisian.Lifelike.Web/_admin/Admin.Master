@@ -9,11 +9,9 @@
 </head>
 <body>
     <form id="frmMain" runat="server">
-    <div>
         <ext:ResourceManager ID="ResourceManager1" runat="server" />
         <asp:ContentPlaceHolder ID="body" runat="server">
         </asp:ContentPlaceHolder>
-    </div>
     </form>
 </body>
 </html>
