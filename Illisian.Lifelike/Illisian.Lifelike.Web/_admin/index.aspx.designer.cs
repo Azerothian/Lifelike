@@ -31,39 +31,12 @@ namespace Illisian.Lifelike._admin {
         protected global::Ext.Net.Window winContent;
         
         /// <summary>
-        /// Panel2 control.
+        /// ucContentManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel2;
-        
-        /// <summary>
-        /// Panel4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Panel Panel4;
-        
-        /// <summary>
-        /// Panel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Panel Panel1;
-        
-        /// <summary>
-        /// Panel3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Panel Panel3;
+        protected global::Illisian.Lifelike._admin.controls.ctlContentManager ucContentManager;
     }
 }

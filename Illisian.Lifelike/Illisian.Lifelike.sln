@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9532AC
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Illisian.Lifelike.Logic", "Illisian.Lifelike.Logic\Illisian.Lifelike.Logic.csproj", "{40DDBDF4-1924-4A21-B3C4-5A04E07E9B5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{EDA708BD-2B2C-4A3A-8F16-0075266BA124}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDA708BD-2B2C-4A3A-8F16-0075266BA124}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDA708BD-2B2C-4A3A-8F16-0075266BA124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40DDBDF4-1924-4A21-B3C4-5A04E07E9B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40DDBDF4-1924-4A21-B3C4-5A04E07E9B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40DDBDF4-1924-4A21-B3C4-5A04E07E9B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40DDBDF4-1924-4A21-B3C4-5A04E07E9B5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
