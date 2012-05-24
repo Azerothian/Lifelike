@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9532AC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Illisian.Lifelike.Logic", "Illisian.Lifelike.Logic\Illisian.Lifelike.Logic.csproj", "{40DDBDF4-1924-4A21-B3C4-5A04E07E9B5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Illisian.Lifelike.Data", "Illisian.Lifelike.Data\Illisian.Lifelike.Data.csproj", "{6CCFEF6B-2710-48E0-B134-A1BE3956065B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Illisian.Lifelike.PresentationLogic", "Illisian.Lifelike.PresentationLogic\Illisian.Lifelike.PresentationLogic.csproj", "{6B76F04C-19D7-4770-89C2-23C01BA6C0A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,14 @@ Global
 		{40DDBDF4-1924-4A21-B3C4-5A04E07E9B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40DDBDF4-1924-4A21-B3C4-5A04E07E9B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40DDBDF4-1924-4A21-B3C4-5A04E07E9B5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CCFEF6B-2710-48E0-B134-A1BE3956065B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CCFEF6B-2710-48E0-B134-A1BE3956065B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CCFEF6B-2710-48E0-B134-A1BE3956065B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CCFEF6B-2710-48E0-B134-A1BE3956065B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B76F04C-19D7-4770-89C2-23C01BA6C0A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B76F04C-19D7-4770-89C2-23C01BA6C0A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B76F04C-19D7-4770-89C2-23C01BA6C0A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B76F04C-19D7-4770-89C2-23C01BA6C0A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

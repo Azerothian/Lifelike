@@ -1,18 +1,16 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Web;
-using Illisian.Lifelike.Logic;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Illisian.Lifelike.Logic")]
+[assembly: AssemblyTitle("Illisian.Lifelike.PresentationLogic")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Illisian.Lifelike.Logic")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("Illisian.Lifelike.PresentationLogic")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -22,7 +20,7 @@ using Illisian.Lifelike.Logic;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ede79a4b-9e44-4c38-b388-694710055ec0")]
+[assembly: Guid("378c4d84-f7bd-42ae-b6ca-f8a6fab9ecb8")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -36,4 +34,3 @@ using Illisian.Lifelike.Logic;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: PreApplicationStartMethod(typeof(Context), "Initialise")]

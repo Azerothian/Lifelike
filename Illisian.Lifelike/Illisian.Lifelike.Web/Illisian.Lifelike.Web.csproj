@@ -121,15 +121,12 @@
     <Content Include="_admin\Admin.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Illisian.Lifelike.Logic\Illisian.Lifelike.Logic.csproj">
-      <Project>{40DDBDF4-1924-4A21-B3C4-5A04E07E9B5B}</Project>
-      <Name>Illisian.Lifelike.Logic</Name>
+    <ProjectReference Include="..\Illisian.Lifelike.PresentationLogic\Illisian.Lifelike.PresentationLogic.csproj">
+      <Project>{6B76F04C-19D7-4770-89C2-23C01BA6C0A7}</Project>
+      <Name>Illisian.Lifelike.PresentationLogic</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\Layouts\" />
-    <Folder Include="Controls\SubLayouts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
