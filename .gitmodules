@@ -1,0 +1,3 @@
+[submodule "extnet"]
+	path = extnet
+	url = git@github.com:azeroth48/Ext.NET.Community.git
