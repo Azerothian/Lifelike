@@ -54,11 +54,11 @@ namespace Illisian.Lifelike._admin.controls
             Ext.Net.Node root = new Ext.Net.Node();
             root.Text = "Root";
             tpContents.Root.Add(root);
-            root.Children.Add(CreateNode("illisian.com.au"));
-            root.Children.Add(CreateNode("propertyworks.com"));
-            root.Children.Add(CreateNode("minecraftworld.net"));
-            root.Children.Add(CreateNode("augaming.org"));
-            root.Children.Add(CreateNode("nadir-game.com"));
+            //root.Children.Add(CreateNode("illisian.com.au"));
+            //root.Children.Add(CreateNode("propertyworks.com"));
+            //root.Children.Add(CreateNode("minecraftworld.net"));
+            //root.Children.Add(CreateNode("augaming.org"));
+            //root.Children.Add(CreateNode("nadir-game.com"));
 
         }
         private Node CreateNode(string name)

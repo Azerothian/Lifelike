@@ -3,13 +3,13 @@
 <ext:TabPanel ID="TabPanel1" runat="server" Region="West" Width="250">
     <Items>
         <ext:TreePanel ID="tpContents" runat="server" Title="Sites" RootVisible="false">
-          <%--  <DirectEvents>
+            <DirectEvents>
                 <ItemClick OnEvent="OnClick_tpContent">
                     <ExtraParams>
                         <ext:Parameter Name="guid" Value="node.id" Mode="Raw" />
                     </ExtraParams>
                 </ItemClick>
-            </DirectEvents>--%>
+            </DirectEvents>
             <TopBar>
                 <ext:Toolbar ID="Toolbar1" runat="server">
                     <Items>
@@ -20,8 +20,8 @@
                             <DirectEvents>
                                 <Click OnEvent="OnClick_btnCreate">
                                     <ExtraParams>
-                                        <%--  <ext:Parameter Name="node" Value="#{tpContents}.getSelectionModel().getSelectedNode()"
-                                            Mode="Raw" Encode="true" />--%>
+                                        <ext:Parameter Name="node" Value="#{tpContents}.getSelectionModel().getSelectedNode()"
+                                            Mode="Raw" Encode="true" />
                                     </ExtraParams>
                                 </Click>
                             </DirectEvents>

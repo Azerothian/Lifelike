@@ -60,11 +60,7 @@ namespace Illisian.Lifelike.Logic
         protected void SetupConnection()
         {
             _config.Database(MySQLConfiguration.Standard
-                .ConnectionString(c =>
-                    c.Server("127.0.0.1")
-                    .Database("cms")
-                    .Username("root")
-                    .Password("")));
+                .ConnectionString(c=> c.FromConnectionStringWithKey("Database")));
         }
 
         /// <summary>
