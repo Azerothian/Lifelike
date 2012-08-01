@@ -1,4 +1,26 @@
 **************************************************************************
+*                   Version 2.0.0 CHANGELOG                          *
+**************************************************************************
+
+Release Date     : 2012-07-24
+Current Version  : 2.0.0
+Previous Version : 2.0.0.rc2
+
+UPDATE
+	[r4203] Simple Tasks example is updated
+	[r4219] Added the following feature for Examples Explorer (EE):
+			For example,
+			Typing "http://examples.ext.net/#/search/grid" in the browser address field will filter the examples TreePanel for "grid" and sets up "grid" in the EE filter field.
+			Otherwise, typing "icon" in the EE filter field will cause updating URL to "http://examples.ext.net/#/search/icon".
+
+FIX
+	[r4216] Fixed the FormLayout/With_UserControls example. http://forums.ext.net/showthread.php?20196
+	[r4212] Container with iframe can raise an exception destroying
+	[r4210] Fixed the TabPanel SetActiveTab method which takes an AbstractComponent argument. http://forums.ext.net/showthread.php?20086
+
+
+
+**************************************************************************
 *                   Version 2.0.0.rc2 CHANGELOG                          *
 **************************************************************************
 

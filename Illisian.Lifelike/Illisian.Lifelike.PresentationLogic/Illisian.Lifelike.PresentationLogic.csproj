@@ -33,9 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ext.Net, Version=2.0.0.22636, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
+    <Reference Include="Ext.Net, Version=2.0.0.0, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Ext.NET.2.0.0-rc2\lib\Ext.Net.dll</HintPath>
+      <HintPath>..\packages\Ext.NET.2.0.0\lib\Ext.Net.dll</HintPath>
     </Reference>
     <Reference Include="Ext.Net.Utilities">
       <HintPath>..\packages\Ext.NET.Utilities.2.0.1\lib\Ext.Net.Utilities.dll</HintPath>

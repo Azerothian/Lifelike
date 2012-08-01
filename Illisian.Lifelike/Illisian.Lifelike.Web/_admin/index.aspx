@@ -1,14 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/_admin/Admin.Master" AutoEventWireup="true"
     CodeBehind="index.aspx.cs" Inherits="Illisian.Lifelike._admin.index" %>
 <%@ Register TagPrefix="uc" TagName="ContentManager" Src="~/_admin/controls/ctlContentManager.ascx" %>
-<%@ Register TagPrefix="uc" TagName="SiteManager" Src="~/_admin/controls/ctlSiteManager.ascx" %>
+<%@ Register TagPrefix="uc" TagName="DomainManager" Src="~/_admin/controls/ctlDomainManager.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <ext:Desktop ID="dtMain" runat="server">
         <Modules>
-            <ext:DesktopModule ModuleID="dmContentEditor" AutoRun="true">
+<%--            <ext:DesktopModule ModuleID="dmContentEditor" AutoRun="true">
                 <Window>
                     <ext:Window ID="winContent" runat="server" Width="600" Height="400" Title="Content Manager"
                         Maximizable="true" Minimizable="true" Layout="BorderLayout">
@@ -19,19 +19,21 @@
                 </Window>
                 <Shortcut Name="Content Manager" SortIndex="3" />
                 <Launcher Text="Content Manager" />
-            </ext:DesktopModule>
-             <ext:DesktopModule ModuleID="dmSiteManager" AutoRun="true">
+            </ext:DesktopModule>--%>
+             <ext:DesktopModule ModuleID="dmDomainManager">
                 <Window>
-                    <ext:Window ID="winSiteManager" runat="server" Width="600" Height="400" Title="Site Manager"
+                    <ext:Window ID="winDomainManager" runat="server" Width="600" Height="400" Title="Domain Manager"
                         Maximizable="true" Minimizable="true" Layout="BorderLayout">
                         <Content>
-                            <uc:SiteManager ID="ucSiteManager" runat="server" />
+                            <uc:DomainManager ID="ucDomainManager" runat="server" />
                         </Content>
                     </ext:Window>
                 </Window>
-                <Shortcut Name="Content Manager" SortIndex="3" />
-                <Launcher Text="Content Manager" />
+                <Shortcut Name="Domain Manager" SortIndex="3" />
+                <Launcher Text="Domain Manager" />
             </ext:DesktopModule>
         </Modules>
     </ext:Desktop>
+
+
 </asp:Content>

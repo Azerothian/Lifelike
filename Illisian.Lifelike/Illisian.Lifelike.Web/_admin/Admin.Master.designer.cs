@@ -31,13 +31,13 @@ namespace Illisian.Lifelike._admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm frmMain;
         
         /// <summary>
-        /// ResourceManager1 control.
+        /// resManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager ResourceManager1;
+        protected global::Ext.Net.ResourceManager resManager;
         
         /// <summary>
         /// body control.

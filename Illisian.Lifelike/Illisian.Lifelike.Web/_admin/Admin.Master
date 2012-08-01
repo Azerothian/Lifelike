@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="frmMain" runat="server">
-        <ext:ResourceManager ID="ResourceManager1" runat="server" />
+        <ext:ResourceManager ID="resManager" runat="server" DirectMethodNamespace="Illisian" />
         <asp:ContentPlaceHolder ID="body" runat="server">
         </asp:ContentPlaceHolder>
     </form>
