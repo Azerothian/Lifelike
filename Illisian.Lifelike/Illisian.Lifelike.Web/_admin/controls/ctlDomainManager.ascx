@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ctlSiteManager.ascx.cs"
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ctlDomainManager.ascx.cs"
     Inherits="Illisian.Lifelike._admin.controls.ctlSiteManager" %>
 <ext:GridPanel runat="server" ID="gpSites" Title="Sites">
     <Store>

@@ -90,7 +90,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="_admin\controls\ctlContentManager.ascx" />
-    <Content Include="_admin\controls\ctlSiteManager.ascx" />
+    <Content Include="_admin\controls\ctlDomainManager.ascx" />
     <Content Include="_admin\index.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -109,12 +109,12 @@
     <Compile Include="_admin\controls\ctlContentManager.ascx.designer.cs">
       <DependentUpon>ctlContentManager.ascx</DependentUpon>
     </Compile>
-    <Compile Include="_admin\controls\ctlSiteManager.ascx.cs">
-      <DependentUpon>ctlSiteManager.ascx</DependentUpon>
+    <Compile Include="_admin\controls\ctlDomainManager.ascx.cs">
+      <DependentUpon>ctlDomainManager.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_admin\controls\ctlSiteManager.ascx.designer.cs">
-      <DependentUpon>ctlSiteManager.ascx</DependentUpon>
+    <Compile Include="_admin\controls\ctlDomainManager.ascx.designer.cs">
+      <DependentUpon>ctlDomainManager.ascx</DependentUpon>
     </Compile>
     <Compile Include="_admin\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -131,6 +131,10 @@
     <Content Include="_admin\Admin.Master" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Illisian.Lifelike.Data\Illisian.Lifelike.Data.csproj">
+      <Project>{6CCFEF6B-2710-48E0-B134-A1BE3956065B}</Project>
+      <Name>Illisian.Lifelike.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Illisian.Lifelike.PresentationLogic\Illisian.Lifelike.PresentationLogic.csproj">
       <Project>{6B76F04C-19D7-4770-89C2-23C01BA6C0A7}</Project>
       <Name>Illisian.Lifelike.PresentationLogic</Name>

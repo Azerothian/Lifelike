@@ -57,7 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IContentManager.cs" />
+    <Compile Include="Interfaces\IDomainManager.cs" />
     <Compile Include="Managers\ContentManager.cs" />
+    <Compile Include="Managers\DomainManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

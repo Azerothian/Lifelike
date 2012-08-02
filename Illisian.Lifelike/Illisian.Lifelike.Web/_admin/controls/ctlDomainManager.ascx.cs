@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Illisian.Lifelike.Data;
 
 namespace Illisian.Lifelike._admin.controls
 {
@@ -16,10 +17,7 @@ namespace Illisian.Lifelike._admin.controls
         {
             if (!X.IsAjaxRequest)
             {
-                storeSites.DataSource = new Site[] {
-                new Site() { Id = Guid.NewGuid(), HostName = "www.illisian.com.au", SiteName = "illisian.com.au", StartItem = "/lifelife/content/illisian.com.au", DefaultLanguage = "jp_JP" },
-                new Site() { Id = Guid.NewGuid(), HostName = "www.augaming.org", SiteName = "augaming.org", StartItem = "/lifelife/content/augaming.org", DefaultLanguage = "en_US" },
-                new Site() { Id = Guid.NewGuid(), HostName = "www.nadir.org", SiteName = "nadir.org", StartItem = "/lifelife/content/nadir.org", DefaultLanguage = "en_US" }
+                
             };
                 storeSites.DataBind();
                 
@@ -37,13 +35,5 @@ namespace Illisian.Lifelike._admin.controls
             this.gpSites.GetStore().GetById(id).Commit();
         }
 
-        class Site
-        {
-            public Guid Id { get; set; }
-            public string SiteName { get; set; }
-            public string HostName { get; set; }
-            public string StartItem { get; set; }
-
-        }
     }
 }
