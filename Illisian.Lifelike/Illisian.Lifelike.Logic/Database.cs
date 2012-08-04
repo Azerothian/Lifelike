@@ -13,11 +13,14 @@ using System.Reflection;
 using System.IO;
 using System.Web;
 using Illisian.Lifelike.Data;
+using NHibernate.Cfg.Loquacious;
 
 namespace Illisian.Lifelike.Logic
 {
     public class Database
     {
+
+        private NHibernate.Cfg.Configuration _cfg;
         private FluentConfiguration _config = null;
         private static Database _context = null;
         private ISessionFactory _sessionFactory;
@@ -41,9 +44,11 @@ namespace Illisian.Lifelike.Logic
 
         public void Configure(Assembly[] asm)
         {
-            _config = Fluently.Configure();
+            _cfg = new NHibernate.Cfg.Configuration();
+            _cfg.Configure();
+            _config = Fluently.Configure(_cfg);
             SetupConnection();
-            SetupMappings(asm);
+             SetupMappings(asm);
             UpdateDbSchema();
             _sessionFactory = _config.BuildSessionFactory();
 
@@ -54,14 +59,28 @@ namespace Illisian.Lifelike.Logic
             AutoPersistenceModel model = AutoMap.Assemblies(asm);
             model.IgnoreBase<BaseEntity>();
             model.Where(x => x.BaseType == typeof(BaseEntity) && ((BaseEntity)Activator.CreateInstance(x)).ModelOverride(model));
-            
+
             _config.Mappings(m => m.AutoMappings.Add(model));
         }
         protected void SetupConnection()
         {
-            _config.Database(MySQLConfiguration.Standard
-                .ConnectionString(c=> c.FromConnectionStringWithKey("Database")));
+            switch (_cfg.Properties["dialect"])
+            {
+                case "NHibernate.Dialect.MsSql2008Dialect":
+                    _config.Database(MsSqlConfiguration.MsSql2008.ConnectionString(_cfg.Properties["connection.connection_string"]));
+                    return;
+                case "NHibernate.Dialect.MsSql2005Dialect":
+                    _config.Database(MsSqlConfiguration.MsSql2005.ConnectionString(_cfg.Properties["connection.connection_string"]));
+                    return;
+                case "NHibernate.Dialect.MySQLDialect":
+                case "NHibernate.Dialect.MySQL5Dialect":
+                    _config.Database(MySQLConfiguration.Standard.ConnectionString(_cfg.Properties["connection.connection_string"]));
+                    return;
+            }
+
+            throw new Exception("Dialect not found or Supported");
         }
+
 
         /// <summary>
         /// Updates the db schema.
@@ -70,8 +89,8 @@ namespace Illisian.Lifelike.Logic
         {
             Action<string> updateExport = x =>
             {
-               string s =  String.Format("[NHibernate.UpdateDbSchema] {0}", x);
-               s = s + "";
+                string s = String.Format("[NHibernate.UpdateDbSchema] {0}", x);
+                s = s + "";
             };
 
             Action<Configuration> schemaUpdate = x =>

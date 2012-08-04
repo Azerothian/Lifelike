@@ -9,7 +9,7 @@ using Illisian.Lifelike.Data;
 
 namespace Illisian.Lifelike._admin.controls
 {
- 
+
     public partial class ctlSiteManager : System.Web.UI.UserControl
     {
 
@@ -17,11 +17,11 @@ namespace Illisian.Lifelike._admin.controls
         {
             if (!X.IsAjaxRequest)
             {
-                
-            };
                 storeSites.DataBind();
-                
             }
+
+
+
         }
 
         [DirectMethod]
