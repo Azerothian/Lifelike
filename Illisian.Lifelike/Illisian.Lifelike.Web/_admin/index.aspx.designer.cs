@@ -22,21 +22,21 @@ namespace Illisian.Lifelike._admin {
         protected global::Ext.Net.Desktop dtMain;
         
         /// <summary>
-        /// winDomainManager control.
+        /// winLanguageManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winDomainManager;
+        protected global::Ext.Net.Window winLanguageManager;
         
         /// <summary>
-        /// ucDomainManager control.
+        /// ucLanguageManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Illisian.Lifelike._admin.controls.ctlSiteManager ucDomainManager;
+        protected global::Illisian.Lifelike._admin.controls.ctlLanguageManager ucLanguageManager;
     }
 }

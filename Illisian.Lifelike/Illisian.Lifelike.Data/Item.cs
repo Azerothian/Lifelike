@@ -17,7 +17,7 @@ namespace Illisian.Lifelike.Data
             {
                 map.HasMany<Item>(p => p.Children).KeyColumn("Parent_id");
             });
-           return  base.ModelOverride(model);
+            return base.ModelOverride(model);
 
 
         }

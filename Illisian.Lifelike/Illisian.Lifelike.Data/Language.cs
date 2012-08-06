@@ -12,6 +12,5 @@ namespace Illisian.Lifelike.Data
         public virtual string Code { get; set; }
         public virtual ISet<Item> Items { get; set; }
         public virtual ISet<Domain> Domains { get; set; }
-
     }
 }

@@ -91,6 +91,7 @@
     </Content>
     <Content Include="_admin\controls\ctlContentManager.ascx" />
     <Content Include="_admin\controls\ctlDomainManager.ascx" />
+    <Content Include="_admin\controls\ctlLanguageManager.ascx" />
     <Content Include="_admin\index.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +116,13 @@
     </Compile>
     <Compile Include="_admin\controls\ctlDomainManager.ascx.designer.cs">
       <DependentUpon>ctlDomainManager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="_admin\controls\ctlLanguageManager.ascx.cs">
+      <DependentUpon>ctlLanguageManager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_admin\controls\ctlLanguageManager.ascx.designer.cs">
+      <DependentUpon>ctlLanguageManager.ascx</DependentUpon>
     </Compile>
     <Compile Include="_admin\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

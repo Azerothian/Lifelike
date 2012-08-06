@@ -11,7 +11,7 @@ namespace Illisian.Lifelike.Logic
     {
         internal static void Save<T>(this Entity<T> e, ISession session, ITransaction tx)
         {
-            if (e.Id == Guid.Empty || e.Id == null)
+            if (e.Id == null)
             {
                 e.DateCreated = DateTime.Now;
                 e.DateModified = DateTime.Now;
