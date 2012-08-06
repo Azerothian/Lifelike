@@ -6,9 +6,10 @@ using Iesi.Collections;
 
 namespace Illisian.Lifelike.Data
 {
-    public class Language : BaseEntity
+    public class Language : Entity<Language>
     {
         public virtual string Name { get; set; }
+        public virtual string Code { get; set; }
         public virtual ISet<Item> Items { get; set; }
         public virtual ISet<Domain> Domains { get; set; }
 

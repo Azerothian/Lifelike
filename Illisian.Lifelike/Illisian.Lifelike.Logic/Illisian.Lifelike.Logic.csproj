@@ -59,7 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityExtension.cs" />
     <Compile Include="Context.cs" />
+    <Compile Include="Data\LanguageLogic.cs" />
     <Compile Include="Http.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="HttpModules\PageHttpModule.cs" />

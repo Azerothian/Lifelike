@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Illisian.Lifelike.Data
 {
-    public class Domain : BaseEntity
+    public class Domain : Entity<Domain>
     {
         public virtual Item Item { get; set; }
         public virtual string BaseUri { get; set; }

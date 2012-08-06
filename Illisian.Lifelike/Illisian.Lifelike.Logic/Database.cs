@@ -58,6 +58,7 @@ namespace Illisian.Lifelike.Logic
         {
             AutoPersistenceModel model = AutoMap.Assemblies(asm);
             model.IgnoreBase<BaseEntity>();
+            model.IgnoreBase(typeof(Entity<>));
             model.Where(x => x.BaseType == typeof(BaseEntity) && ((BaseEntity)Activator.CreateInstance(x)).ModelOverride(model));
 
             _config.Mappings(m => m.AutoMappings.Add(model));

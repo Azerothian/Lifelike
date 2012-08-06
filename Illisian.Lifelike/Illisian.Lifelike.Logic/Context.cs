@@ -17,7 +17,7 @@ namespace Illisian.Lifelike.Logic
 
 
 
-            Database.Context.Configure( new [] { typeof(BaseEntity).Assembly });
+            Database.Context.Configure( new [] { typeof(Item).Assembly });
 
         }
 
