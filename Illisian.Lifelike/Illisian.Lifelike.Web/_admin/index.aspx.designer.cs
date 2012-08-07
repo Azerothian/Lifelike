@@ -38,5 +38,23 @@ namespace Illisian.Lifelike._admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Illisian.Lifelike._admin.controls.ctlLanguageManager ucLanguageManager;
+        
+        /// <summary>
+        /// Toolbar2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Toolbar Toolbar2;
+        
+        /// <summary>
+        /// ToolbarFill1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ToolbarFill ToolbarFill1;
     }
 }

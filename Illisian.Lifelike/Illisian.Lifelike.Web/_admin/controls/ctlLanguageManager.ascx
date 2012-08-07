@@ -5,7 +5,16 @@
         <ext:Toolbar ID="tbLanguage" runat="server">
             <Items>
                 <ext:Button ID="btnAddLanguage" runat="server" Text="Add" IconCls="add16" OnDirectClick="btnNewLanguage_Click" />
-                <ext:Button ID="btnDeleteLanguage" runat="server" Text="Delete" IconCls="add16" OnDirectClick="btnDeleteLanguage_Click" />
+                <ext:Button ID="btnEditLanguage" runat="server" Text="Edit" IconCls="edit16" OnDirectClick="btnEditLanguage_Click"
+                    Disabled="true" />
+                <ext:Button ID="btnDeleteLanguage" runat="server" Text="Delete" IconCls="delete16"
+                    Disabled="true">
+                    <DirectEvents>
+                        <Click OnEvent="btnDeleteLanguage_Click">
+                            <Confirmation ConfirmRequest="true" Title="Are you sure?" Message="Are you sure you want to delete this entry?" />
+                        </Click>
+                    </DirectEvents>
+                </ext:Button>
             </Items>
         </ext:Toolbar>
     </TopBar>
@@ -42,7 +51,11 @@
                 <ext:GridView ID="GridView1" runat="server" />
             </View>
             <SelectionModel>
-                <ext:RowSelectionModel ID="rowSelectionModel" runat="server" Mode="Single" AllowDeselect="true" />
+                <ext:RowSelectionModel ID="rowSelectionModel" runat="server" Mode="Single" AllowDeselect="true">
+                    <DirectEvents>
+                        <SelectionChange OnEvent="rowSelect_Click" />
+                    </DirectEvents>
+                </ext:RowSelectionModel>
             </SelectionModel>
         </ext:GridPanel>
     </Items>

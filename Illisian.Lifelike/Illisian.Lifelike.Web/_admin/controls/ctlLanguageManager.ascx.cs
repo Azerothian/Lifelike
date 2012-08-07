@@ -30,24 +30,45 @@ namespace Illisian.Lifelike._admin.controls
 
 
 
+        protected void btnEditLanguage_Click(object sender, DirectEventArgs e)
+        {
+            _manager.Edit();
+        }
         protected void btnNewLanguage_Click(object sender, DirectEventArgs e)
         {
-            txtName.Text = "";
-            txtCode.Text = "";
-            winLanguage.Show();
+
+            _manager.New();
+
         }
+
         protected void btnSaveLanguage_Click(object sender, DirectEventArgs e)
         {
             _manager.Save();
         }
+        protected void rowSelect_Click(object sender, DirectEventArgs e)
+        {
+            if (rowSelectionModel.SelectedRow != null)
+            {
+                btnEditLanguage.Disabled = false;
+                btnDeleteLanguage.Disabled = false;
+            }
+            else
+            {
+                btnEditLanguage.Disabled = true;
+                btnDeleteLanguage.Disabled = true;
+            }
+        }
+
         //btnDeleteLanguage_Click
         protected void btnDeleteLanguage_Click(object sender, DirectEventArgs e)
         {
             if (rowSelectionModel.SelectedRow != null)
             {
                 _manager.Delete();
+                
             }
         }
+
         public int SelectedRowId
         {
             get
@@ -103,6 +124,14 @@ namespace Illisian.Lifelike._admin.controls
                     hidId.Text = value.ToString();
 
             }
+        }
+        public Window Window
+        {
+            get
+            {
+                return winLanguage;
+            }
+
         }
     }
 }

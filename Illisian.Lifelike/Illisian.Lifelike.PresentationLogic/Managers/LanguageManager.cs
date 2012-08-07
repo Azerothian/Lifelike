@@ -60,6 +60,7 @@ namespace Illisian.Lifelike.PresentationLogic.Managers
                         l.Name = _inf.Name;
                         _langLogic.Save(l, session, tx);
                         tx.Commit();
+                        _inf.Window.Hide();
                         Initialise();
                     }
                     catch (Exception ex)
@@ -71,9 +72,9 @@ namespace Illisian.Lifelike.PresentationLogic.Managers
             }
         }
 
-        public void Load()
+        public void Edit()
         {
-            if (_inf.LanguageId != null)
+            if (_inf.SelectedRowId > 0)
             {
                 var session = Database.Context.CurrentSession;
                 using (ITransaction tx = session.BeginTransaction())
@@ -81,11 +82,14 @@ namespace Illisian.Lifelike.PresentationLogic.Managers
                     tx.Begin();
                     try
                     {
-                        var l = _langLogic.LoadBy(session, tx, (x => x.Id == _inf.LanguageId));
+                        var l = _langLogic.LoadBy(session, tx, (x => x.Id == _inf.SelectedRowId));
                         if (l != null)
                         {
+                            _inf.LanguageId = l.Id;
                             _inf.Name = l.Name;
                             _inf.Code = l.Code;
+                            _inf.Window.Title = "Edit Language";
+                            _inf.Window.Show();
                         }
                     }
                     catch (Exception ex)
@@ -120,5 +124,15 @@ namespace Illisian.Lifelike.PresentationLogic.Managers
             }
 
         }
+
+        public void New()
+        {
+            _inf.Name = "";
+            _inf.Code = "";
+            _inf.Window.Title = "Add New Language";
+            _inf.Window.Show();
+        }
+
+
     }
 }

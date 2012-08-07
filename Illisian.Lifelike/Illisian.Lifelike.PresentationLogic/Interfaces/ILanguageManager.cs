@@ -9,6 +9,7 @@ namespace Illisian.Lifelike.PresentationLogic.Interfaces
     public interface ILanguageManager
     {
         Store Datastore { get; }
+        Window Window { get; }
         string Name { get; set; }
         string Code { get; set; }
         int? LanguageId { get; set; }

@@ -4,14 +4,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link rel='stylesheet' href='/_admin/css/icons.css' type='text/css'
+        media='all' />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="frmMain" runat="server">
-        <ext:ResourceManager ID="resManager" runat="server" DirectMethodNamespace="Illisian" />
-        <asp:ContentPlaceHolder ID="body" runat="server">
-        </asp:ContentPlaceHolder>
+    <ext:ResourceManager ID="resManager" runat="server" DirectMethodNamespace="Illisian" />
+    <asp:ContentPlaceHolder ID="body" runat="server">
+    </asp:ContentPlaceHolder>
     </form>
 </body>
 </html>

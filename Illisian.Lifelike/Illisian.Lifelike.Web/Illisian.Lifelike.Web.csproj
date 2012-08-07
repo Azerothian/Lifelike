@@ -92,6 +92,9 @@
     <Content Include="_admin\controls\ctlContentManager.ascx" />
     <Content Include="_admin\controls\ctlDomainManager.ascx" />
     <Content Include="_admin\controls\ctlLanguageManager.ascx" />
+    <Content Include="_admin\css\icons.css" />
+    <Content Include="_admin\images\bg.jpg" />
+    <Content Include="_admin\images\iconset.png" />
     <Content Include="_admin\index.aspx" />
   </ItemGroup>
   <ItemGroup>
