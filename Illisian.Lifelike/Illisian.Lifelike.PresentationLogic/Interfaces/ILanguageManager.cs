@@ -12,5 +12,6 @@ namespace Illisian.Lifelike.PresentationLogic.Interfaces
         string Name { get; set; }
         string Code { get; set; }
         int? LanguageId { get; set; }
+        int SelectedRowId { get; }
     }
 }

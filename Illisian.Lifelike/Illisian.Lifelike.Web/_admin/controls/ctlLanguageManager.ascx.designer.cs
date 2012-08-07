@@ -40,6 +40,15 @@ namespace Illisian.Lifelike._admin.controls {
         protected global::Ext.Net.Button btnAddLanguage;
         
         /// <summary>
+        /// btnDeleteLanguage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnDeleteLanguage;
+        
+        /// <summary>
         /// gpSites control.
         /// </summary>
         /// <remarks>
@@ -112,13 +121,13 @@ namespace Illisian.Lifelike._admin.controls {
         protected global::Ext.Net.GridView GridView1;
         
         /// <summary>
-        /// CellSelectionModel1 control.
+        /// rowSelectionModel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.CellSelectionModel CellSelectionModel1;
+        protected global::Ext.Net.RowSelectionModel rowSelectionModel;
         
         /// <summary>
         /// winLanguage control.

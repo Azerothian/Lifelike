@@ -11,12 +11,11 @@ namespace Illisian.Lifelike.Data
         public virtual bool Active { get; set; }
         public virtual DateTime DateCreated { get; set; }
         public virtual DateTime DateModified { get; set; }
-        public virtual bool ModelOverride(FluentNHibernate.Automapping.AutoPersistenceModel model)
+        public virtual void ModelOverride(FluentNHibernate.Automapping.AutoPersistenceModel model)
         {
             model.Override<Entity<T>>(map =>
                 map.Id(x => x.Id).GeneratedBy.Increment()
             );
-            return true;
         }
     }
 }

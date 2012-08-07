@@ -11,15 +11,13 @@ namespace Illisian.Lifelike.Data
         public virtual string Language { get; set; }
         public virtual Item Parent { get; set; }
         public virtual ISet<Item> Children { get; set; }
-        public override bool ModelOverride(FluentNHibernate.Automapping.AutoPersistenceModel model)
+        public override void ModelOverride(FluentNHibernate.Automapping.AutoPersistenceModel model)
         {
             model.Override<Item>(map =>
             {
                 map.HasMany<Item>(p => p.Children).KeyColumn("Parent_id");
             });
-            return base.ModelOverride(model);
-
-
+            base.ModelOverride(model);
         }
     }
 }

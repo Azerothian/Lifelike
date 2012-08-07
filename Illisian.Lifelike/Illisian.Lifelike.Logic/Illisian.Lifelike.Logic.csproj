@@ -68,6 +68,7 @@
     <Compile Include="Database.cs" />
     <Compile Include="HttpModules\PageHttpModule.cs" />
     <Compile Include="Items.cs" />
+    <Compile Include="Net4Collections.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

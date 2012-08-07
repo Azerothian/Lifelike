@@ -32,40 +32,41 @@ namespace Illisian.Lifelike.PresentationLogic.Managers
 
         public void Save()
         {
-            var session = Database.Context.CurrentSession;
-            using (ITransaction tx = session.BeginTransaction())
+            using (var session = Database.Context.OpenSession())
             {
-                tx.Begin();
-                try
+                using (ITransaction tx = session.BeginTransaction())
                 {
-
-                    Language l = null;
-
-                    if (_inf.LanguageId == null)
+                    tx.Begin();
+                    try
                     {
-                        l = new Language();
-                        l.Active = true;
-                    }
-                    else
-                    {
-                        l = _langLogic.LoadBy(session, tx, (x => x.Id == _inf.LanguageId));
-                    }
-                    if (l == null)
-                    {
-                        throw new Exception("Language is null while trying to save");
-                    }
 
-                    l.Code = _inf.Code;
-                    l.Name = _inf.Name;
-                    _langLogic.Save(l, session, tx);
-                    tx.Commit();
-                    Initialise();
-                }
-                catch (Exception)
-                {
-                    //TODO: Report Errror
-                    tx.Rollback();
-                    return;
+                        Language l = null;
+
+                        if (_inf.LanguageId == null)
+                        {
+                            l = new Language();
+                            l.Active = true;
+                        }
+                        else
+                        {
+                            l = _langLogic.LoadBy(session, tx, (x => x.Id == _inf.LanguageId));
+                        }
+                        if (l == null)
+                        {
+                            throw new Exception("Language is null while trying to save");
+                        }
+
+                        l.Code = _inf.Code;
+                        l.Name = _inf.Name;
+                        _langLogic.Save(l, session, tx);
+                        tx.Commit();
+                        Initialise();
+                    }
+                    catch (Exception ex)
+                    {
+                        tx.Rollback();
+                        throw new Exception("Error while trying to save the language.", ex);
+                    }
                 }
             }
         }
@@ -87,14 +88,37 @@ namespace Illisian.Lifelike.PresentationLogic.Managers
                             _inf.Code = l.Code;
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        //TODO: Report Errror
-                        //   tx.Rollback();
-                        return;
+                        throw new Exception("Error while trying to load the language.", ex);
                     }
                 }
             }
+        }
+
+        public void Delete()
+        {
+            var session = Database.Context.CurrentSession;
+            using (ITransaction tx = session.BeginTransaction())
+            {
+                tx.Begin();
+                try
+                {
+                    var l = _langLogic.LoadBy(session, tx, (x => x.Id == _inf.SelectedRowId));
+                    if (l != null)
+                    {
+                        l.Active = false;
+                        tx.Commit();
+                        Initialise();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    tx.Rollback();
+                    throw new Exception("Error while trying to delete the language.", ex);
+                }
+            }
+
         }
     }
 }

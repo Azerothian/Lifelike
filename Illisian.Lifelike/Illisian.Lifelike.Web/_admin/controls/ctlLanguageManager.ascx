@@ -4,7 +4,8 @@
     <TopBar>
         <ext:Toolbar ID="tbLanguage" runat="server">
             <Items>
-             <ext:Button ID="btnAddLanguage" runat="server" Text="Add" IconCls="add16" OnDirectClick="btnNewLanguage_Click" />
+                <ext:Button ID="btnAddLanguage" runat="server" Text="Add" IconCls="add16" OnDirectClick="btnNewLanguage_Click" />
+                <ext:Button ID="btnDeleteLanguage" runat="server" Text="Delete" IconCls="add16" OnDirectClick="btnDeleteLanguage_Click" />
             </Items>
         </ext:Toolbar>
     </TopBar>
@@ -15,9 +16,9 @@
                     <Model>
                         <ext:Model ID="modelLanguages" runat="server" IDProperty="Id">
                             <Fields>
-                                <ext:ModelField Name="Id" />
-                                <ext:ModelField Name="Name" />
-                                <ext:ModelField Name="Code" />
+                                <ext:ModelField Name="Id" Type="Int" />
+                                <ext:ModelField Name="Name" Type="String" />
+                                <ext:ModelField Name="Code" Type="String" />
                             </Fields>
                         </ext:Model>
                     </Model>
@@ -25,7 +26,7 @@
             </Store>
             <ColumnModel ID="columnSites" runat="server">
                 <Columns>
-                    <ext:Column ID="colName" runat="server" DataIndex="Nam" Text="Name">
+                    <ext:Column ID="colName" runat="server" DataIndex="Name" Text="Name">
                         <Editor>
                             <ext:TextField ID="tfName" runat="server" />
                         </Editor>
@@ -41,7 +42,7 @@
                 <ext:GridView ID="GridView1" runat="server" />
             </View>
             <SelectionModel>
-                <ext:CellSelectionModel ID="CellSelectionModel1" runat="server"  />
+                <ext:RowSelectionModel ID="rowSelectionModel" runat="server" Mode="Single" AllowDeselect="true" />
             </SelectionModel>
         </ext:GridPanel>
     </Items>
@@ -60,7 +61,7 @@
                         <ext:Parameter Name="MsgTarget" Value="side" />
                     </Defaults>
                     <Items>
-                        <ext:Hidden id="hidId" runat="server" />
+                        <ext:Hidden ID="hidId" runat="server" />
                         <ext:TextField ID="txtName" runat="server" FieldLabel="Name" />
                         <ext:TextField ID="txtCode" runat="server" FieldLabel="Code" />
                     </Items>
@@ -70,7 +71,8 @@
                 <ValidityChange Handler="#{btnSave}.setDisabled(!valid);" />
             </Listeners>
             <Buttons>
-                <ext:Button ID="btnSave" runat="server" Text="Save" Disabled="true" FormBind="true" OnDirectClick="btnSaveLanguage_Click" />
+                <ext:Button ID="btnSave" runat="server" Text="Save" Disabled="true" FormBind="true"
+                    OnDirectClick="btnSaveLanguage_Click" />
                 <ext:Button ID="btnCancel" runat="server" Text="Cancel" OnClientClick="#{winLanguage}.hide();#{txtName}.Text = ''; #{txtCode}.Text = ''; " />
             </Buttons>
         </ext:FormPanel>

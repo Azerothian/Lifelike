@@ -46,19 +46,26 @@ namespace Illisian.Lifelike.Logic
         {
             _cfg = new NHibernate.Cfg.Configuration();
             _cfg.Configure();
+            _cfg.Properties[NHibernate.Cfg.Environment.CollectionTypeFactoryClass] = typeof(Net4CollectionTypeFactory).AssemblyQualifiedName;
             _config = Fluently.Configure(_cfg);
             SetupConnection();
-             SetupMappings(asm);
+            SetupMappings(asm);
             UpdateDbSchema();
             _sessionFactory = _config.BuildSessionFactory();
 
         }
 
+        private bool CallModelOverride(Type x, AutoPersistenceModel model)
+        {
+            ((IEntity)Activator.CreateInstance(x)).ModelOverride(model);
+            return true;
+        }
+
         protected void SetupMappings(Assembly[] asm)
         {
             AutoPersistenceModel model = AutoMap.Assemblies(asm);
-            //model.IgnoreBase<IEntity>();
-            model.Where(x => !x.IsAbstract && !x.IsInterface && ((IEntity)Activator.CreateInstance(x)).ModelOverride(model));
+
+            model = model.Where(x => !x.IsAbstract && !x.IsInterface && CallModelOverride(x, model));
 
             _config.Mappings(m => m.AutoMappings.Add(model));
         }

@@ -40,6 +40,22 @@ namespace Illisian.Lifelike._admin.controls
         {
             _manager.Save();
         }
+        //btnDeleteLanguage_Click
+        protected void btnDeleteLanguage_Click(object sender, DirectEventArgs e)
+        {
+            if (rowSelectionModel.SelectedRow != null)
+            {
+                _manager.Delete();
+            }
+        }
+        public int SelectedRowId
+        {
+            get
+            {
+                return int.Parse(rowSelectionModel.SelectedRecordID);
+            }
+        }
+
 
         public Store Datastore
         {

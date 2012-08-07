@@ -7,6 +7,6 @@ namespace Illisian.Lifelike.Data
 {
     public interface IEntity
     {
-        bool ModelOverride(FluentNHibernate.Automapping.AutoPersistenceModel model);
+        void ModelOverride(FluentNHibernate.Automapping.AutoPersistenceModel model);
     }
 }
