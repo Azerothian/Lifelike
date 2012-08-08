@@ -27,6 +27,9 @@ namespace Illisian.Lifelike.PresentationLogic.Managers
             {
                 _inf.Datastore.DataSource = _langLogic.LoadAllBy(session, tx);
                 _inf.Datastore.DataBind();
+                _inf.Name = "";
+                _inf.Code = "";
+                _inf.LanguageId = null;
             }
         }
 
@@ -60,6 +63,8 @@ namespace Illisian.Lifelike.PresentationLogic.Managers
                         l.Name = _inf.Name;
                         _langLogic.Save(l, session, tx);
                         tx.Commit();
+
+                        
                         _inf.Window.Hide();
                         Initialise();
                     }

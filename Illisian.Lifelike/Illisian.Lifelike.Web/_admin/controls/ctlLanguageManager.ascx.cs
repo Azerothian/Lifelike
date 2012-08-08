@@ -120,8 +120,15 @@ namespace Illisian.Lifelike._admin.controls
             }
             set
             {
-                if(value != null)
+                if (value != null)
+                {
                     hidId.Text = value.ToString();
+                }
+                else
+                {
+                    hidId.Text = "";
+                }
+
 
             }
         }
