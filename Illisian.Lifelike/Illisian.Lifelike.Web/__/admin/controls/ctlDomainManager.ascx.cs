@@ -5,17 +5,22 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Illisian.Lifelike.Data;
 
-namespace Illisian.Lifelike._admin
+namespace Illisian.Lifelike.__.admin.controls
 {
-    public partial class index : System.Web.UI.Page
+
+	public partial class ctlDomainManager : System.Web.UI.UserControl
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!X.IsAjaxRequest)
-            {
-            }
+           
+
+
         }
+
+
 
     }
 }

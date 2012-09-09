@@ -12,7 +12,7 @@ namespace Illisian.Lifelike.PresentationLogic.Interfaces
         Window Window { get; }
         string Name { get; set; }
         string Code { get; set; }
-        int? LanguageId { get; set; }
-        int SelectedRowId { get; }
+        Guid? LanguageId { get; set; }
+        Guid SelectedRowId { get; }
     }
 }

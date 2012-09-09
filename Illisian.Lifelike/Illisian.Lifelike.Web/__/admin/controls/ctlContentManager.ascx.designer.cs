@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Illisian.Lifelike._admin.controls {
+namespace Illisian.Lifelike.__.admin.controls {
     
     
     public partial class ctlContentManager {

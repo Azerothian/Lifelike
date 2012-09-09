@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EDA708BD-2B2C-4A3A-8F16-0075266BA124}</ProjectGuid>
+    <ProjectGuid>{33A1D57D-A38E-4AAE-8C05-40D2329A5333}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -16,6 +17,15 @@
     <UseIISExpress>false</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,16 +55,33 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive">
-      <HintPath>..\packages\Rx-Main.1.0.11226\lib\Net4\System.Reactive.dll</HintPath>
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\Rx-Core.2.0.20823\lib\Net40\System.Reactive.Core.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\Rx-Interfaces.2.0.20823\lib\Net40\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\Rx-Linq.2.0.20823\lib\Net40\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\packages\Rx-PlatformServices.2.0.20823\lib\Net40\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -62,7 +89,9 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
+    <Reference Include="System.Web">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -72,14 +101,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Readme\Ext.NET.CHANGELOG.txt" />
-    <Content Include="App_Readme\Ext.NET.LICENSE.txt" />
-    <Content Include="App_Readme\Ext.NET.README.txt" />
-    <Content Include="App_Readme\Ext.NET.Utilities.LICENSE.txt" />
-    <Content Include="App_Readme\Ext.NET.Utilities.README.txt" />
-    <Content Include="App_Readme\Transformer.NET.LICENSE.txt" />
-    <Content Include="App_Readme\Transformer.NET.README.txt" />
-    <Content Include="Ext.NET.Default.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -89,49 +110,49 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="_admin\controls\ctlContentManager.ascx" />
-    <Content Include="_admin\controls\ctlDomainManager.ascx" />
-    <Content Include="_admin\controls\ctlLanguageManager.ascx" />
-    <Content Include="_admin\css\icons.css" />
-    <Content Include="_admin\images\bg.jpg" />
-    <Content Include="_admin\images\iconset.png" />
-    <Content Include="_admin\index.aspx" />
+    <Content Include="__\admin\controls\ctlContentManager.ascx" />
+    <Content Include="__\admin\controls\ctlDomainManager.ascx" />
+    <Content Include="__\admin\controls\ctlLanguageManager.ascx" />
+    <Content Include="__\admin\css\icons.css" />
+    <Content Include="__\admin\images\bg.jpg" />
+    <Content Include="__\admin\images\iconset.png" />
+    <Content Include="__\admin\index.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_admin\Admin.Master.cs">
+    <Compile Include="__\admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_admin\Admin.Master.designer.cs">
+    <Compile Include="__\admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
-    <Compile Include="_admin\controls\ctlContentManager.ascx.cs">
+    <Compile Include="__\admin\controls\ctlContentManager.ascx.cs">
       <DependentUpon>ctlContentManager.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_admin\controls\ctlContentManager.ascx.designer.cs">
+    <Compile Include="__\admin\controls\ctlContentManager.ascx.designer.cs">
       <DependentUpon>ctlContentManager.ascx</DependentUpon>
     </Compile>
-    <Compile Include="_admin\controls\ctlDomainManager.ascx.cs">
+    <Compile Include="__\admin\controls\ctlDomainManager.ascx.cs">
       <DependentUpon>ctlDomainManager.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_admin\controls\ctlDomainManager.ascx.designer.cs">
+    <Compile Include="__\admin\controls\ctlDomainManager.ascx.designer.cs">
       <DependentUpon>ctlDomainManager.ascx</DependentUpon>
     </Compile>
-    <Compile Include="_admin\controls\ctlLanguageManager.ascx.cs">
+    <Compile Include="__\admin\controls\ctlLanguageManager.ascx.cs">
       <DependentUpon>ctlLanguageManager.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_admin\controls\ctlLanguageManager.ascx.designer.cs">
+    <Compile Include="__\admin\controls\ctlLanguageManager.ascx.designer.cs">
       <DependentUpon>ctlLanguageManager.ascx</DependentUpon>
     </Compile>
-    <Compile Include="_admin\index.aspx.cs">
+    <Compile Include="__\admin\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_admin\index.aspx.designer.cs">
+    <Compile Include="__\admin\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -139,7 +160,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="_admin\Admin.Master" />
+    <Content Include="__\admin\Admin.Master" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Illisian.Lifelike.Data\Illisian.Lifelike.Data.csproj">
@@ -152,8 +173,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">

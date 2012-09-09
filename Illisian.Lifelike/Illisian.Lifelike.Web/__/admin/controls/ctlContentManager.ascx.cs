@@ -8,7 +8,7 @@ using Ext.Net;
 using Illisian.Lifelike.PresentationLogic.Interfaces;
 using Illisian.Lifelike.PresentationLogic.Managers;
 
-namespace Illisian.Lifelike._admin.controls
+namespace Illisian.Lifelike.__.admin.controls
 {
     public partial class ctlContentManager : System.Web.UI.UserControl, IContentManager
     {

@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ctlContentManager.ascx.cs"
-    Inherits="Illisian.Lifelike._admin.controls.ctlContentManager" %>
+    Inherits="Illisian.Lifelike.__.admin.controls.ctlContentManager" %>
 <ext:TabPanel ID="TabPanel1" runat="server" Region="West" Width="250">
     <Items>
         <ext:TreePanel ID="tpContents" runat="server" Title="Sites" RootVisible="false">

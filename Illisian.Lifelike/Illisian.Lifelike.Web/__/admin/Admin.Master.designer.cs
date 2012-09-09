@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Illisian.Lifelike._admin {
+namespace Illisian.Lifelike.__.admin {
     
     
     public partial class Admin {

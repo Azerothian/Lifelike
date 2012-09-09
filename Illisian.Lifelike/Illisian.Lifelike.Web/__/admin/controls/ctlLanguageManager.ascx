@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ctlLanguageManager.ascx.cs"
-    Inherits="Illisian.Lifelike._admin.controls.ctlLanguageManager" %>
+    Inherits="Illisian.Lifelike.__.admin.controls.ctlLanguageManager" %>
 <ext:Panel ID="Panel1" runat="server" Layout="FitLayout">
     <TopBar>
         <ext:Toolbar ID="tbLanguage" runat="server">
@@ -25,7 +25,7 @@
                     <Model>
                         <ext:Model ID="modelLanguages" runat="server" IDProperty="Id">
                             <Fields>
-                                <ext:ModelField Name="Id" Type="Int" />
+                                <ext:ModelField Name="Id" Type="Auto" />
                                 <ext:ModelField Name="Name" Type="String" />
                                 <ext:ModelField Name="Code" Type="String" />
                             </Fields>

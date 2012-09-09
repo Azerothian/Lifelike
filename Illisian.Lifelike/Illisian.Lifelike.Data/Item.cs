@@ -8,7 +8,7 @@ namespace Illisian.Lifelike.Data
     public class Item : Entity<Item>
     {
         public virtual string Name { get; set; }
-        public virtual string Language { get; set; }
+        public virtual Language Language { get; set; }
         public virtual Item Parent { get; set; }
         public virtual ISet<Item> Children { get; set; }
         public override void ModelOverride(FluentNHibernate.Automapping.AutoPersistenceModel model)

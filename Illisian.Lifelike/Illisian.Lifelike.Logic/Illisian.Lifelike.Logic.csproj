@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ItemLogic.cs" />
+    <Compile Include="Data\LogicAbstract.cs" />
     <Compile Include="EntityExtension.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Data\LanguageLogic.cs" />

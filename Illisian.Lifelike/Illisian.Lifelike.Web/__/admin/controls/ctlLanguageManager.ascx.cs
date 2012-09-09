@@ -8,7 +8,7 @@ using Ext.Net;
 using Illisian.Lifelike.PresentationLogic.Interfaces;
 using Illisian.Lifelike.PresentationLogic.Managers;
 
-namespace Illisian.Lifelike._admin.controls
+namespace Illisian.Lifelike.__.admin.controls
 {
     public partial class ctlLanguageManager : System.Web.UI.UserControl, ILanguageManager
     {
@@ -17,7 +17,7 @@ namespace Illisian.Lifelike._admin.controls
         {
             _manager = new LanguageManager(this);
 
-            
+            //Ext.Net.ModelFieldType.
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -69,11 +69,11 @@ namespace Illisian.Lifelike._admin.controls
             }
         }
 
-        public int SelectedRowId
+		public Guid SelectedRowId
         {
             get
             {
-                return int.Parse(rowSelectionModel.SelectedRecordID);
+                return Guid.Parse(rowSelectionModel.SelectedRecordID);
             }
         }
 
@@ -107,12 +107,12 @@ namespace Illisian.Lifelike._admin.controls
             }
         }
 
-        public int? LanguageId
+        public Guid? LanguageId
         {
             get
             {
-                int result = -1;
-                if(int.TryParse(hidId.Text, out result))
+                Guid result = Guid.Empty;
+                if(Guid.TryParse(hidId.Text, out result))
                 {
                     return result;
                 }

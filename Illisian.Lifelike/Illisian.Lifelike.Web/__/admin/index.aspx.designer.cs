@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Illisian.Lifelike._admin {
+namespace Illisian.Lifelike.__.admin {
     
     
     public partial class index {
@@ -20,6 +20,24 @@ namespace Illisian.Lifelike._admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Desktop dtMain;
+        
+        /// <summary>
+        /// winDomainManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winDomainManager;
+        
+        /// <summary>
+        /// ucDomainManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Illisian.Lifelike.__.admin.controls.ctlDomainManager ucDomainManager;
         
         /// <summary>
         /// winLanguageManager control.
@@ -37,7 +55,7 @@ namespace Illisian.Lifelike._admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Illisian.Lifelike._admin.controls.ctlLanguageManager ucLanguageManager;
+        protected global::Illisian.Lifelike.__.admin.controls.ctlLanguageManager ucLanguageManager;
         
         /// <summary>
         /// Toolbar2 control.

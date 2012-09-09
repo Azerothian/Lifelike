@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Illisian.Lifelike._admin.controls {
+namespace Illisian.Lifelike.__.admin.controls {
     
     
-    public partial class ctlLanguageManager {
+    public partial class ctlDomainManager {
         
         /// <summary>
         /// Panel1 control.
@@ -22,67 +22,67 @@ namespace Illisian.Lifelike._admin.controls {
         protected global::Ext.Net.Panel Panel1;
         
         /// <summary>
-        /// tbLanguage control.
+        /// tbDomain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbLanguage;
+        protected global::Ext.Net.Toolbar tbDomain;
         
         /// <summary>
-        /// btnAddLanguage control.
+        /// btnAddDomain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnAddLanguage;
+        protected global::Ext.Net.Button btnAddDomain;
         
         /// <summary>
-        /// btnEditLanguage control.
+        /// btnEditDomain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnEditLanguage;
+        protected global::Ext.Net.Button btnEditDomain;
         
         /// <summary>
-        /// btnDeleteLanguage control.
+        /// btnDeleteDomain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnDeleteLanguage;
+        protected global::Ext.Net.Button btnDeleteDomain;
         
         /// <summary>
-        /// gpSites control.
+        /// gpDomains control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gpSites;
+        protected global::Ext.Net.GridPanel gpDomains;
         
         /// <summary>
-        /// storeLanguages control.
+        /// storeDomains control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeLanguages;
+        protected global::Ext.Net.Store storeDomains;
         
         /// <summary>
-        /// modelLanguages control.
+        /// modelDomains control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Model modelLanguages;
+        protected global::Ext.Net.Model modelDomains;
         
         /// <summary>
         /// colName control.
@@ -137,77 +137,5 @@ namespace Illisian.Lifelike._admin.controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.RowSelectionModel rowSelectionModel;
-        
-        /// <summary>
-        /// winLanguage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Window winLanguage;
-        
-        /// <summary>
-        /// FormPanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.FormPanel FormPanel1;
-        
-        /// <summary>
-        /// Panel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Panel Panel2;
-        
-        /// <summary>
-        /// hidId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Hidden hidId;
-        
-        /// <summary>
-        /// txtName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtName;
-        
-        /// <summary>
-        /// txtCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtCode;
-        
-        /// <summary>
-        /// btnSave control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Button btnSave;
-        
-        /// <summary>
-        /// btnCancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Button btnCancel;
     }
 }

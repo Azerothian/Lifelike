@@ -79,7 +79,7 @@ namespace Illisian.Lifelike.PresentationLogic.Managers
 
         public void Edit()
         {
-            if (_inf.SelectedRowId > 0)
+            if (_inf.SelectedRowId != Guid.Empty)
             {
                 var session = Database.Context.CurrentSession;
                 using (ITransaction tx = session.BeginTransaction())

@@ -9,7 +9,7 @@ using NHibernate.Linq;
 
 namespace Illisian.Lifelike.Logic.Data
 {
-    public class LanguageLogic
+    public class LanguageLogic :  LogicAbstract<Language>
     {
         public Language Create(string name, string code, ISession session, ITransaction tx)
         {
@@ -19,32 +19,9 @@ namespace Illisian.Lifelike.Logic.Data
                 Code = code,
                 Name = name
             };
-            l.Save(session, tx);
+            Save(l, session, tx);
             return l;
         }
-        public void Save(Language l, ISession session, ITransaction tx)
-        {
-            l.Save(session, tx);
-        }
 
-        public Language LoadBy(ISession session, ITransaction tx, params Func<Language, bool>[] paramArray)
-        {
-            return LoadAllBy(session, tx, paramArray).FirstOrDefault();
-        }
-        public IEnumerable<Language> LoadAllBy(ISession session, ITransaction tx, params Func<Language, bool>[] paramArray)
-        {
-            IEnumerable<Language> query = from v in session.Query<Language>() where v.Active select v;
-            
-            foreach (var v in paramArray)
-            {
-                query = query.Where(v);
-            }
-            return query;
-
-        }
-        public void Delete(Language l, ISession session, ITransaction tx)
-        {
-            l.Delete(session, tx);
-        }
     }
 }
