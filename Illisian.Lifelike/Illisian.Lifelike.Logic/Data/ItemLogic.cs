@@ -9,7 +9,7 @@ namespace Illisian.Lifelike.Logic.Data
 {
 	public class ItemLogic : LogicAbstract<Item>
 	{
-		public Item Create( Guid? parentId, Guid languageId, ISession session, ITransaction tx)
+		public Item Create(string name, Guid? parentId, Guid languageId, ISession session, ITransaction tx)
 		{
 
 			LanguageLogic _langLogic = new LanguageLogic();
@@ -21,7 +21,11 @@ namespace Illisian.Lifelike.Logic.Data
 			i.DateCreated = DateTime.Now;
 			i.DateModified = DateTime.Now;
 			i.Language = language;
-			//i.Parent
+			
+            if(parentId.HasValue)
+                i.Parent = LoadBy(session, tx, new Func<Item, bool>(ii=>ii.Active && ii.Id == parentId));
+            i.Name = name;
+            i.Save(session, tx);
 			return i;
 		}
 		
