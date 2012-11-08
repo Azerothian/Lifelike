@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Lifelike.Entities;
+using Lifelike.Kernel.Entities;
 using NHibernate;
 using NHibernate.Linq;
 namespace Lifelike.Kernel.EntityLogic

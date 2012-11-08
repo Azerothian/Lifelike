@@ -13,7 +13,7 @@ using System.Reflection;
 using System.IO;
 using System.Web;
 using NHibernate.Cfg.Loquacious;
-using Lifelike.Entities;
+using Lifelike.Kernel.Entities;
 
 namespace Lifelike.Kernel
 {
@@ -65,7 +65,7 @@ namespace Lifelike.Kernel
         {
             AutoPersistenceModel model = AutoMap.Assemblies(asm);
 
-            model = model.Where(x => !x.IsAbstract && !x.IsInterface && CallModelOverride(x, model));
+            model = model.Where(x => !x.IsAbstract && !x.IsInterface && typeof(IEntity).IsAssignableFrom(x) &&  CallModelOverride(x, model));
 
             _config.Mappings(m => m.AutoMappings.Add(model));
         }

@@ -5,7 +5,7 @@ using System.Text;
 using Lifelike.AdminLogic.Interfaces;
 using Lifelike.Kernel;
 using NHibernate;
-using Lifelike.Entities;
+using Lifelike.Kernel.Entities;
 using Lifelike.Kernel.EntityLogic;
 
 namespace Lifelike.AdminLogic.Managers

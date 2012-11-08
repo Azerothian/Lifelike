@@ -5,7 +5,7 @@ using System.Text;
 using NHibernate;
 using Lifelike.Kernel;
 using NHibernate.Linq;
-using Lifelike.Entities;
+using Lifelike.Kernel.Entities;
 
 namespace Lifelike.Kernel.EntityLogic
 {

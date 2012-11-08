@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Lifelike.Entities
+namespace Lifelike.Kernel.Entities
 {
     public class Item : Entity<Item>
     {

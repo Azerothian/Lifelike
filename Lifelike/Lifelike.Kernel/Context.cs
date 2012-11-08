@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
-using Lifelike.Entities;
+using Lifelike.Kernel.Entities;
 using Lifelike.Kernel.EntityLogic;
 using Lifelike.Kernel.Util;
 using Lifelike.WebComponents;
+using NHibernate;
 
 namespace Lifelike.Kernel
 {
@@ -58,7 +59,26 @@ namespace Lifelike.Kernel
 				return _domainLogic;
 			}
 		}
-
+		private static ViewLogic _viewLogic;
+		public static ViewLogic ViewLogic
+		{
+			get
+			{
+				if (_viewLogic == null)
+					_viewLogic = new ViewLogic();
+				return _viewLogic;
+			}
+		}
+		private static TemplateLogic _templateLogic;
+		public static TemplateLogic TemplateLogic
+		{
+			get
+			{
+				if (_templateLogic == null)
+					_templateLogic = new TemplateLogic();
+				return _templateLogic;
+			}
+		}
 		public static void Initialise()
 		{
 			Microsoft.Web.Infrastructure.DynamicModuleHelper.DynamicModuleUtility.RegisterModule(typeof(Lifelike.Kernel.HttpModules.PageHttpModule));
@@ -79,37 +99,25 @@ namespace Lifelike.Kernel
 
 			var session = Lifelike.Kernel.Database.Context.OpenSession();
 			CreateStructure();
-			var domain = DomainLogic.LoadBy(session, new Func<Domain, bool>(i => i.BaseUri.ToLower() == host.ToLower()));
-			if (domain == null)
-			{
-				domain = DomainLogic.LoadBy(session, new Func<Domain, bool>(i => i.BaseUri.ToLower() == ""));
-			}
+
+			var domain = DomainLogic.GetCurrentDomain(host, session);
+
+			var item = ItemLogic.GetCurrentItem(host, path, domain, session);
+
 			if (domain == null)
 			{
 				throw new Exception("Domain's is missing. Unable to continue."); // TODO: Langauge Resource File?
-//CreateStructure();
-			}
-			else
-			{
-				
 			}
 
-			Item item = null;
-			if (url == "/" || url == "Default.aspx")
-			{
-				item = domain.StartItem;
-			}
-			else
-			{
-				item = ItemLogic.LoadBy(session, new Func<Item, bool>(i => i.FullPath.ToLower() == String.Format("{0}{1}", domain.StartItem.FullPath, path.Substring(1)).ToLower()));
-			}
 			if (item == null)
 			{
-				throw new Exception("Domain's start item is missing. Unable to continue."); // TODO: Langauge Resource File?
+				return; //TODO: Error 404
+				//throw new Exception("Domain's start item is missing. Unable to continue."); // TODO: Langauge Resource File?
 			}
+
 			Context.Item = item;
 
-			var view = item.Views.FirstOrDefault();
+			var view = ViewLogic.GetCurrentView(item);
 
 			if (view == null)
 			{
@@ -117,6 +125,8 @@ namespace Lifelike.Kernel
 			}
 
 			Context.CurrentView = view;
+
+			TemplateLogic.CreateTemplate(view);
 
 			if (view.Layout == null)
 			{
@@ -129,6 +139,10 @@ namespace Lifelike.Kernel
 			Http.HttpContext.Response.End();
 			
 		}
+		
+		
+
+
 		private static void page_Init(object sender, EventArgs e)
 		{
 			Page page = (Page)sender;
@@ -176,7 +190,7 @@ namespace Lifelike.Kernel
 					Path = "/files/layouts/Main.aspx",
 					Active = true
 				};
-				var module = new Lifelike.Entities.Module()
+				var module = new Lifelike.Kernel.Entities.Module()
 				{
 					Name = "TestModule",
 					Path = "/files/modules/TestModule.ascx",

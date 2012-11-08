@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Lifelike.Entities;
+using Lifelike.Kernel.Entities;
 using NHibernate;
 
 namespace Lifelike.Kernel.EntityLogic
@@ -24,7 +24,17 @@ namespace Lifelike.Kernel.EntityLogic
 		//	//i.Parent
 		//	return i;
 		//}
-		
+		public Domain GetCurrentDomain(string host, ISession session)
+		{
+			var domain = LoadBy(session, 
+					new Func<Domain, bool>(i => i.BaseUri.ToLower() == host.ToLower())
+					);
+			if (domain == null)
+			{
+				domain = LoadBy(session, new Func<Domain, bool>(i => i.BaseUri.ToLower() == ""));
+			}
+			return domain;
+		}
 
 	}
 }

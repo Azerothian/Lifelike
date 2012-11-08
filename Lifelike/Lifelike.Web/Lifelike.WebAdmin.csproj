@@ -146,10 +146,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lifelike.Entities\Lifelike.Entities.csproj">
-      <Project>{6CCFEF6B-2710-48E0-B134-A1BE3956065B}</Project>
-      <Name>Lifelike.Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LifeLike.AdminLogic\LifeLike.AdminLogic.csproj">
       <Project>{db8de3e0-22bc-462d-902e-7f1ad96106f3}</Project>
       <Name>LifeLike.AdminLogic</Name>

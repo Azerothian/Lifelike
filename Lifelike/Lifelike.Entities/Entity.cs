@@ -18,7 +18,10 @@ namespace Lifelike.Entities
                 map.Id(x => x.Id).GeneratedBy.Guid()
             );
         }
+		public virtual void PreSave()
+		{
 
+		}
 
 	}
 }

@@ -73,10 +73,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lifelike.Entities\Lifelike.Entities.csproj">
-      <Project>{6ccfef6b-2710-48e0-b134-a1be3956065b}</Project>
-      <Name>Lifelike.Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Lifelike.Kernel\Lifelike.Kernel.csproj">
       <Project>{ac7508d8-7461-4355-aac1-5a02a4694b72}</Project>
       <Name>Lifelike.Kernel</Name>

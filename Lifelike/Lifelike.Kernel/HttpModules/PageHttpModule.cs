@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.SessionState;
 using System.Web.UI;
 
 namespace Lifelike.Kernel.HttpModules
@@ -26,13 +27,29 @@ namespace Lifelike.Kernel.HttpModules
         public void Init(HttpApplication context)
         {
 
-            context.BeginRequest += new EventHandler(context_BeginRequest);
-            context.EndRequest += new EventHandler(context_EndRequest);
+            context.BeginRequest += context_BeginRequest;
+            context.EndRequest += context_EndRequest;
+			context.PreRequestHandlerExecute += context_PreRequestHandlerExecute;
+			//context.PostAcquireRequestState += context_PostAcquireRequestState;
+			//context.PostMapRequestHandler += context_PostMapRequestHandler;
+			context.PostAcquireRequestState += context_PostAcquireRequestState;
         }
+
+		void context_PostAcquireRequestState(object sender, EventArgs e)
+		{
+			Context.CreatePage();
+		}
+
+		void context_PreRequestHandlerExecute(object sender, EventArgs e)
+		{
+			
+		}
+
+		
 
         void context_BeginRequest(object sender, EventArgs e)
         {
-			Context.CreatePage();
+			
 
             //var session = Database.CurrentSession;
             //var path = Context.CurrentDomain.BasePath + Language.SetAndRemoveLangaugeFromUrl(Context.Http.Request.Path.Replace("default.aspx", ""));

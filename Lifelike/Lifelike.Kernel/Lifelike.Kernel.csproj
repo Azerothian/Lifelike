@@ -61,12 +61,25 @@
   <ItemGroup>
     <Compile Include="Context.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="Entities\Domain.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Entities\Item.cs" />
+    <Compile Include="Entities\Language.cs" />
+    <Compile Include="Entities\Layout.cs" />
+    <Compile Include="Entities\Module.cs" />
+    <Compile Include="Entities\ModuleViewMap.cs" />
+    <Compile Include="Entities\Template.cs" />
+    <Compile Include="Entities\View.cs" />
+    <Compile Include="EntityLogic\TemplateLogic.cs" />
+    <Compile Include="EntityLogic\ViewLogic.cs" />
     <Compile Include="EntityLogic\DomainLogic.cs" />
     <Compile Include="EntityLogic\ItemLogic.cs" />
     <Compile Include="EntityLogic\LanguageLogic.cs" />
     <Compile Include="EntityLogic\LogicAbstract.cs" />
     <Compile Include="EntityExtension.cs" />
     <Compile Include="EntityLogic\ModuleLogic.cs" />
+    <Compile Include="Fields\Field.cs" />
     <Compile Include="Http.cs" />
     <Compile Include="HttpModules\PageHttpModule.cs" />
     <Compile Include="Items.cs" />
@@ -84,12 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Lifelike.Entities\Lifelike.Entities.csproj">
-      <Project>{6ccfef6b-2710-48e0-b134-a1be3956065b}</Project>
-      <Name>Lifelike.Entities</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

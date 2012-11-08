@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.Kernel", "Lifelike
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.AdminLogic", "LifeLike.AdminLogic\LifeLike.AdminLogic.csproj", "{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.Entities", "Lifelike.Entities\Lifelike.Entities.csproj", "{6CCFEF6B-2710-48E0-B134-A1BE3956065B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.WebAdmin", "Lifelike.Web\Lifelike.WebAdmin.csproj", "{33A1D57D-A38E-4AAE-8C05-40D2329A5333}"
 EndProject
 Global
@@ -29,10 +27,6 @@ Global
 		{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6CCFEF6B-2710-48E0-B134-A1BE3956065B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CCFEF6B-2710-48E0-B134-A1BE3956065B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6CCFEF6B-2710-48E0-B134-A1BE3956065B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6CCFEF6B-2710-48E0-B134-A1BE3956065B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{33A1D57D-A38E-4AAE-8C05-40D2329A5333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{33A1D57D-A38E-4AAE-8C05-40D2329A5333}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33A1D57D-A38E-4AAE-8C05-40D2329A5333}.Release|Any CPU.ActiveCfg = Release|Any CPU
