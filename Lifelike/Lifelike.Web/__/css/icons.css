@@ -1,0 +1,36 @@
+﻿
+.add16
+{
+    background-image: url('../images/iconset.png');
+    background-position: -16px 0px !important;
+
+}
+.delete16
+{
+    background-image: url('../images/iconset.png');
+    background-position: -48px -32px !important;
+
+}
+.edit16
+{
+    background-image: url('../images/iconset.png');
+    background-position: -48px -64px !important;
+
+}
+.task48
+{
+    background-image: url('../images/icon48-task.png');
+    width: 48px;
+    height: 48px;
+}
+.task16
+{
+    background-image: url('../images/icon16-task.png');
+    width: 16px;
+    height: 16px;
+}
+/*
+.ux-taskbar
+{
+    background-image: url('../images/taskbar-bg.png') !important;
+}*/
