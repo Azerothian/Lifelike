@@ -11,7 +11,7 @@ namespace Lifelike.Kernel.Util
 		private static Dictionary<string, object> _offlineStorage = new Dictionary<string, object>();
 		public static void SaveField(string name, object data)
 		{
-			if (HttpContext.Current != null)
+			if (HttpContext.Current != null && HttpContext.Current.Session != null)
 			{
 				HttpContext.Current.Session[name] = data;
 			}
@@ -29,7 +29,7 @@ namespace Lifelike.Kernel.Util
 		}
 		public static T LoadField<T>(string name)
 		{
-			if (HttpContext.Current != null)
+			if (HttpContext.Current != null && HttpContext.Current.Session != null)
 			{
 				return (T)HttpContext.Current.Session[name];
 			}

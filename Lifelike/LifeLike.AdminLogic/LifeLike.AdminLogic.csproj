@@ -63,10 +63,8 @@
   <ItemGroup>
     <Compile Include="Interfaces\IContentManager.cs" />
     <Compile Include="Interfaces\IDomainManager.cs" />
-    <Compile Include="Interfaces\ILanguageManager.cs" />
     <Compile Include="Managers\ContentManager.cs" />
     <Compile Include="Managers\DomainManager.cs" />
-    <Compile Include="Managers\LanguageManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

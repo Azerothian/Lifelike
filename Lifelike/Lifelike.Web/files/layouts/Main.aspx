@@ -4,14 +4,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+	<title></title>
 </head>
 <body>
-	1
-    <form id="form1" runat="server">
-    <div>
-    
-    </div>
-    </form>
+
+	<form id="form1" runat="server">
+		<div>
+			<h1>Page</h1>
+			<asp:Label ID="lblMessage" runat="server" /><br />
+			<h1>Modules</h1>
+			<ll:Placeholder ID="plcHolder" Key="test" runat="server" />
+		</div>
+	</form>
 </body>
 </html>

@@ -24,7 +24,7 @@ namespace Lifelike.Kernel.EntityLogic
 		//	//i.Parent
 		//	return i;
 		//}
-		public Domain GetCurrentDomain(string host, ISession session)
+		public static Domain GetCurrentDomain(string host, ISession session)
 		{
 			var domain = LoadBy(session, 
 					new Func<Domain, bool>(i => i.BaseUri.ToLower() == host.ToLower())

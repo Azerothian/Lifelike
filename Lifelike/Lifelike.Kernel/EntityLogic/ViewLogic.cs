@@ -9,7 +9,7 @@ namespace Lifelike.Kernel.EntityLogic
 {
 	public class ViewLogic : LogicAbstract<View>
 	{
-		public View GetCurrentView(Item i)
+		public static View GetCurrentView(Item i)
 		{
 			return i.Views.FirstOrDefault();
 		}

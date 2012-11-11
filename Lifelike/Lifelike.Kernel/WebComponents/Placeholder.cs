@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Lifelike.WebComponents
+namespace Lifelike.Kernel.WebComponents
 {
 	public class Placeholder : WebControl
 	{
+		public string Key { get; set; }
+
 		Panel panel = new Panel();
 		public Placeholder()
 		{

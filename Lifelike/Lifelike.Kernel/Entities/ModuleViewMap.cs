@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Lifelike.Kernel.Entities
 {
-	public class ModuleViewMap: Entity<Module>
+	public class ModuleViewMap : Entity<ModuleViewMap>
 	{
 		public virtual string Placeholder { get;set; }
 		public virtual View View { get; set; }

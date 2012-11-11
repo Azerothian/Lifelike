@@ -5,18 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Lifelike.Kernel.Fields;
-using Lifelike.WebComponents;
+using Lifelike.Kernel.WebComponents;
 
 namespace Lifelike.WebAdmin.files.modules
 {
 	public partial class TestModule : Module
 	{
 		[Field]
-		public string TestModuleMessage { get; set; }
+		public string TestModuleMessage { get { return lblMessage.Text; } set { lblMessage.Text = value; } }
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
 		}
 	}
 }

@@ -79,6 +79,11 @@ namespace Lifelike.Kernel.Util
 
 		public static T FindChildControlByTypeAndId<T>(ControlCollection cc, string id) where T : Control
 		{
+			return FindChildControlByTypeAndWithFilter<T>(cc, (p => p.ID == id));
+		}
+
+		public static T FindChildControlByTypeAndWithFilter<T>(ControlCollection cc, Func<T, bool> param) where T : Control
+		{
 			// int i = 0;
 			if (cc == null)
 				return null;
@@ -91,7 +96,8 @@ namespace Lifelike.Kernel.Util
 				{
 					if (c is T)
 					{
-						if (((T)c).ID == id)
+						
+						if (param((T)c))
 						{
 							ctrl = (T)c;
 							break;

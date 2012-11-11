@@ -9,18 +9,17 @@ namespace Lifelike.Kernel.EntityLogic
 {
 	public abstract class LogicAbstract<T> where T : Entity<T>
 	{
-
-		public void Save(T l, ISession session, ITransaction tx)
+		public static void Save(T l, ISession session, ITransaction tx)
 		{
 			l.DateModified = DateTime.Now;
 			l.Save(session, tx);
 		}
 
-		public T LoadBy(ISession session, params Func<T, bool>[] paramArray)
+		public static T LoadBy(ISession session, params Func<T, bool>[] paramArray)
 		{
 			return LoadAllBy(session, paramArray).FirstOrDefault();
 		}
-		public IEnumerable<T> LoadAllBy(ISession session, params Func<T, bool>[] paramArray)
+		public static IEnumerable<T> LoadAllBy(ISession session, params Func<T, bool>[] paramArray)
 		{
 			IEnumerable<T> query = from v in session.Query<T>() where v.Active select v;
 
@@ -31,12 +30,12 @@ namespace Lifelike.Kernel.EntityLogic
 			return query;
 
 		}
-		public void Delete(T l, ISession session, ITransaction tx)
+		public static void Delete(T l, ISession session, ITransaction tx)
 		{
 			l.Delete(session, tx);
 		}
 
-		public void SoftDelete(T l, ISession session, ITransaction tx)
+		public static void SoftDelete(T l, ISession session, ITransaction tx)
 		{
 			l.Active = false;
 			Save(l, session, tx);

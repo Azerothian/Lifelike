@@ -10,8 +10,6 @@ namespace Lifelike.Kernel.Fields
 
 		private System.Web.UI.WebControls.TextBox _control;
 
-		private object _value;
-
 		public Text()
 		{
 			_control = new System.Web.UI.WebControls.TextBox();

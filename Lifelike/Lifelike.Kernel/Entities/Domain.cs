@@ -11,7 +11,7 @@ namespace Lifelike.Kernel.Entities
 		public virtual Item BaseItem { get; set; }
         public virtual string BaseUri { get; set; }
         public virtual bool IsRegExMatch { get; set; }
-        public virtual Language DefaultLanguage { get; set; }
+       // public virtual Language DefaultLanguage { get; set; }
 
     }
 }

@@ -50,7 +50,8 @@ namespace Lifelike.Kernel
             _config = Fluently.Configure(_cfg);
             SetupConnection();
             SetupMappings(asm);
-            UpdateDbSchema();
+           UpdateDbSchema();
+			//ExportDbSchema();
             _sessionFactory = _config.BuildSessionFactory();
 
         }

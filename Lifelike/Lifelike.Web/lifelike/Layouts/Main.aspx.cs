@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Lifelike.Kernel.WebComponents;
 
-namespace Lifelike.WebAdmin
+namespace Lifelike.WebAdmin.lifelike.Layouts
 {
-	public partial class Default : System.Web.UI.Page
+	public partial class Main : Layout
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{

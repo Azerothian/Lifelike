@@ -6,19 +6,19 @@ using NHibernate;
 
 namespace Lifelike.Kernel.Entities
 {
-    public abstract class Entity<T> : IEntity
-    {
-		
-        public virtual Guid Id { get; set; }
-        public virtual bool Active { get; set; }
-        public virtual DateTime DateCreated { get; set; }
-        public virtual DateTime DateModified { get; set; }
-        public virtual void ModelOverride(FluentNHibernate.Automapping.AutoPersistenceModel model)
-        {
-            model.Override<Entity<T>>(map =>
-                map.Id(x => x.Id).GeneratedBy.Guid()
-            );
-        }
+	public abstract class Entity<T> : IEntity
+	{
+
+		public virtual Guid Id { get; set; }
+		public virtual bool Active { get; set; }
+		public virtual DateTime DateCreated { get; set; }
+		public virtual DateTime DateModified { get; set; }
+		public virtual void ModelOverride(FluentNHibernate.Automapping.AutoPersistenceModel model)
+		{
+			model.Override<Entity<T>>(map =>
+				map.Id(x => x.Id).GeneratedBy.Guid()
+			);
+		}
 		public virtual void PreSave()
 		{
 
@@ -38,7 +38,22 @@ namespace Lifelike.Kernel.Entities
 				session.Update(this);
 			}
 		}
-		public virtual T Load<T>(Guid g, ISession session)
+
+		public virtual void Refresh()
+		{
+			var session = Lifelike.Kernel.Database.Context.OpenSession();
+			using (var tx = session.BeginTransaction())
+			{
+				Refresh(session);
+			}
+		}
+
+		public virtual void Refresh(ISession session)
+		{
+			session.Refresh(this);
+		}
+
+		public virtual T Load(Guid g, ISession session)
 		{
 			T d = default(T);
 			try

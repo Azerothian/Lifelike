@@ -65,17 +65,17 @@
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\Item.cs" />
-    <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\Layout.cs" />
     <Compile Include="Entities\Module.cs" />
     <Compile Include="Entities\ModuleViewMap.cs" />
-    <Compile Include="Entities\Template.cs" />
     <Compile Include="Entities\View.cs" />
+    <Compile Include="Entities\Xml\Property.cs" />
+    <Compile Include="Entities\Xml\PropertyGroup.cs" />
+    <Compile Include="Entities\Xml\TemplateData.cs" />
     <Compile Include="EntityLogic\TemplateLogic.cs" />
     <Compile Include="EntityLogic\ViewLogic.cs" />
     <Compile Include="EntityLogic\DomainLogic.cs" />
     <Compile Include="EntityLogic\ItemLogic.cs" />
-    <Compile Include="EntityLogic\LanguageLogic.cs" />
     <Compile Include="EntityLogic\LogicAbstract.cs" />
     <Compile Include="EntityExtension.cs" />
     <Compile Include="EntityLogic\ModuleLogic.cs" />
@@ -89,7 +89,11 @@
     <Compile Include="Fields\Text.cs" />
     <Compile Include="Fields\IField.cs" />
     <Compile Include="Util\Data.cs" />
+    <Compile Include="Util\Serialisation.cs" />
     <Compile Include="Util\WebControls.cs" />
+    <Compile Include="WebComponents\Layout.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="WebComponents\Module.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
