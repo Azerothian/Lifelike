@@ -2,81 +2,124 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Ext.Net;
+using Lifelike.Kernel.Entities;
+using Lifelike.Kernel.EntityLogic;
+using Telerik.Web.UI;
 
 namespace Lifelike.WebAdmin.lifelike.Modules
 {
 	public partial class ItemEditor : System.Web.UI.UserControl
 	{
+		protected void Page_Load(object sender, EventArgs e)
+		{
+			if (!IsPostBack)
+			{
+				RadTreeNode rtnItem = new RadTreeNode("Items", "") { ExpandMode = TreeNodeExpandMode.WebService };
+				rtnItem.Attributes["nodetype"] = "item";
+				RadTreeNode rtnDomain = new RadTreeNode("Domains") { ExpandMode = TreeNodeExpandMode.WebService };
+				RadTreeNode rtnLayout = new RadTreeNode("Layouts") { ExpandMode = TreeNodeExpandMode.WebService };
+				RadTreeNode rtnModule = new RadTreeNode("Modules") { ExpandMode = TreeNodeExpandMode.WebService };
+				RadTreeNode rtnView = new RadTreeNode("Views") { ExpandMode = TreeNodeExpandMode.WebService };
+				var session = Lifelike.Kernel.Database.Context.OpenSession();
+				var item = ItemLogic.LoadAllBy(session, (p => p.Parent == null));
 
-        string itemid = "";
+				//rtnItem = CreateTree(rtnItem, item.ToArray());
 
-        //protected ContentManager _manager;
+				rtvEntities.Nodes.Add(rtnItem);
 
-        protected void Page_Init(object sender, EventArgs e)
-        {
-           // _manager = new ContentManager(this);
-        }
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!X.IsAjaxRequest && !IsPostBack)
-            {
-                //_manager.Initialise();
-                SetupSitePanel();
-            }
-           
-        }
 
-        
+				//var domains = DomainLogic.LoadAllBy(session);
+				//foreach (var d in domains)
+				//{
+				//	rtnDomain.Nodes.Add(new RadTreeNode(d.BaseUri));
+				//}
+				rtvEntities.Nodes.Add(rtnDomain);
 
-        protected void NodeLoad(object sender, NodeLoadEventArgs e)
-        {
-            
-          //  _manager.LoadNodeContents(sender, e);
-        }
+				//var layouts = LayoutLogic.LoadAllBy(session);
+				//foreach (var d in layouts)
+				//{
+				//	rtnLayout.Nodes.Add(new RadTreeNode(d.Name));
+				//}
+				rtvEntities.Nodes.Add(rtnDomain);
+				//var modules = ModuleLogic.LoadAllBy(session);
+				//foreach (var d in modules)
+				//{
+				//	rtnModule.Nodes.Add(new RadTreeNode(d.Name));
+				//}
+				rtvEntities.Nodes.Add(rtnModule);
+				//var views = ViewLogic.LoadAllBy(session);
+				//foreach (var d in views)
+				//{
+				//	rtnView.Nodes.Add(new RadTreeNode(d.Name));
+				//}
+				rtvEntities.Nodes.Add(rtnView);
+			}
 
-        protected void OnClick_tpContent(object sender, DirectEventArgs e)
-        {
-            itemid = e.ExtraParams["guid"];
-        }
+		}
+		//private static List<RadTreeNodeData> CreateNodes(
+		[WebMethod]
+		public static RadTreeNodeData[] GetNodes(RadTreeNodeData node)
+		{
+			var session = Lifelike.Kernel.Database.Context.OpenSession();
+			string nodetype = (string)node.Attributes["nodetype"];
+			List<RadTreeNodeData> result = new List<RadTreeNodeData>();
+			switch (nodetype)
+			{
+				case "item":
 
-        protected void OnClick_btnCreate(object sender, DirectEventArgs e)
-        {
-           // _manager.CreateNewItem();
-         //   var wtf = (tpContents.GetSelectionModel());
-           // var test = (TreeSelectionModel)wtf;
-        }
-        private void SetupSitePanel()
-        {
-            Ext.Net.Node root = new Ext.Net.Node();
-            root.Text = "Root";
-            tpContents.Root.Add(root);
-            //root.Children.Add(CreateNode("illisian.com.au"));
-            //root.Children.Add(CreateNode("propertyworks.com"));
-            //root.Children.Add(CreateNode("minecraftworld.net"));
-            //root.Children.Add(CreateNode("augaming.org"));
-            //root.Children.Add(CreateNode("nadir-game.com"));
+					Item item = null;
+					Guid guid = Guid.Empty;
+					if (Guid.TryParse(node.Value, out guid))
+					{
+						item = ItemLogic.LoadBy(session, (p => p.Id == guid));
+					}
+					else
+					{
 
-        }
-        private Node CreateNode(string name)
-        {
-            Guid id = Guid.NewGuid();
-            Ext.Net.Node node = new Ext.Net.Node();
-            node.NodeID = id.ToString();
-            node.Text = name;
-            node.CustomAttributes.Add(new ConfigItem("guid", id.ToString(), ParameterMode.Value));
-            node.Leaf = false;
-            return node;
-			
-        }
+						item = ItemLogic.LoadBy(session, (p => p.FullPath == "/"));
+					}
+					
 
-        //public Guid SelectedNode
-        //{
-        //    get {  }
-        //}
+					if (item.Children.Count > 0)
+					{
+						foreach (Item child in item.Children)
+						{
+							RadTreeNodeData childNode = new RadTreeNodeData();
+							childNode.Text = child.Name;
+							childNode.Value = child.Id.ToString();
+							childNode.Attributes["nodetype"] = "item";
+							//childNode.Attributes["path"] = child.FullPath;
+							if (child.Children != null && child.Children.Count > 0)
+							{
+								childNode.ExpandMode = TreeNodeExpandMode.WebService;
+							}
+							result.Add(childNode);
+						}
+					}
+					break;
+			}
 
-        public string txtCreateField { get { return txtNewName.Text; } }
+
+			return result.ToArray();
+		}
+
+		public RadTreeNode CreateTree(RadTreeNode node, Item[] item)
+		{
+
+			foreach (var i in item)
+			{
+				var n = new RadTreeNode(i.Name);
+				if (i.Children != null && i.Children.Count() > 0)
+				{
+					CreateTree(n, i.Children.ToArray());
+				}
+				node.Nodes.Add(n);
+			}
+			return node;
+		}
+
 	}
 }

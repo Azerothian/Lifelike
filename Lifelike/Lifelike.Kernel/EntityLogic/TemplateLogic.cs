@@ -16,7 +16,7 @@ namespace Lifelike.Kernel.EntityLogic
 
 		public static TemplateData LoadFromItem(Item item)
 		{
-			if (string.IsNullOrEmpty(item.Value))
+			if (!string.IsNullOrEmpty(item.Value))
 			{
 				return Util.Serialisation.Xml.Generics.DeserializeObjectFromString<TemplateData>(item.Value);
 			}
@@ -84,22 +84,30 @@ namespace Lifelike.Kernel.EntityLogic
 			var lstPropGroup = new List<PropertyGroup>();
 			foreach (var m in (from v in view.Modules orderby v.Id select v))
 			{
-				var propGroup = new PropertyGroup();
-				var lstCtlProps = new List<Property>();
 
-				Control c = page.LoadControl("~/" + m.Module.Path);
-
-
-				propGroup.Name = m.Module.Name;
-				propGroup.Type = c.GetType().ToString();
-
-				var controlProps = Reflection.GetAllPropertiesByType<Field>(c);
-				propGroup.Properties = CreatePropertyList(controlProps, propGroup.Properties);
-				lstPropGroup.Add(propGroup);
+				lstPropGroup.Add(CreatePropertyGroupFromModule(page, m.Module));
 			}
 			template.PropertyGroups = lstPropGroup;
 
 			return Util.Serialisation.Xml.SerializeObject(template); ;
+		}
+
+		public static PropertyGroup CreatePropertyGroupFromModule(Page page, Lifelike.Kernel.Entities.Module m)
+		{
+			var propGroup = new PropertyGroup();
+			var lstCtlProps = new List<Property>();
+
+			Control c = page.LoadControl("~/" + m.Path);
+
+
+			propGroup.Name = m.Name;
+			propGroup.Type = c.GetType().ToString();
+
+			var controlProps = Reflection.GetAllPropertiesByType<Field>(c);
+			propGroup.Properties = CreatePropertyList(controlProps, propGroup.Properties);
+			return propGroup;
+			
+
 		}
 
 

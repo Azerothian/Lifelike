@@ -40,7 +40,7 @@ namespace Lifelike.Kernel.EntityLogic
 			{
 				//throw new Exception("Item not found");
 			}
-				//String.Format("{0}{1}", domain.StartItem.FullPath, path.Substring(1)).ToLower());
+			//String.Format("{0}{1}", domain.StartItem.FullPath, path.Substring(1)).ToLower());
 			return item;
 		}
 
@@ -53,19 +53,22 @@ namespace Lifelike.Kernel.EntityLogic
 			}
 			else
 			{
-				item = GetItemFromPath(String.Format("{0}{1}", domain.StartItem.FullPath, path.Substring(1)).ToLower()); // LoadBy(session, new Func<Item, bool>(i => i.FullPath != null && i.FullPath.ToLower() == );
+				string data = String.Format("{0}/{1}", domain.StartItem.FullPath, path.Substring(1)).ToLower();
+				item = GetItemFromPath(data); // LoadBy(session, new Func<Item, bool>(i => i.FullPath != null && i.FullPath.ToLower() == );
 			}
 			return item;
 		}
 
 
-		
+
 		public static void RewritePath(HttpApplication context)
 		{
 
 			var path = HttpContext.Current.Request.Path;
 			var url = HttpContext.Current.Request.Url.AbsoluteUri;
+
 			var host = HttpContext.Current.Request.Url.Host;
+
 			//CreateStructure();
 
 			var session = Lifelike.Kernel.Database.Context.OpenSession();
@@ -124,14 +127,14 @@ namespace Lifelike.Kernel.EntityLogic
 				return;
 				//throw new Exception("Page base type not found");
 			}
-			Lifelike.Kernel.WebComponents.Layout page = HttpContext.Current.Handler as Lifelike.Kernel.WebComponents.Layout;
+			Page page = HttpContext.Current.Handler as Page;
 
 			//page.Form.Action = HttpContext.Current.Request.Url.AbsolutePath;
 			var item = ItemLogic.GetCurrentItem();
 			if (item == null)
 				return;
 			var data = Util.Serialisation.Xml.Generics.DeserializeObjectFromString<TemplateData>(item.Value);
-			page.__templateData = data.Properties;
+			//page.__templateData = data.Properties;
 
 			Reflection.SetProperties(page, data.Properties);
 
@@ -154,7 +157,7 @@ namespace Lifelike.Kernel.EntityLogic
 		}
 
 
-		
+
 
 
 
@@ -186,7 +189,7 @@ namespace Lifelike.Kernel.EntityLogic
 				var layout = new Lifelike.Kernel.Entities.Layout()
 				{
 					Name = "Main",
-					Path = "/files/layouts/Main.aspx",
+					Path = "/lifelike/layouts/Main.aspx",
 					Active = true
 				};
 				var module = new Lifelike.Kernel.Entities.Module()
@@ -257,43 +260,48 @@ namespace Lifelike.Kernel.EntityLogic
 			var session = Lifelike.Kernel.Database.Context.OpenSession();
 			using (var tx = session.BeginTransaction())
 			{
-				var item = ItemLogic.LoadBy(session, (p => p.FullPath == path));
-				if (item == null && create)
-				{
-					var arr = new[] { "/" }.Concat(path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries));
-					string pat = "";
-					Item parent = null;
-					foreach (var v in arr)
-					{
-						if (v != "/")
-						{
-							pat = pat + "/" + v;
-						}
-						else
-						{
-							pat = v;
-						}
-						var nw = ItemLogic.LoadBy(session, (p => p.FullPath == pat));
-						if (nw == null)
-						{
-							nw = new Item()
-							{
-								Parent = parent,
-								Name = v,
-								Active = true,
-								FullPath = pat
-							};
-							nw.Save(session, tx);
-						}
-						parent = nw;
-					}
-					item = ItemLogic.LoadBy(session, (p => p.FullPath == path));
-
-					
-					tx.Commit();
-				}
-				return item;
+				return GetItemFromPath(session, tx, path, create);
 			}
+		}
+
+		public static Item GetItemFromPath(ISession session, ITransaction tx, string path, bool create = false)
+		{
+			var item = ItemLogic.LoadBy(session, (p => p.FullPath == path));
+			if (item == null && create)
+			{
+				var arr = new[] { "/" }.Concat(path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries));
+				string pat = "";
+				Item parent = null;
+				foreach (var v in arr)
+				{
+					if (v != "/")
+					{
+						pat = pat + "/" + v;
+					}
+					else
+					{
+						pat = v;
+					}
+					var nw = ItemLogic.LoadBy(session, (p => p.FullPath == pat));
+					if (nw == null)
+					{
+						nw = new Item()
+						{
+							Parent = parent,
+							Name = v,
+							Active = true,
+							FullPath = pat
+						};
+						nw.Save(session, tx);
+					}
+					parent = nw;
+				}
+				item = ItemLogic.LoadBy(session, (p => p.FullPath == path));
+
+
+				tx.Commit();
+			}
+			return item;
 		}
 	}
 }

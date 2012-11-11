@@ -13,9 +13,9 @@ namespace Lifelike.Kernel.EntityLogic
 	public class ModuleLogic : LogicAbstract<Module>
 	{
 
-		public static Lifelike.Kernel.WebComponents.Module[] GetAllWebCtlModulesFromItemByCurrentView(Page page, Item item)
+		public static Control[] GetAllWebCtlModulesFromItemByCurrentView(Page page, Item item)
 		{
-			var _lstModules = new List<WebComponents.Module>();
+			var _lstModules = new List<Control>();
 			var data = TemplateLogic.LoadFromItem(item);
 			foreach (var m in ViewLogic.GetCurrentView(item).Modules)
 			{
@@ -26,11 +26,11 @@ namespace Lifelike.Kernel.EntityLogic
 
 
 		}
-		public static Lifelike.Kernel.WebComponents.Module LoadModule(Page page, Lifelike.Kernel.Entities.Module module, List<Property> data = null)
+		public static Control LoadModule(Page page, Lifelike.Kernel.Entities.Module module, List<Property> data = null)
 		{
 
-			var c = (Lifelike.Kernel.WebComponents.Module)page.LoadControl("~/" + module.Path);
-			c.__templateData = data;
+			var c = page.LoadControl("~/" + module.Path);
+			//c.__templateData = data;
 			if (data != null)
 			{
 				Reflection.SetProperties(c, data);

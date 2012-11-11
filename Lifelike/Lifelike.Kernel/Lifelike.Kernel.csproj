@@ -72,6 +72,7 @@
     <Compile Include="Entities\Xml\Property.cs" />
     <Compile Include="Entities\Xml\PropertyGroup.cs" />
     <Compile Include="Entities\Xml\TemplateData.cs" />
+    <Compile Include="EntityLogic\LayoutLogic.cs" />
     <Compile Include="EntityLogic\TemplateLogic.cs" />
     <Compile Include="EntityLogic\ViewLogic.cs" />
     <Compile Include="EntityLogic\DomainLogic.cs" />
@@ -82,7 +83,6 @@
     <Compile Include="Fields\Field.cs" />
     <Compile Include="Http.cs" />
     <Compile Include="HttpModules\PageHttpModule.cs" />
-    <Compile Include="Items.cs" />
     <Compile Include="Net4Collections.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Reflection.cs" />

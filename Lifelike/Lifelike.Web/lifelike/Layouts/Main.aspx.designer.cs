@@ -22,30 +22,48 @@ namespace Lifelike.WebAdmin.lifelike.Layouts {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// resManager control.
+        /// RadSkinManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager resManager;
+        protected global::Telerik.Web.UI.RadSkinManager RadSkinManager1;
         
         /// <summary>
-        /// dtMain control.
+        /// scriptManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Desktop dtMain;
+        protected global::Telerik.Web.UI.RadScriptManager scriptManager;
         
         /// <summary>
-        /// winItemEditor control.
+        /// ajaxManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winItemEditor;
+        protected global::Telerik.Web.UI.RadAjaxManager ajaxManager;
+        
+        /// <summary>
+        /// windowManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindowManager windowManager;
+        
+        /// <summary>
+        /// plcHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Lifelike.Kernel.WebComponents.Placeholder plcHolder;
     }
 }

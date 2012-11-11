@@ -11,7 +11,10 @@ namespace Lifelike.Kernel.EntityLogic
 	{
 		public static View GetCurrentView(Item i)
 		{
-			return i.Views.FirstOrDefault();
+			var view = i.Views.FirstOrDefault();
+			if (view == null)
+				throw new Exception("View not found in item");
+			return view;
 		}
 	}
 }

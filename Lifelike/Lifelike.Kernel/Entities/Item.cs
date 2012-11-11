@@ -32,13 +32,32 @@ namespace Lifelike.Kernel.Entities
         }
 		public override void PreSave()
 		{
-			//FullPath = GetFullPath(this, "");	
+			FullPath = GetFullPath(this);
+			if (string.IsNullOrEmpty(FullPath))
+			{
+				FullPath = "/";
+			}
 		}
-		protected internal virtual string GetFullPath(Item i, string path)
+		protected internal virtual string GetFullPath(Item item)
 		{
-			if (i == null)
-				return path;
-			path += "/" + GetFullPath(i.Parent, path);
+
+			List<Item> _items = new List<Item>();
+			Item current = item;
+			do
+			{
+				_items.Add(current);
+				current = current.Parent;
+			} while (current != null);
+
+			string path = "";
+			_items.Reverse();
+			foreach(var i in _items)
+			{
+				if (i.Name != "/")
+				{
+					path = path +  "/" + i.Name;
+				}
+			}
 			return path;
 		}
     }
