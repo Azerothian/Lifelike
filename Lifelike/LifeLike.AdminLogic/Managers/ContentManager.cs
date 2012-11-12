@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Lifelike.AdminLogic.Interfaces;
-using Ext.Net;
+
 
 namespace Lifelike.AdminLogic.Managers
 {
@@ -25,14 +25,14 @@ namespace Lifelike.AdminLogic.Managers
        
 
 
-        public void LoadNodeContents(object sender, NodeLoadEventArgs e)
-        {
-           // e.Nodes.Add(CreateNode("1"));
-        }
+		//public void LoadNodeContents(object sender, NodeLoadEventArgs e)
+		//{
+		//   // e.Nodes.Add(CreateNode("1"));
+		//}
 
-        public void CreateNewItem()
-        {
-           // throw new NotImplementedException();
-        }
+		//public void CreateNewItem()
+		//{
+		//   // throw new NotImplementedException();
+		//}
     }
 }

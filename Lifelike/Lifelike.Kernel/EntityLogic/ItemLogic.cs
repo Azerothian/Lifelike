@@ -72,7 +72,7 @@ namespace Lifelike.Kernel.EntityLogic
 			//CreateStructure();
 
 			var session = Lifelike.Kernel.Database.Context.OpenSession();
-			//CreateStructure();
+			CreateStructure();
 
 			//var domain = DomainLogic.GetCurrentDomain(host, session);
 
@@ -167,63 +167,58 @@ namespace Lifelike.Kernel.EntityLogic
 		public static void CreateStructure()
 		{
 			var session = Lifelike.Kernel.Database.Context.OpenSession();
+
 			using (var tx = session.BeginTransaction())
 			{
+				var item = GetItemFromPath(session, tx, "/system/window/admin/itemeditor", true);
 
-				DeleteAll(session, tx);
-				tx.Commit();
-			}
-			using (var tx = session.BeginTransaction())
-			{
-				var item = new Item()
+				if (item.Views == null  || item.Views.Count == 0)
 				{
-					Name = "Home",
-					Active = true
-				};
-				var domain = new Domain()
-				{
-					StartItem = item,
-					BaseUri = "",
-					Active = true
-				};
+					var domain = new Domain()
+					{
+						StartItem = item,
+						BaseUri = "",
+						Active = true
+					};
 
-				var layout = new Lifelike.Kernel.Entities.Layout()
-				{
-					Name = "Main",
-					Path = "/lifelike/layouts/Main.aspx",
-					Active = true
-				};
-				var module = new Lifelike.Kernel.Entities.Module()
-				{
-					Name = "TestModule",
-					Path = "/files/modules/TestModule.ascx",
-					Active = true
-				};
-				var view = new View()
-				{
-					Name = "Web",
-					Layout = layout,
-					Active = true
+					var layout = new Lifelike.Kernel.Entities.Layout()
+					{
+						Name = "Main",
+						Path = "/lifelike/layouts/Main.aspx",
+						Active = true
+					};
+					var module = new Lifelike.Kernel.Entities.Module()
+					{
+						Name = "ItemEditor",
+						Path = "/lifelike/modules/ItemEditor.ascx",
+						Active = true
+					};
+					var view = new View()
+					{
+						Name = "Web",
+						Layout = layout,
+						Active = true
 
-				};
-				var moduleViewMap = new HashSet<ModuleViewMap> { new ModuleViewMap() { View = view, Placeholder="test", Module = module ,
+					};
+					var moduleViewMap = new HashSet<ModuleViewMap> { new ModuleViewMap() { View = view, Placeholder="test", Module = module ,
 					Active = true } };
 
-				view.Modules = moduleViewMap;
-				item.Views = new HashSet<View> { view };
+					view.Modules = moduleViewMap;
+					item.Views = new HashSet<View> { view };
 
-				item.Value = TemplateLogic.CreateTemplateFromView(view);
+					item.Value = TemplateLogic.CreateTemplateFromView(view);
 
-				item.Save(session, tx);
-				domain.Save(session, tx);
-				layout.Save(session, tx);
-				module.Save(session, tx);
-				foreach (var mvm in moduleViewMap)
-				{
-					mvm.Save(session, tx);
+					item.Save(session, tx);
+					domain.Save(session, tx);
+					layout.Save(session, tx);
+					module.Save(session, tx);
+					foreach (var mvm in moduleViewMap)
+					{
+						mvm.Save(session, tx);
+					}
+					view.Save(session, tx);
+					tx.Commit();
 				}
-				view.Save(session, tx);
-				tx.Commit();
 			}
 		}
 
