@@ -129,6 +129,7 @@ namespace Lifelike.Kernel.EntityLogic
 			}
 			Page page = HttpContext.Current.Handler as Page;
 
+			page.AppRelativeVirtualPath = HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath;
 			//page.Form.Action = HttpContext.Current.Request.Url.AbsolutePath;
 			var item = ItemLogic.GetCurrentItem();
 			if (item == null)
