@@ -15,11 +15,11 @@ namespace Lifelike.WebAdmin
 {
 	public class Global : System.Web.HttpApplication
 	{
-
+		HubManager _hubManager;
 		protected void Application_Start(object sender, EventArgs e)
 		{
 			Lifelike.Kernel.Context.Initialise();
-			HubManager _hubManager = new HubManager();
+			_hubManager = new HubManager();
 			_hubManager.Initialise();
 			RouteTable.Routes.MapHubs();			//RouteTable.Routes.
 			
@@ -54,7 +54,7 @@ namespace Lifelike.WebAdmin
 
 		protected void Application_End(object sender, EventArgs e)
 		{
-
+			_hubManager.Running = false;
 		}
 	}
 }
