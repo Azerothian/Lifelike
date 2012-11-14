@@ -32,7 +32,10 @@ namespace PandoraJs.Events
 
 		public void Bind(PandoraEventItem eventItem)
 		{
-			_source.SetBind(_eventName, new Dictionary<string, object>("eventItem", eventItem), EventHook);
+
+			//var d = new Dictionary<string, object>("eventItem", eventItem)
+
+			_source.SetBind(_eventName, eventItem, EventHook);
 		}
 		public void Clear()
 		{

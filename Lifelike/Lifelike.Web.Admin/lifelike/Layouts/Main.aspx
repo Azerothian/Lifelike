@@ -5,19 +5,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 	<title></title>
+	<script src="/lifelike/Content/lib/jquery-ui-1.9.1.custom/js/jquery-1.8.2.js"></script>
+	<script src="/lifelike/Content/lib/jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.min.js"></script>
+	<script src="/Scripts/jquery.signalR-0.5.3.min.js"></script>
+	<script src="/signalr/hubs"></script>
+	<script src="/lifelike/Content/js/mscorlib.js"></script>
+	<script src="/lifelike/Content/js/Lifelike.JScript.Admin.js"></script>
+
+
+	<link href="/lifelike/Content/css/itemeditor.css" rel="stylesheet" />
+
+	<link href="/lifelike/Content/theme/jmetro/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+
 </head>
 <body>
 	<form id="form1" runat="server">
 		<div>
-<%--			<telerik:RadSkinManager ID="RadSkinManager1" runat="server" ></telerik:RadSkinManager>
-			<telerik:RadScriptManager ID="scriptManager" runat="server" />
-			<telerik:RadAjaxManager ID="ajaxManager" runat="server" />
-			<telerik:RadWindowManager ID="windowManager" ShowContentDuringLoad="false" VisibleStatusbar="false"
-				ReloadOnShow="true" runat="server" EnableShadow="true" />--%>
-
 			<ll:Placeholder ID="plcHolder" runat="server" Key="control" />
-
-
 		</div>
 	</form>
 </body>

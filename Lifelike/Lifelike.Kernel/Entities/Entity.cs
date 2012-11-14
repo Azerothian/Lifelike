@@ -6,6 +6,7 @@ using NHibernate;
 
 namespace Lifelike.Kernel.Entities
 {
+	[Serializable]
 	public abstract class Entity<T> : IEntity
 	{
 

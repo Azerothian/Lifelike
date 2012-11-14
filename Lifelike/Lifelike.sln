@@ -11,11 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.Kernel", "Lifelike
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.AdminLogic", "LifeLike.AdminLogic\LifeLike.AdminLogic.csproj", "{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.Js", "Lifelike.Js\Lifelike.Js.csproj", "{1D8C8A00-F0A6-4CA4-A151-1E3ED012D68A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.Web.Admin", "Lifelike.Web.Admin\Lifelike.Web.Admin.csproj", "{9E9FFCFB-FA97-4589-9638-BFCBA4A82DA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandoraJs", "PandoraJs\PandoraJs.csproj", "{CE7F1795-8F9D-495A-B94C-9686EF0E9FB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.Logic.Admin", "Lifelike.Logic.Admin\Lifelike.Logic.Admin.csproj", "{4DE6084D-6662-4720-BE63-7DB280E05B38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.JScript.Admin", "Lifelike.JScript.Admin\Lifelike.JScript.Admin.csproj", "{37D7884D-7214-4686-8A49-BACEC25CA94A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saltarelle.SignalR", "Saltarelle.SignalR\Saltarelle.SignalR.csproj", "{15A4D603-461A-4CB4-8C36-DA504C1FC25C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,18 +33,22 @@ Global
 		{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D8C8A00-F0A6-4CA4-A151-1E3ED012D68A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D8C8A00-F0A6-4CA4-A151-1E3ED012D68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D8C8A00-F0A6-4CA4-A151-1E3ED012D68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D8C8A00-F0A6-4CA4-A151-1E3ED012D68A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9E9FFCFB-FA97-4589-9638-BFCBA4A82DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9E9FFCFB-FA97-4589-9638-BFCBA4A82DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E9FFCFB-FA97-4589-9638-BFCBA4A82DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E9FFCFB-FA97-4589-9638-BFCBA4A82DA7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE7F1795-8F9D-495A-B94C-9686EF0E9FB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE7F1795-8F9D-495A-B94C-9686EF0E9FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE7F1795-8F9D-495A-B94C-9686EF0E9FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE7F1795-8F9D-495A-B94C-9686EF0E9FB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DE6084D-6662-4720-BE63-7DB280E05B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DE6084D-6662-4720-BE63-7DB280E05B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DE6084D-6662-4720-BE63-7DB280E05B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DE6084D-6662-4720-BE63-7DB280E05B38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37D7884D-7214-4686-8A49-BACEC25CA94A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37D7884D-7214-4686-8A49-BACEC25CA94A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37D7884D-7214-4686-8A49-BACEC25CA94A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37D7884D-7214-4686-8A49-BACEC25CA94A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15A4D603-461A-4CB4-8C36-DA504C1FC25C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15A4D603-461A-4CB4-8C36-DA504C1FC25C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15A4D603-461A-4CB4-8C36-DA504C1FC25C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15A4D603-461A-4CB4-8C36-DA504C1FC25C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

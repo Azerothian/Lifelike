@@ -1,0 +1,31 @@
+﻿.tree, .tree .container > li
+{
+	list-style: none;
+}
+
+	.tree .container > li
+	{
+		padding: 0px;
+		margin: 0px;
+		margin-left: 10px;
+	}
+
+	.tree .label
+	{
+		width: 100%;
+		height: 30px;
+	}
+
+		.tree .label > *
+		{
+			float: left;
+		}
+
+		.tree .label > .ui-icon
+		{
+			margin-top: 4px;
+		}
+
+body
+{
+}

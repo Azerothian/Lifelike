@@ -19,6 +19,9 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +31,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,28 +40,665 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dotless.Core">
+      <HintPath>..\packages\dotless.1.3.1.0\lib\dotless.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SignalR">
+      <HintPath>..\packages\SignalR.Server.0.5.3\lib\net40\SignalR.dll</HintPath>
+    </Reference>
+    <Reference Include="SignalR.Client">
+      <HintPath>..\packages\SignalR.Client.0.5.3\lib\net40\SignalR.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="SignalR.Hosting.AspNet">
+      <HintPath>..\packages\SignalR.Hosting.AspNet.0.5.3\lib\net40\SignalR.Hosting.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SignalR.Hosting.Common">
+      <HintPath>..\packages\SignalR.Hosting.Common.0.5.3\lib\net40\SignalR.Hosting.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="lifelike\Content\css\itemeditor.css" />
+    <Content Include="lifelike\Content\js\Lifelike.JScript.Admin.js" />
+    <Content Include="lifelike\Content\js\mscorlib.js" />
+    <Content Include="lifelike\Content\js\mscorlib.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\jquery-ui-1.9.1.custom.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\css\smoothness\jquery-ui-1.9.1.custom.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\AUTHORS.txt" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\accordion\collapsible.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\accordion\custom-icons.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\accordion\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\accordion\fillspace.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\accordion\hoverintent.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\accordion\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\accordion\no-auto-height.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\accordion\sortable.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\categories.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\combobox.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\custom-data.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\folding.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\images\jqueryui_32x32.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\images\jquery_32x32.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\images\sizzlejs_32x32.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\images\transparent_1x1.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\images\ui-anim_basic_16x16.gif" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\london.xml" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\maxheight.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\multiple-remote.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\multiple.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\remote-jsonp.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\remote-with-cache.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\remote.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\xml.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\button\checkbox.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\button\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\button\icons.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\button\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\button\radio.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\button\splitbutton.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\button\toolbar.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\alt-field.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\animation.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\buttonbar.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\date-formats.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\date-range.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\dropdown-month-year.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\icon-trigger.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\images\calendar.gif" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\inline.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\localization.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\min-max.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\multiple-calendars.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\other-months.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\datepicker\show-week.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\demos.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\dialog\animated.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\dialog\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\dialog\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\dialog\modal-confirmation.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\dialog\modal-form.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\dialog\modal-message.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\dialog\modal.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\draggable\constrain-movement.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\draggable\cursor-style.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\draggable\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\draggable\delay-start.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\draggable\events.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\draggable\handle.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\draggable\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\draggable\revert.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\draggable\scroll.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\draggable\snap-to.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\draggable\sortable.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\draggable\visual-feedback.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\accepted-elements.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\images\high_tatras.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\images\high_tatras2.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\images\high_tatras2_min.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\images\high_tatras3.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\images\high_tatras3_min.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\images\high_tatras4.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\images\high_tatras4_min.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\images\high_tatras_min.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\photo-manager.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\propagation.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\revert.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\shopping-cart.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\droppable\visual-feedback.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\effect\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\effect\easing.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\effect\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\images\calendar.gif" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\images\demo-config-on-tile.gif" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\images\demo-config-on.gif" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\images\demo-spindown-closed.gif" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\images\demo-spindown-open.gif" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\images\icon-docs-info.gif" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\images\pbar-ani.gif" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\menu\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\menu\icons.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\menu\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\position\cycler.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\position\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\position\images\earth.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\position\images\flight.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\position\images\rocket.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\position\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\progressbar\animated.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\progressbar\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\progressbar\images\pbar-ani.gif" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\progressbar\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\progressbar\resize.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\resizable\animate.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\resizable\aspect-ratio.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\resizable\constrain-area.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\resizable\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\resizable\delay-start.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\resizable\helper.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\resizable\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\resizable\max-min.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\resizable\snap-to-grid.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\resizable\synchronous-resize.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\resizable\textarea.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\resizable\visual-feedback.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\selectable\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\selectable\display-grid.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\selectable\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\selectable\serialize.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\slider\colorpicker.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\slider\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\slider\hotelrooms.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\slider\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\slider\multiple-vertical.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\slider\range-vertical.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\slider\range.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\slider\rangemax.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\slider\rangemin.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\slider\side-scroll.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\slider\slider-vertical.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\slider\steps.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\sortable\connect-lists-through-tabs.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\sortable\connect-lists.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\sortable\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\sortable\delay-start.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\sortable\display-grid.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\sortable\empty-lists.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\sortable\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\sortable\items.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\sortable\placeholder.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\sortable\portlets.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\spinner\currency.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\spinner\decimal.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\spinner\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\spinner\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\spinner\latlong.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\spinner\overflow.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\spinner\time.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\ajax.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\ajax\content1.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\ajax\content2.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\bottom.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\collapsible.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\manipulation.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\mouseover.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\sortable.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\vertical.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tooltip\ajax\content1.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tooltip\ajax\content2.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tooltip\custom-animation.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tooltip\custom-content.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tooltip\custom-style.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tooltip\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tooltip\forms.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tooltip\images\st-stephens.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tooltip\images\tower-bridge.jpg" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tooltip\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tooltip\tracking.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tooltip\video-player.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\widget\default.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\widget\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\accordion.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\autocomplete.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\blind-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\bounce-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\button.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\clip-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\datepicker.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\dialog.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\draggable.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\drop-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\droppable.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\explode-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\fade-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\fold-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\highlight-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\jQuery.widget.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\menu.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\mouse.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\position.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\progressbar.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\puff-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\pulsate-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\resizable.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\scale-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\selectable.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\shake-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\size-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\slide-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\slider.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\sortable.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\spinner.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\tabs.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\tooltip.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\transfer-effect.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\docs\widget.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\external\globalize.culture.de-DE.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\external\globalize.culture.ja-JP.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\external\globalize.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\external\jquery.bgiframe-2.1.2.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\external\jquery.cookie.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\external\jquery.metadata.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\external\jquery.mousewheel.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\external\jshint.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\external\qunit.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\external\qunit.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\grunt.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\jquery-1.8.2.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\MIT-LICENSE.txt" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery-ui.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.accordion.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.all.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.base.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.button.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.core.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.dialog.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.menu.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.resizable.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.selectable.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.slider.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.spinner.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.tabs.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.theme.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery-ui.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.accordion.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.all.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.autocomplete.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.base.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.button.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.core.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.datepicker.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.dialog.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.menu.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.progressbar.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.resizable.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.selectable.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.slider.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.spinner.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.tabs.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.theme.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\jquery.ui.tooltip.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery-ui.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.accordion.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.button.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.core.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.dialog.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.menu.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.resizable.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.selectable.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.slider.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.spinner.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.tabs.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.theme.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\themes\smoothness\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery-ui-i18n.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-af.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-ar-DZ.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-ar.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-az.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-bg.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-bs.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-ca.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-cs.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-cy-GB.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-da.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-de.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-el.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-en-AU.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-en-GB.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-en-NZ.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-eo.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-es.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-et.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-eu.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-fa.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-fi.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-fo.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-fr-CH.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-fr.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-gl.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-he.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-hi.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-hr.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-hu.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-hy.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-id.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-is.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-it.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-ja.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-ka.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-kk.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-km.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-ko.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-lb.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-lt.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-lv.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-mk.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-ml.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-ms.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-nl-BE.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-nl.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-no.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-pl.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-pt-BR.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-pt.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-rm.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-ro.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-ru.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-sk.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-sl.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-sq.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-sr-SR.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-sr.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-sv.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-ta.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-th.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-tj.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-tr.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-uk.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-vi.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-zh-CN.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-zh-HK.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\i18n\jquery.ui.datepicker-zh-TW.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery-ui.custom.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.accordion.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.autocomplete.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.button.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.core.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.datepicker.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.dialog.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.draggable.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.droppable.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-blind.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-bounce.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-clip.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-drop.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-explode.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-fade.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-fold.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-highlight.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-pulsate.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-scale.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-shake.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-slide.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect-transfer.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.effect.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.menu.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.mouse.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.position.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.progressbar.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.resizable.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.selectable.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.slider.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.sortable.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.spinner.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.tabs.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.tooltip.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\jquery.ui.widget.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery-ui-i18n.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-af.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-ar-DZ.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-ar.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-az.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-bg.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-bs.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-ca.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-cs.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-cy-GB.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-da.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-de.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-el.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-en-AU.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-en-GB.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-en-NZ.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-eo.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-es.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-et.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-eu.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-fa.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-fi.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-fo.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-fr-CH.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-fr.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-gl.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-he.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-hi.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-hr.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-hu.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-hy.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-id.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-is.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-it.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-ja.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-ka.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-kk.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-km.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-ko.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-lb.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-lt.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-lv.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-mk.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-ml.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-ms.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-nl-BE.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-nl.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-no.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-pl.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-pt-BR.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-pt.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-rm.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-ro.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-ru.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-sk.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-sl.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-sq.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-sr-SR.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-sr.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-sv.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-ta.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-th.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-tj.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-tr.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-uk.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-vi.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-zh-CN.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-zh-HK.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\i18n\jquery.ui.datepicker-zh-TW.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery-ui.custom.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.accordion.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.autocomplete.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.button.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.core.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.datepicker.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.dialog.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.draggable.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.droppable.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-blind.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-bounce.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-clip.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-drop.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-explode.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-fade.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-fold.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-highlight.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-pulsate.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-scale.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-shake.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-slide.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect-transfer.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.effect.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.menu.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.mouse.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.position.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.progressbar.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.resizable.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.selectable.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.slider.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.sortable.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.spinner.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.tabs.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.tooltip.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui\minified\jquery.ui.widget.min.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\index.html" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\js\jquery-1.8.2.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\js\jquery-ui-1.9.1.custom.js" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\js\jquery-ui-1.9.1.custom.min.js" />
+    <Content Include="lifelike\Content\lib\jstree\jquery.jstree.js" />
+    <Content Include="lifelike\Content\lib\jstree\themes\apple\bg.jpg" />
+    <Content Include="lifelike\Content\lib\jstree\themes\apple\d.png" />
+    <Content Include="lifelike\Content\lib\jstree\themes\apple\dot_for_ie.gif" />
+    <Content Include="lifelike\Content\lib\jstree\themes\apple\style.css" />
+    <Content Include="lifelike\Content\lib\jstree\themes\apple\throbber.gif" />
+    <Content Include="lifelike\Content\lib\jstree\themes\classic\d.gif" />
+    <Content Include="lifelike\Content\lib\jstree\themes\classic\d.png" />
+    <Content Include="lifelike\Content\lib\jstree\themes\classic\dot_for_ie.gif" />
+    <Content Include="lifelike\Content\lib\jstree\themes\classic\style.css" />
+    <Content Include="lifelike\Content\lib\jstree\themes\classic\throbber.gif" />
+    <Content Include="lifelike\Content\lib\jstree\themes\default-rtl\d.gif" />
+    <Content Include="lifelike\Content\lib\jstree\themes\default-rtl\d.png" />
+    <Content Include="lifelike\Content\lib\jstree\themes\default-rtl\dots.gif" />
+    <Content Include="lifelike\Content\lib\jstree\themes\default-rtl\style.css" />
+    <Content Include="lifelike\Content\lib\jstree\themes\default-rtl\throbber.gif" />
+    <Content Include="lifelike\Content\lib\jstree\themes\default\d.gif" />
+    <Content Include="lifelike\Content\lib\jstree\themes\default\d.png" />
+    <Content Include="lifelike\Content\lib\jstree\themes\default\style.css" />
+    <Content Include="lifelike\Content\lib\jstree\themes\default\throbber.gif" />
     <Content Include="lifelike\Content\theme\jmetro\images\ui-icons_3399ff_0.png" />
     <Content Include="lifelike\Content\theme\jmetro\images\ui-icons_525252_0.png" />
     <Content Include="lifelike\Content\theme\jmetro\images\ui-icons_66B3FF_0.png" />
@@ -66,7 +707,54 @@
     <Content Include="lifelike\Content\theme\jmetro\jquery-ui-1.8.16.custom.css" />
     <Content Include="lifelike\Layouts\Main.aspx" />
     <Content Include="lifelike\Modules\ItemEditor.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\autocomplete\search.php" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\ajax\content3-slow.php" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\demos\tabs\ajax\content4-broken.php" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\package.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\README.md" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.accordion.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.autocomplete.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.button.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.core.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.datepicker.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.dialog.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.draggable.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.droppable.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-blind.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-bounce.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-clip.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-drop.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-explode.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-fade.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-fold.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-highlight.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-pulsate.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-scale.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-shake.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-slide.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect-transfer.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.effect.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.menu.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.mouse.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.position.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.progressbar.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.resizable.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.selectable.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.slider.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.sortable.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.spinner.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.tabs.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.tooltip.jquery.json" />
+    <Content Include="lifelike\Content\lib\jquery-ui-1.9.1.custom\development-bundle\ui.widget.jquery.json" />
+    <None Include="Properties\PublishProfiles\deploy.pubxml" />
+    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.signalR-0.5.3.js" />
+    <Content Include="Scripts\jquery.signalR-0.5.3.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -83,6 +771,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -91,18 +780,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="lifelike\Content\css\" />
-    <Folder Include="lifelike\Content\js\" />
     <Folder Include="lifelike\Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LifeLike.AdminLogic\LifeLike.AdminLogic.csproj">
-      <Project>{db8de3e0-22bc-462d-902e-7f1ad96106f3}</Project>
-      <Name>LifeLike.AdminLogic</Name>
+    <ProjectReference Include="..\Lifelike.JScript.Admin\Lifelike.JScript.Admin.csproj">
+      <Project>{37d7884d-7214-4686-8a49-bacec25ca94a}</Project>
+      <Name>Lifelike.JScript.Admin</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lifelike.Kernel\Lifelike.Kernel.csproj">
       <Project>{ac7508d8-7461-4355-aac1-5a02a4694b72}</Project>
       <Name>Lifelike.Kernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lifelike.Logic.Admin\Lifelike.Logic.Admin.csproj">
+      <Project>{4de6084d-6662-4720-be63-7db280e05b38}</Project>
+      <Name>Lifelike.Logic.Admin</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -118,7 +809,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>31692</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:12382/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
@@ -130,6 +821,10 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(SolutionDir)\Lifelike.JScript.Admin\bin\Debug\*.js $(ProjectDir)\lifelike\Content\js\</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

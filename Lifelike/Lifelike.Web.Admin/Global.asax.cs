@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
-
+using Lifelike.Logic.Admin;
+using SignalR.Hosting.AspNet.Routing;
+using SignalR.Hosting.Common;
+using SignalR.Hosting.AspNet;
+using SignalR;
+using Lifelike.Logic.Admin.Hubs;
 namespace Lifelike.WebAdmin
 {
 	public class Global : System.Web.HttpApplication
@@ -13,6 +19,12 @@ namespace Lifelike.WebAdmin
 		protected void Application_Start(object sender, EventArgs e)
 		{
 			Lifelike.Kernel.Context.Initialise();
+			HubManager _hubManager = new HubManager();
+			_hubManager.Initialise();
+			RouteTable.Routes.MapHubs();			//RouteTable.Routes.
+			
+			//RouteConfig.
+			
 		}
 
 		protected void Session_Start(object sender, EventArgs e)
