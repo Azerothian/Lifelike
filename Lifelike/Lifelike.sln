@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9532AC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.Kernel", "Lifelike.Kernel\Lifelike.Kernel.csproj", "{AC7508D8-7461-4355-AAC1-5A02A4694B72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.AdminLogic", "LifeLike.AdminLogic\LifeLike.AdminLogic.csproj", "{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.Web.Admin", "Lifelike.Web.Admin\Lifelike.Web.Admin.csproj", "{9E9FFCFB-FA97-4589-9638-BFCBA4A82DA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.Logic.Admin", "Lifelike.Logic.Admin\Lifelike.Logic.Admin.csproj", "{4DE6084D-6662-4720-BE63-7DB280E05B38}"
@@ -18,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.JScript.Admin", "Lifelike.JScript.Admin\Lifelike.JScript.Admin.csproj", "{37D7884D-7214-4686-8A49-BACEC25CA94A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saltarelle.SignalR", "Saltarelle.SignalR\Saltarelle.SignalR.csproj", "{15A4D603-461A-4CB4-8C36-DA504C1FC25C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lifelike.Data", "nHibernate.Membership\Lifelike.Data.csproj", "{469A7083-7CB1-47C7-AF21-A13F17D117E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		{AC7508D8-7461-4355-AAC1-5A02A4694B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC7508D8-7461-4355-AAC1-5A02A4694B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC7508D8-7461-4355-AAC1-5A02A4694B72}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB8DE3E0-22BC-462D-902E-7F1AD96106F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9E9FFCFB-FA97-4589-9638-BFCBA4A82DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9E9FFCFB-FA97-4589-9638-BFCBA4A82DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E9FFCFB-FA97-4589-9638-BFCBA4A82DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,6 +45,10 @@ Global
 		{15A4D603-461A-4CB4-8C36-DA504C1FC25C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15A4D603-461A-4CB4-8C36-DA504C1FC25C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15A4D603-461A-4CB4-8C36-DA504C1FC25C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{469A7083-7CB1-47C7-AF21-A13F17D117E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{469A7083-7CB1-47C7-AF21-A13F17D117E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{469A7083-7CB1-47C7-AF21-A13F17D117E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{469A7083-7CB1-47C7-AF21-A13F17D117E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

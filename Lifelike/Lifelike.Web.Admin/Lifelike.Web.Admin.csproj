@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Lifelike.Web.Admin</RootNamespace>
     <AssemblyName>Lifelike.Web.Admin</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -164,6 +164,10 @@
     <ProjectReference Include="..\Lifelike.Logic.Admin\Lifelike.Logic.Admin.csproj">
       <Project>{4de6084d-6662-4720-be63-7db280e05b38}</Project>
       <Name>Lifelike.Logic.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\nHibernate.Membership\Lifelike.Data.csproj">
+      <Project>{469a7083-7cb1-47c7-af21-a13f17d117e7}</Project>
+      <Name>Lifelike.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -35,12 +35,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Control.cs" />
+    <Compile Include="Controls\Button.cs" />
+    <Compile Include="Controls\Dialog.cs" />
+    <Compile Include="Controls\Label.cs" />
+    <Compile Include="Controls\TextBox.cs" />
     <Compile Include="Guid.cs" />
-    <Compile Include="HubManager.cs" />
+    <Compile Include="Managers\HubManager.cs" />
+    <Compile Include="Interfaces\ILogin.cs" />
     <Compile Include="jQueryUI\Node.cs" />
     <Compile Include="jQueryUI\Tree.cs" />
+    <Compile Include="Forms\LoginForm.cs" />
+    <Compile Include="Managers\LoginManager.cs" />
+    <Compile Include="Managers\PageManager.cs" />
+    <Compile Include="Modules\Chat\ChatModule.cs" />
+    <Compile Include="Modules\Chat\MessageControl.cs" />
+    <Compile Include="Modules\Chat\BaseControl.cs" />
+    <Compile Include="Modules\Chat\MessengerControl.cs" />
+    <Compile Include="Modules\Chat\RoomControl.cs" />
+    <Compile Include="PageRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

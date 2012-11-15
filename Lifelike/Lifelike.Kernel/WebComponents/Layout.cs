@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
-using Lifelike.Kernel.Entities.Xml;
+using Lifelike.Data.Entities.Xml;
 using Lifelike.Kernel.EntityLogic;
 using Lifelike.Kernel.Util;
 

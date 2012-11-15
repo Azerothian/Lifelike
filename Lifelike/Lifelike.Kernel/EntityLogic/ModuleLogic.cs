@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
-using Lifelike.Kernel.Entities;
-using Lifelike.Kernel.Entities.Xml;
+using Lifelike.Data;
+using Lifelike.Data.Entities;
+using Lifelike.Data.Entities.Xml;
 using Lifelike.Kernel.Util;
 using NHibernate;
 
@@ -26,7 +27,7 @@ namespace Lifelike.Kernel.EntityLogic
 
 
 		}
-		public static Control LoadModule(Page page, Lifelike.Kernel.Entities.Module module, List<Property> data = null)
+		public static Control LoadModule(Page page, Module module, List<Property> data = null)
 		{
 
 			var c = page.LoadControl("~/" + module.Path);

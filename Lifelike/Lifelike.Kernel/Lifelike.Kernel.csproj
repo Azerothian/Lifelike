@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Lifelike.Kernel</RootNamespace>
     <AssemblyName>Lifelike.Kernel</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FluentNHibernate">
@@ -61,29 +63,15 @@
   <ItemGroup>
     <Compile Include="Context.cs" />
     <Compile Include="Database.cs" />
-    <Compile Include="Entities\Domain.cs" />
-    <Compile Include="Entities\Entity.cs" />
-    <Compile Include="Entities\IEntity.cs" />
-    <Compile Include="Entities\Item.cs" />
-    <Compile Include="Entities\Layout.cs" />
-    <Compile Include="Entities\Module.cs" />
-    <Compile Include="Entities\ModuleViewMap.cs" />
-    <Compile Include="Entities\View.cs" />
-    <Compile Include="Entities\Xml\Property.cs" />
-    <Compile Include="Entities\Xml\PropertyGroup.cs" />
-    <Compile Include="Entities\Xml\TemplateData.cs" />
     <Compile Include="EntityLogic\LayoutLogic.cs" />
     <Compile Include="EntityLogic\TemplateLogic.cs" />
     <Compile Include="EntityLogic\ViewLogic.cs" />
     <Compile Include="EntityLogic\DomainLogic.cs" />
     <Compile Include="EntityLogic\ItemLogic.cs" />
-    <Compile Include="EntityLogic\LogicAbstract.cs" />
-    <Compile Include="EntityExtension.cs" />
     <Compile Include="EntityLogic\ModuleLogic.cs" />
     <Compile Include="Fields\Field.cs" />
     <Compile Include="Http.cs" />
     <Compile Include="HttpModules\PageHttpModule.cs" />
-    <Compile Include="Net4Collections.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Reflection.cs" />
     <Compile Include="Fields\Text.cs" />
@@ -101,6 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nHibernate.Membership\Lifelike.Data.csproj">
+      <Project>{469a7083-7cb1-47c7-af21-a13f17d117e7}</Project>
+      <Name>Lifelike.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

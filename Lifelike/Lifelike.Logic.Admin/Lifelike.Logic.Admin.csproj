@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Lifelike.Logic.Admin</RootNamespace>
     <AssemblyName>Lifelike.Logic.Admin</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -85,10 +85,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthManager.cs" />
     <Compile Include="HubManager.cs" />
     <Compile Include="Hubs\Chat.cs" />
+    <Compile Include="Hubs\Auth.cs" />
+    <Compile Include="Hubs\ChatLogic\Room.cs" />
+    <Compile Include="Hubs\ChatLogic\User.cs" />
     <Compile Include="Hubs\ItemHub.cs" />
-    <Compile Include="ItemController.cs" />
+    <Compile Include="Interfaces\ILogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +102,10 @@
     <ProjectReference Include="..\Lifelike.Kernel\Lifelike.Kernel.csproj">
       <Project>{ac7508d8-7461-4355-aac1-5a02a4694b72}</Project>
       <Name>Lifelike.Kernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\nHibernate.Membership\Lifelike.Data.csproj">
+      <Project>{469a7083-7cb1-47c7-af21-a13f17d117e7}</Project>
+      <Name>Lifelike.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

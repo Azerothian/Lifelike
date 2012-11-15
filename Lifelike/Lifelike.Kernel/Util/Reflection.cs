@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Lifelike.Kernel.Entities.Xml;
+using Lifelike.Data.Entities.Xml;
 
 namespace Lifelike.Kernel.Util
 {

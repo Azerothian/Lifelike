@@ -7,6 +7,7 @@ using Lifelike.JScript.Admin.jQueryUI;
 using jQueryApi;
 using jQueryApi.UI;
 using jQueryApi.UI.Widgets;
+using Lifelike.JScript.Admin.Managers;
 namespace Lifelike.JScript.Admin
 {
 	class Program
@@ -15,44 +16,46 @@ namespace Lifelike.JScript.Admin
 		{
 			jQuery.OnDocumentReady(() =>
 			{
-				Tree tree = new Tree(".itemEditor");
+				//Tree tree = new Tree(".itemEditor");
 
-				var node = new Node() { Text = "Text", Value = "Value" };
-				node.Children = new List<Node>()
-				 {
-					 new Node() { Text = "Text", Value = "Value" , Parent = node },
-					 new Node() { Text = "Text", Value = "Value", Parent = node },
-					 new Node() { Text = "Text", Value = "Value", Parent = node },
+				//var node = new Node() { Text = "Text", Value = "Value" };
+				//node.Children = new List<Node>()
+				// {
+				//	 new Node() { Text = "Text", Value = "Value" , Parent = node },
+				//	 new Node() { Text = "Text", Value = "Value", Parent = node },
+				//	 new Node() { Text = "Text", Value = "Value", Parent = node },
 					 
-				 };
-				var ss = new Node() { Text = "Text", Value = "Value", Parent = node };
-				ss.Children = new List<Node>()
-				 {
-					 new Node() { Text = "Text", Value = "Value" , Parent = node },
-					 new Node() { Text = "Text", Value = "Value", Parent = node },
-					 new Node() { Text = "Text", Value = "Value", Parent = node },
+				// };
+				//var ss = new Node() { Text = "Text", Value = "Value", Parent = node };
+				//ss.Children = new List<Node>()
+				// {
+				//	 new Node() { Text = "Text", Value = "Value" , Parent = node },
+				//	 new Node() { Text = "Text", Value = "Value", Parent = node },
+				//	 new Node() { Text = "Text", Value = "Value", Parent = node },
 					 
-				 };
-				node.Children.Add(ss);
-				tree.AddNode(null, node);
+				// };
+				//node.Children.Add(ss);
+				//tree.AddNode(null, node);
 
-				tree.Render();
+				//tree.Render();
 
-				jQuery.Select(".itemEditor").Dialog(new DialogOptions { AutoOpen = true, Width = 400, Title = "ITEM EDITOR" });
-				jQuery.Select(".button").Button();
-				jQuery.Select(".expand").Click(p => {
+				//jQuery.Select(".itemEditor").Dialog(new DialogOptions { AutoOpen = true, Width = 400, Title = "ITEM EDITOR" });
+				//jQuery.Select(".button").Button();
+				//jQuery.Select(".expand").Click(p => {
 
-					node.Expand();
+				//	node.Expand();
 
-				});
-				jQuery.Select(".close").Click(p =>
-				{
+				//});
+				//jQuery.Select(".close").Click(p =>
+				//{
 
-					node.Close();
+				//	node.Close();
 
-				});
-				HubManager hubmanger = new HubManager();
-				hubmanger.Initialise();
+				//});
+				HubManager.Context.Initialise();
+				PageManager.Context.Initialise();
+				
+				PageRenderer.Context.Render();
 			});
 
 

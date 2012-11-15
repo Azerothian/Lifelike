@@ -9,8 +9,9 @@ using System.Web.UI;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using Lifelike.Kernel.Entities;
-using Lifelike.Kernel.Entities.Xml;
+using Lifelike.Data;
+using Lifelike.Data.Entities;
+using Lifelike.Data.Entities.Xml;
 using Lifelike.Kernel.Fields;
 using Lifelike.Kernel.Util;
 using Lifelike.Kernel.WebComponents;
@@ -181,13 +182,13 @@ namespace Lifelike.Kernel.EntityLogic
 						Active = true
 					};
 
-					var layout = new Lifelike.Kernel.Entities.Layout()
+					var layout = new Lifelike.Data.Entities.Layout()
 					{
 						Name = "Main",
 						Path = "/lifelike/layouts/Main.aspx",
 						Active = true
 					};
-					var module = new Lifelike.Kernel.Entities.Module()
+					var module = new Lifelike.Data.Entities.Module()
 					{
 						Name = "ItemEditor",
 						Path = "/lifelike/modules/ItemEditor.ascx",
@@ -232,11 +233,11 @@ namespace Lifelike.Kernel.EntityLogic
 			{
 				v.Delete(session, tx);
 			}
-			foreach (var v in session.Query<Lifelike.Kernel.Entities.Module>())
+			foreach (var v in session.Query<Lifelike.Data.Entities.Module>())
 			{
 				v.Delete(session, tx);
 			}
-			foreach (var v in session.Query<Lifelike.Kernel.Entities.Layout>())
+			foreach (var v in session.Query<Lifelike.Data.Entities.Layout>())
 			{
 				v.Delete(session, tx);
 			}

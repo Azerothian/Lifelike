@@ -13,7 +13,9 @@ using System.Reflection;
 using System.IO;
 using System.Web;
 using NHibernate.Cfg.Loquacious;
-using Lifelike.Kernel.Entities;
+using Lifelike.Data.Entities;
+using Lifelike.Data.Membership;
+using Lifelike.Data;
 
 namespace Lifelike.Kernel
 {

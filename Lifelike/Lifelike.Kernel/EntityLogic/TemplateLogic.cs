@@ -4,8 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Web.UI;
-using Lifelike.Kernel.Entities;
-using Lifelike.Kernel.Entities.Xml;
+using Lifelike.Data.Entities;
+using Lifelike.Data.Entities.Xml;
 using Lifelike.Kernel.Fields;
 using Lifelike.Kernel.Util;
 
@@ -92,7 +92,7 @@ namespace Lifelike.Kernel.EntityLogic
 			return Util.Serialisation.Xml.SerializeObject(template); ;
 		}
 
-		public static PropertyGroup CreatePropertyGroupFromModule(Page page, Lifelike.Kernel.Entities.Module m)
+		public static PropertyGroup CreatePropertyGroupFromModule(Page page, Lifelike.Data.Entities.Module m)
 		{
 			var propGroup = new PropertyGroup();
 			var lstCtlProps = new List<Property>();

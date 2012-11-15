@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Lifelike.Data.Entities;
 using Lifelike.Kernel;
-using Lifelike.Kernel.Entities;
 using Lifelike.Kernel.EntityLogic;
 using SignalR.Hubs;
 
