@@ -5,7 +5,8 @@ using System.Text;
 using Lifelike.Data.Entities;
 using Lifelike.Kernel;
 using Lifelike.Kernel.EntityLogic;
-using SignalR.Hubs;
+using Microsoft.AspNet.SignalR.Hubs;
+
 
 namespace Lifelike.Logic.Admin.Hubs
 {

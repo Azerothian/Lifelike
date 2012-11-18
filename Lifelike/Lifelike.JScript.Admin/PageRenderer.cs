@@ -19,6 +19,9 @@ namespace Lifelike.JScript.Admin
 				return _context;
 			}
 		}
+
+		
+
 		public PageRenderer() : base("body")
 		{
 			this.ControlContainer = jQuery.Select("body").GetElement(0);

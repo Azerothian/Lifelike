@@ -7,7 +7,7 @@
 	<title></title>
 	<script src="/lifelike/Content/lib/jquery-ui-1.9.1.custom/js/jquery-1.8.2.js"></script>
 	<script src="/lifelike/Content/lib/jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.min.js"></script>
-	<script src="/Scripts/jquery.signalR-0.5.3.min.js"></script>
+	<script src="/Scripts/jquery.signalR-1.0.0-alpha2.js"></script>
 	<script src="/signalr/hubs"></script>
 	<script src="/lifelike/Content/js/mscorlib.js"></script>
 	<script src="/lifelike/Content/js/Lifelike.JScript.Admin.js"></script>

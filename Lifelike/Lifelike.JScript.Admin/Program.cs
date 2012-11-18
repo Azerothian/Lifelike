@@ -54,7 +54,6 @@ namespace Lifelike.JScript.Admin
 				//});
 				HubManager.Context.Initialise();
 				PageManager.Context.Initialise();
-				
 				PageRenderer.Context.Render();
 			});
 

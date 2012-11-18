@@ -3,31 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SignalR.Hubs;
+using Microsoft.AspNet.SignalR.Hubs;
+
 
 namespace Lifelike.Logic.Admin.Hubs
 {
-	public class Auth : Hub, IDisconnect, IConnected
+	public class Auth : Hub
 	{
-		public Task login(string username, string password, bool remember)
+		public void login(string username, string password, bool remember)
 		{
 
-			return Caller.loginResponse(true);
+			Clients.Caller.loginResponse(username, true);
 		}
 
-		public System.Threading.Tasks.Task Connect()
-		{
-			return Clients.joined(Context.ConnectionId, DateTime.Now.ToString());
-		}
-
-		public System.Threading.Tasks.Task Reconnect(IEnumerable<string> groups)
-		{
-			return Clients.rejoined(Context.ConnectionId, DateTime.Now.ToString());
-		}
-
-		public System.Threading.Tasks.Task Disconnect()
-		{
-			return Clients.leave(Context.ConnectionId, DateTime.Now.ToString());
-		}
 	}
 }

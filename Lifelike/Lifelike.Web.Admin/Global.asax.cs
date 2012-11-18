@@ -6,9 +6,10 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using Lifelike.Logic.Admin;
-using SignalR.Hosting.AspNet.Routing;
-using SignalR.Hosting.Common;
-using SignalR.Hosting.AspNet;
+using Microsoft.AspNet.SignalR.Hosting.AspNet.Routing;
+using Microsoft.AspNet.SignalR.Hosting.Common;
+using Microsoft.AspNet.SignalR.Hosting.AspNet;
+using Microsoft.AspNet.SignalR.Hosting;
 using SignalR;
 using Lifelike.Logic.Admin.Hubs;
 namespace Lifelike.WebAdmin
@@ -21,7 +22,7 @@ namespace Lifelike.WebAdmin
 			Lifelike.Kernel.Context.Initialise();
 			_hubManager = new HubManager();
 			_hubManager.Initialise();
-			RouteTable.Routes.MapHubs();			//RouteTable.Routes.
+			//RouteTable.Routes.Ma
 			
 			//RouteConfig.
 			

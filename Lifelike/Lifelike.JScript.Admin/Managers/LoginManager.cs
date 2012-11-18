@@ -19,7 +19,7 @@ namespace Lifelike.JScript.Admin.Managers
 
 		internal void LoginUser()
 		{
-			HubManager.Context.GetConnection().auth.login(_inf.Username, _inf.Password, _inf.Remember);
+			HubManager.Context.GetConnection().auth.server.login(_inf.Username, _inf.Password, _inf.Remember);
 		}
 	}
 }

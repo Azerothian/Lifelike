@@ -7,12 +7,9 @@ using System.Threading;
 using System.Web;
 using System.Web.Compilation;
 using System.Web.Routing;
-using SignalR;
-using SignalR.Client.Hubs;
-using SignalR.Hosting.AspNet.Infrastructure;
-using SignalR.Hosting.AspNet.Routing;
-using SignalR.Hosting.Self;
-using SignalR.Hubs;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
+using Microsoft.AspNet.SignalR.Hosting.AspNet.Routing;
 
 namespace Lifelike.Logic.Admin
 {
@@ -97,26 +94,26 @@ namespace Lifelike.Logic.Admin
 			return new [] { Assembly.GetAssembly(typeof(AssemblyLocator)) } ;
 		}
 	}
-	public class DRes : IDependencyResolver
-	{
-		public object GetService(Type serviceType)
-		{
-			throw new NotImplementedException();
-		}
+	//public class DRes : IDependencyResolver
+	//{
+	//	public object GetService(Type serviceType)
+	//	{
+	//		throw new NotImplementedException();
+	//	}
 
-		public IEnumerable<object> GetServices(Type serviceType)
-		{
-			throw new NotImplementedException();
-		}
+	//	public IEnumerable<object> GetServices(Type serviceType)
+	//	{
+	//		throw new NotImplementedException();
+	//	}
 
-		public void Register(Type serviceType, IEnumerable<Func<object>> activators)
-		{
-			throw new NotImplementedException();
-		}
+	//	public void Register(Type serviceType, IEnumerable<Func<object>> activators)
+	//	{
+	//		throw new NotImplementedException();
+	//	}
 
-		public void Register(Type serviceType, Func<object> activator)
-		{
-			throw new NotImplementedException();
-		}
-	}
+	//	public void Register(Type serviceType, Func<object> activator)
+	//	{
+	//		throw new NotImplementedException();
+	//	}
+	//}
 }

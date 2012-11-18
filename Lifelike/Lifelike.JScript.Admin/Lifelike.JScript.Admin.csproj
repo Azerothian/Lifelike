@@ -53,6 +53,7 @@
     <Compile Include="Modules\Chat\BaseControl.cs" />
     <Compile Include="Modules\Chat\MessengerControl.cs" />
     <Compile Include="Modules\Chat\RoomControl.cs" />
+    <Compile Include="Modules\Console\ConsoleModule.cs" />
     <Compile Include="PageRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

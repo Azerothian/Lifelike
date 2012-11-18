@@ -17,6 +17,11 @@ namespace Lifelike.JScript.Admin
 
 			return null;
 		}
-		
+		[InlineCode("console")]
+		public static dynamic Console()
+		{
+
+			return null;
+		}
 	}
 }

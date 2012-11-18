@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Html;
 using System.Text;
 using Lifelike.JScript.Admin.Modules.Chat;
+using Lifelike.JScript.Admin.Modules.Log;
 
 namespace Lifelike.JScript.Admin.Managers
 {
@@ -19,10 +20,10 @@ namespace Lifelike.JScript.Admin.Managers
 			}
 		}
 		public string Username { get; set; }
-
-		private LoginForm _loginForm;
-
 		public bool IsLoggedIn { get; set; }
+		public ConsoleModule ConsoleModule { get; set; }
+		
+		private LoginForm _loginForm;
 
 		public PageManager()
 		{
@@ -33,7 +34,7 @@ namespace Lifelike.JScript.Admin.Managers
 		
 		public void Initialise()
 		{
-			HubManager.Context.GetConnection().auth.loginResponse = new Response<bool>(LoginResponse);
+			HubManager.Context.GetConnection().auth.client.loginResponse = new Response<string, bool>(LoginResponse);
 			Check();
 
 		}
@@ -53,7 +54,7 @@ namespace Lifelike.JScript.Admin.Managers
 			}
 		}
 
-		internal void LoginResponse(bool success)
+		internal void LoginResponse(string username ,bool success)
 		{
 			IsLoggedIn = success;
 			if (success)
@@ -68,9 +69,14 @@ namespace Lifelike.JScript.Admin.Managers
 		}
 		public void InitateSystem()
 		{
+			var console = new ConsoleModule("console");
 			var chatModule = new ChatModule("chat");
+			
+			//Util.Debugger();
+			PageRenderer.Context.AddChild(console);
 			PageRenderer.Context.AddChild(chatModule);
 			chatModule.Render();
+			console.Render();
 		}
 
 	}

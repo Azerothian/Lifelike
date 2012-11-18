@@ -37,9 +37,9 @@ namespace Lifelike.JScript.Admin.Managers
 		private void Connected()
 		{
 
-			Window.Alert("CONNECTED");
-
-			GetConnection().chat.sendMessage("HI!");
+			//Window.Alert("CONNECTED");
+			//var chat = 	GetConnection().chat;
+			//chat.server.sendMessage("HI!");
 		}
 
 		[InlineCode("$.connection")]
