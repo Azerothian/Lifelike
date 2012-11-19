@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="lifelike\Content\css\chat.css" />
     <Content Include="lifelike\Content\css\itemeditor.css" />
     <Content Include="lifelike\Content\js\Lifelike.JScript.Admin.js" />
     <Content Include="lifelike\Content\js\mscorlib.js" />
@@ -113,6 +114,7 @@
     <Content Include="lifelike\Content\theme\jmetro\images\ui-icons_d4d4d4_0.png" />
     <Content Include="lifelike\Content\theme\jmetro\images\ui-icons_ffffff_0.png" />
     <Content Include="lifelike\Content\theme\jmetro\jquery-ui-1.8.16.custom.css" />
+    <Content Include="lifelike\Diagnostics\TestHubs.aspx" />
     <Content Include="lifelike\Layouts\Main.aspx" />
     <Content Include="lifelike\Modules\ItemEditor.ascx" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
@@ -129,6 +131,13 @@
     <Compile Include="App_Start\RegisterHubs.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="lifelike\Diagnostics\TestHubs.aspx.cs">
+      <DependentUpon>TestHubs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lifelike\Diagnostics\TestHubs.aspx.designer.cs">
+      <DependentUpon>TestHubs.aspx</DependentUpon>
     </Compile>
     <Compile Include="lifelike\Layouts\Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
@@ -182,10 +191,12 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>31692</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -39,6 +39,14 @@ namespace Lifelike.JScript.Admin.Controls
 		{
 
 			_element.SetAttribute("type", "text");
+			if(!String.IsNullOrEmpty(CssClass))
+			{
+
+				if (CssClass.IndexOf("textbox") > -1)
+				{
+					CssClass = CssClass + " textbox";
+				}
+			}
 			ControlContainer.AppendChild(_element);
 		}
 

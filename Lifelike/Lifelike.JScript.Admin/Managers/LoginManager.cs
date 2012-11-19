@@ -9,7 +9,7 @@ namespace Lifelike.JScript.Admin.Managers
 
 	public class LoginManager
 	{
-		public Response<bool> LoginResponseEvent;
+		//public Response<bool> LoginResponseEvent;
 		ILogin _inf;
 		public LoginManager(ILogin login)
 		{
@@ -19,9 +19,9 @@ namespace Lifelike.JScript.Admin.Managers
 
 		internal void LoginUser()
 		{
-            Util.Console().log(".auth.server.login", _inf);
-
-			HubManager.Context.GetConnection().auth.server.login(_inf.Username, _inf.Password, _inf.Remember);
+            //Util.Console().log(".auth.server.login", _inf);
+			PageManager.Context.LoginResponse(_inf.Username, true);
+			//HubManager.Context.GetConnection().auth.server.login(_inf.Username, _inf.Password, _inf.Remember);
 		}
 	}
 }

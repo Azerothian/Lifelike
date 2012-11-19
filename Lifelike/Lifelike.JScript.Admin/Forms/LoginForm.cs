@@ -15,7 +15,7 @@ namespace Lifelike.JScript.Admin
 	{
 		public LoginForm(string name) : base(name) {
 			_loginManager = new LoginManager(this);
-			_loginManager.LoginResponseEvent = new Response<bool>(LoginResponse);
+			//_loginManager.LoginResponseEvent = new Response<bool>(LoginResponse);
 		}
 		internal void LoginResponse(bool success)
 		{

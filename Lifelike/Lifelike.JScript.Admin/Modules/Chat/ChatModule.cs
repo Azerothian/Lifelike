@@ -10,7 +10,7 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 	public class ChatModule : Control
 	{
 		private List<RoomControl> Rooms { get; set; }
-
+		RoomControl roomEnt;
 
 		public ChatModule(string name)
 			: base(name) {
@@ -18,27 +18,32 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 				//ControlContainer.AppendChild(_element);
 				Rooms = new List<RoomControl>();
 				CssClass = "chatbar";
-                HubManager.Context.GetConnection().chat.client.registerNameResponse = new Response<bool>(registerNameResponse);
-				HubManager.Context.GetConnection().chat.client.recieveMessageResponse = new Response<string, string, string>(recieveMessageResponse);
+
+				HubManager.Context.GetConnection().chat.client.recieveMessageResponse = new Response<string, string, string, bool>(recieveMessageResponse);
 				HubManager.Context.GetConnection().chat.client.getCurrentRoomsResponse = new Response<List<string>>(getCurrentRoomsResponse);
 				HubManager.Context.GetConnection().chat.client.getAvailableRoomsResponse = new Response<List<string>>(getAvailableRoomsResponse);
-				HubManager.Context.GetConnection().chat.client.joinRoomResponse = new Response<bool>(joinRoomResponse);
-				registerName(PageManager.Context.Username);
+				HubManager.Context.GetConnection().chat.client.joinRoomResponse = new Response<string, bool>(joinRoomResponse);
+				HubManager.Context.GetConnection().chat.client.registerNameResponse = new Response<bool>(registerNameResponse);
 
 		}
 
-		public void joinRoomResponse(bool success)
+		public void joinRoomResponse(string room, bool success)
 		{
-            Util.Console().log(".chat.client.joinRoomResponse", success);
+            Util.Console().log(".chat.client.joinRoomResponse",room, success);
+			if(success)
+			{
+				createRoom(room);
+			}
+
 		}
 		public void registerNameResponse(bool success)
 		{
-            Util.Console().log(".chat.client.registerNameResponse" , success);
-			joinRoom(PageManager.Context.Username);
+			Util.Console().log(".chat.client.registerNameResponse", success);
+			joinRoom("General");
 		}
-		public void recieveMessageResponse(string room, string user, string message)
+		public void recieveMessageResponse(string room, string user, string message, bool isAlert)
 		{
-            Util.Console().log(".chat.client.recieveMessageResponse", room, user, message);
+			Util.Console().log(".chat.client.recieveMessageResponse", room, user, message, isAlert);
 			RoomControl roomEnt = null;
 			foreach (var v in Rooms)
 			{
@@ -50,17 +55,26 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 			}
 			if (roomEnt == null)
 			{
-				roomEnt = new RoomControl(room);
-				Children.Add(roomEnt);
-				roomEnt.Render();
+				Util.Console().log("the room entity we are looking for is null ", room, Rooms, user, message, isAlert);
+				return;
 			}
-			roomEnt.AddNewMessage(user, message);
+			roomEnt.AddNewMessage(user, message, isAlert);
 
 
 		}
+		public void createRoom(string room)
+		{
+			roomEnt = new RoomControl(room);
+			roomEnt.Parent = this;
+			roomEnt.User = PageManager.Context.Username;
+			Children.Add(roomEnt);
+			roomEnt.Render();
+			Rooms.Add(roomEnt);
+		}
+
 		public void getCurrentRoomsResponse(List<string> rooms)
 		{
-            Util.Console().log(".chat.client.registerNameResponse", rooms);
+			Util.Console().log(".chat.client.getCurrentRoomsResponse", rooms);
 		}
 		public void getAvailableRoomsResponse(List<string> rooms)
 		{
@@ -68,7 +82,7 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 		}
 		public void registerName(string name)
 		{
-            Util.Console().log(".chat.server.registerName", name);
+			Util.Console().log(".chat.server.registerName", name);
 			HubManager.Context.GetConnection().chat.server.registerName(PageManager.Context.Username);
 		}
 

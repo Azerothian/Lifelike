@@ -73,6 +73,7 @@ namespace Lifelike.JScript.Admin
 		{
 			
 			control.Parent = this;
+
 			if (IsRendered)
 			{
 				control.Render();
@@ -115,6 +116,7 @@ namespace Lifelike.JScript.Admin
 			}
 			foreach (var c in Children)
 			{
+
 				c.Render();
 				if (!IsRendered)
 				{

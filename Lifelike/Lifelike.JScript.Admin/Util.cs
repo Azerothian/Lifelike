@@ -9,6 +9,7 @@ namespace Lifelike.JScript.Admin
 	public delegate void Response<T>(T msg1);
 	public delegate void Response<T, T1>(T msg1, T1 msg2);
 	public delegate void Response<T, T1, T2>(T msg1, T1 msg2, T2 msg3);
+	public delegate void Response<T, T1, T2, T3>(T msg1, T1 msg2, T2 msg3, T3 msg4);
 	public class Util
 	{
 		[InlineCode("debugger;")]

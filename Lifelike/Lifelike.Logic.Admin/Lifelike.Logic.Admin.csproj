@@ -83,10 +83,8 @@
     <Compile Include="AuthManager.cs" />
     <Compile Include="HubManager.cs" />
     <Compile Include="Hubs\Chat.cs" />
-    <Compile Include="Hubs\Auth.cs" />
     <Compile Include="Hubs\ChatLogic\Room.cs" />
     <Compile Include="Hubs\ChatLogic\User.cs" />
-    <Compile Include="Hubs\ItemHub.cs" />
     <Compile Include="Interfaces\ILogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

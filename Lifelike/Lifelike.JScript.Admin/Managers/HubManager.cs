@@ -10,6 +10,8 @@ namespace Lifelike.JScript.Admin.Managers
 	public delegate void ChatMessage(string msg);
 	public class HubManager
 	{
+
+		public event Response<bool> OnConnection;
 		private static HubManager _context;
 		public static HubManager Context
 		{
@@ -22,7 +24,8 @@ namespace Lifelike.JScript.Admin.Managers
 
 		public void Initialise()
 		{
-			//GetConnection().chat.addMessage = new ChatMessage(msg => {  });
+			//GetConnection().chat.addMessage = new ChatMessage(msg => {  }); 
+			GetConnection().hub.logging = true;
 			GetConnection().hub.start()
 				.done(new EventHandler((object sender, EventArgs e) => { Connected(); }))
 				.fail(new EventHandler((object sender, EventArgs e) => { Failed(); }));
@@ -36,7 +39,12 @@ namespace Lifelike.JScript.Admin.Managers
 
 		private void Connected()
 		{
-            GetConnection().hub.logging = true;
+           
+
+			
+			if (OnConnection != null)
+				OnConnection(true);
+
 			//Window.Alert("CONNECTED");
 			//var chat = 	GetConnection().chat;
 			//chat.server.sendMessage("HI!");

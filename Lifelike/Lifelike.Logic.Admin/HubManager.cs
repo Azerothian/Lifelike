@@ -18,33 +18,35 @@ namespace Lifelike.Logic.Admin
 
 		public void Initialise()
 		{
-			var resolver = new DefaultDependencyResolver();
-			var routes = RouteTable.Routes;
-			var url = "~/signalr";
-			//resolver.InitializePerformanceCounters(GetInstanceName(), AspNetHandler.AppDomainTokenSource.Token);
+			RouteTable.Routes.MapHubs("~/signalr");
+			 //GlobalHost.
+			//var resolver = new DefaultDependencyResolver();
+			//var routes = RouteTable.Routes;
+			//var url = "~/signalr";
+			////resolver.InitializePerformanceCounters(GetInstanceName(), AspNetHandler.AppDomainTokenSource.Token);
 
-			var existing = routes["signalr.hubs"];
-			if (existing != null)
-			{
-				routes.Remove(existing);
-			}
+			//var existing = routes["signalr.hubs"];
+			//if (existing != null)
+			//{
+			//	routes.Remove(existing);
+			//}
 
-			string routeUrl = url;
-			if (!routeUrl.EndsWith("/"))
-			{
-				routeUrl += "/{*operation}";
-			}
+			//string routeUrl = url;
+			//if (!routeUrl.EndsWith("/"))
+			//{
+			//	routeUrl += "/{*operation}";
+			//}
 
-			routeUrl = routeUrl.TrimStart('~').TrimStart('/');
+			//routeUrl = routeUrl.TrimStart('~').TrimStart('/');
 
-			var locator = new Lazy<IAssemblyLocator>(() => new AssemblyLocator());
-			resolver.Register(typeof(IAssemblyLocator), () => locator.Value);
+			//var locator = new Lazy<IAssemblyLocator>(() => new AssemblyLocator());
+			//resolver.Register(typeof(IAssemblyLocator), () => locator.Value);
 
-			var route = new Route(routeUrl, new HubDispatcherRouteHandler(url, resolver));
-			route.Constraints = new RouteValueDictionary();
-			route.Constraints.Add("Incoming", new IncomingOnlyRouteConstraint());
-			route.Constraints.Add("IgnoreJs", new IgnoreJsRouteConstraint());
-			routes.Add("signalr.hubs", route);
+			//var route = new Route(routeUrl, new HubDispatcherRouteHandler(url, resolver));
+			//route.Constraints = new RouteValueDictionary();
+			//route.Constraints.Add("Incoming", new IncomingOnlyRouteConstraint());
+			//route.Constraints.Add("IgnoreJs", new IgnoreJsRouteConstraint());
+			//routes.Add("signalr.hubs", route);
 		//	return route;
 
 		//	string url = "http://cms.illisian.com.au:15000/";

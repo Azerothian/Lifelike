@@ -22,19 +22,22 @@ namespace Lifelike.JScript.Admin.Managers
 		public string Username { get; set; }
 		public bool IsLoggedIn { get; set; }
 		public ConsoleModule ConsoleModule { get; set; }
-		
+		public ChatModule chatModule { get; set; }
 		private LoginForm _loginForm;
 
 		public PageManager()
 		{
 			_loginForm = new LoginForm("frmLogin");
+			ConsoleModule = new ConsoleModule("console");
+			chatModule = new ChatModule("chat");
 		}
 
 		public bool hasRendered { get; set; }
 		
 		public void Initialise()
 		{
-			HubManager.Context.GetConnection().auth.client.loginResponse = new Response<string, bool>(LoginResponse);
+
+			//HubManager.Context.GetConnection().auth.client.loginResponse = new Response<string, bool>(LoginResponse);
 			Check();
 
 		}
@@ -57,7 +60,7 @@ namespace Lifelike.JScript.Admin.Managers
 		internal void LoginResponse(string username ,bool success)
 		{
 
-            Util.Console().log(".auth.client.loginResponse", username, success);
+        //    Util.Console().log(".auth.client.loginResponse", username, success);
 			IsLoggedIn = success;
 			if (success)
 			{
@@ -71,14 +74,11 @@ namespace Lifelike.JScript.Admin.Managers
 		}
 		public void InitateSystem()
 		{
-			var console = new ConsoleModule("console");
-			var chatModule = new ChatModule("chat");
-			
-			//Util.Debugger();
-			PageRenderer.Context.AddChild(console);
+			PageRenderer.Context.AddChild(ConsoleModule);
 			PageRenderer.Context.AddChild(chatModule);
 			chatModule.Render();
-			console.Render();
+			ConsoleModule.Render();
+			chatModule.registerName(PageManager.Context.Username);
 		}
 
 	}

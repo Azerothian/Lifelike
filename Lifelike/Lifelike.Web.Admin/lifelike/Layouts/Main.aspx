@@ -16,7 +16,70 @@
 	<link href="/lifelike/Content/css/itemeditor.css" rel="stylesheet" />
 
 	<link href="/lifelike/Content/theme/jmetro/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+	<style>
+		.messageContainer
+		{
+			height: 250px;
+			overflow-y: auto;
+		}
 
+		.chatmessageContainer
+		{
+			position: relative;
+			min-height: 40px;
+			border-bottom: 1px solid lightgrey;
+		}
+
+			.chatmessageContainer > div
+			{
+			}
+
+			.chatmessageContainer.outsider > .username
+			{
+				text-align: right;
+			}
+
+			.chatmessageContainer.outsider > .message
+			{
+				text-align: right;
+			}
+
+			.chatmessageContainer.alert > .username
+			{
+				display: none;
+			}
+
+			.chatmessageContainer.alert > .message
+			{
+				text-align: center;
+				font-size: 13px;
+			}
+
+			.chatmessageContainer > .username
+			{
+				font-size: 12px;
+			}
+
+		/*.chatmessageContainer > .message
+		{
+			width: 250px;
+		}*/
+		.messenger > div
+		{
+			float: left;
+		}
+
+		input[type="text"]
+		{
+			height: 35px;
+			margin-bottom: 5px;
+		}
+
+		.clear
+		{
+			clear: both;
+		}
+	</style>
 </head>
 <body>
 	<form id="form1" runat="server">
