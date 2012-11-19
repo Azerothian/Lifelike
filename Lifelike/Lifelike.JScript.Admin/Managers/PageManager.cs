@@ -56,6 +56,8 @@ namespace Lifelike.JScript.Admin.Managers
 
 		internal void LoginResponse(string username ,bool success)
 		{
+
+            Util.Console().log(".auth.client.loginResponse", username, success);
 			IsLoggedIn = success;
 			if (success)
 			{

@@ -652,6 +652,7 @@ var $Lifelike_JScript_Admin_Managers_LoginManager = function(login) {
 };
 $Lifelike_JScript_Admin_Managers_LoginManager.prototype = {
 	$loginUser: function() {
+		console.log('.auth.server.login', this.$_inf);
 		$.connection.auth.server.login(this.$_inf.get_username(), this.$_inf.get_password(), this.$_inf.get_remember());
 	}
 };
@@ -704,6 +705,7 @@ $Lifelike_JScript_Admin_Managers_PageManager.prototype = {
 		}
 	},
 	$loginResponse: function(username, success) {
+		console.log('.auth.client.loginResponse', username, success);
 		this.set_isLoggedIn(success);
 		if (success) {
 			this.set_username(this.$_loginForm.get_username());
@@ -748,12 +750,11 @@ var $Lifelike_JScript_Admin_Modules_Chat_ChatModule = function(name) {
 	//ControlContainer.AppendChild(_element);
 	this.set_$rooms([]);
 	this.set_cssClass('chatbar');
-	$.connection.chat.client.recieveMessage = Function.mkdel(this, this.recieveMessageResponse);
+	$.connection.chat.client.registerNameResponse = Function.mkdel(this, this.registerNameResponse);
+	$.connection.chat.client.recieveMessageResponse = Function.mkdel(this, this.recieveMessageResponse);
 	$.connection.chat.client.getCurrentRoomsResponse = Function.mkdel(this, this.getCurrentRoomsResponse);
 	$.connection.chat.client.getAvailableRoomsResponse = Function.mkdel(this, this.getAvailableRoomsResponse);
-	$.connection.chat.client.registerNameResponse = Function.mkdel(this, this.registerNameResponse);
 	$.connection.chat.client.joinRoomResponse = Function.mkdel(this, this.joinRoomResponse);
-	console.log('registerName');
 	this.registerName($Lifelike_JScript_Admin_Managers_PageManager.get_context().get_username());
 };
 $Lifelike_JScript_Admin_Modules_Chat_ChatModule.prototype = {
@@ -764,13 +765,14 @@ $Lifelike_JScript_Admin_Modules_Chat_ChatModule.prototype = {
 		this.$2$RoomsField = value;
 	},
 	joinRoomResponse: function(success) {
-		console.log('joinRoomResponse' + success);
+		console.log('.chat.client.joinRoomResponse', success);
 	},
 	registerNameResponse: function(success) {
-		console.log('joinRoom');
+		console.log('.chat.client.registerNameResponse', success);
 		this.joinRoom($Lifelike_JScript_Admin_Managers_PageManager.get_context().get_username());
 	},
 	recieveMessageResponse: function(room, user, message) {
+		console.log('.chat.client.recieveMessageResponse', room, user, message);
 		var roomEnt = null;
 		var $t1 = this.get_$rooms();
 		for (var $t2 = 0; $t2 < $t1.length; $t2++) {
@@ -788,25 +790,33 @@ $Lifelike_JScript_Admin_Modules_Chat_ChatModule.prototype = {
 		roomEnt.$addNewMessage(user, message);
 	},
 	getCurrentRoomsResponse: function(rooms) {
+		console.log('.chat.client.registerNameResponse', rooms);
 	},
 	getAvailableRoomsResponse: function(rooms) {
+		console.log('.chat.client.getCurrentRoomsResponse', rooms);
 	},
 	registerName: function(name) {
+		console.log('.chat.server.registerName', name);
 		$.connection.chat.server.registerName($Lifelike_JScript_Admin_Managers_PageManager.get_context().get_username());
 	},
 	sendMessage: function(room, message) {
+		console.log('.chat.server.sendMessage', room, message);
 		$.connection.chat.server.sendMessage(room, message);
 	},
 	getCurrentRooms: function() {
+		console.log('.chat.server.getCurrentRooms');
 		$.connection.chat.server.getCurrentRooms();
 	},
 	getAvailableRooms: function() {
+		console.log('.chat.server.getAvailableRooms');
 		$.connection.chat.server.getAvailableRooms();
 	},
 	joinRoom: function(room) {
+		console.log('.chat.server.joinRoom', room);
 		$.connection.chat.server.joinRoom(room);
 	},
 	leaveRoom: function(room) {
+		console.log('.chat.server.leaveRoom', room);
 		$.connection.chat.server.leaveRoom(room);
 	},
 	preRender: function() {

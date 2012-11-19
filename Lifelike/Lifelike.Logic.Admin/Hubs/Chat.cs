@@ -46,19 +46,20 @@ namespace Lifelike.Logic.Admin.Hubs
 		public void registerName(string name)
 		{
 			Name = name;
+            joinRoom(name);
 			Clients.Caller.registerNameResponse(true);
 		}
 
 		public void sendMessage(string target, string message)
 		{
-			Clients.OthersInGroup(target).recieveMessage(message);
+            Clients.OthersInGroup(target).recieveMessageResponse(message);
 		}
 		public void joinRoom(string room)
 		{
 			Groups.Add(GetConnectionId, room);
 
 
-			Clients.OthersInGroup(room).recieveMessage(room, Name, Name + " has joined the room");
+            Clients.OthersInGroup(room).recieveMessageResponse(room, Name, Name + " has joined the room");
 
 			//	}
 			Clients.Caller.joinRoomResponse(true);
@@ -68,7 +69,7 @@ namespace Lifelike.Logic.Admin.Hubs
 		public void leaveRoom(string room)
 		{
 			Groups.Remove(GetConnectionId, room);
-			Clients.Group(room).recieveMessage(room, Name, Name + " has left the room");
+            Clients.Group(room).recieveMessageResponse(room, Name, Name + " has left the room");
 
 		}
 		public void getAvailableRooms()
