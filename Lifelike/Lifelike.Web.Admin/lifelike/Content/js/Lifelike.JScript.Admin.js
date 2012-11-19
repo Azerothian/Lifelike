@@ -632,6 +632,7 @@ $Lifelike_JScript_Admin_Managers_HubManager.prototype = {
 		window.alert('FAILED to connect');
 	},
 	$connected: function() {
+		$.connection.hub.logging = true;
 		//Window.Alert("CONNECTED");
 		//var chat = 	GetConnection().chat;
 		//chat.server.sendMessage("HI!");

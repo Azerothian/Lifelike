@@ -36,7 +36,7 @@ namespace Lifelike.JScript.Admin.Managers
 
 		private void Connected()
 		{
-
+            GetConnection().hub.logging = true;
 			//Window.Alert("CONNECTED");
 			//var chat = 	GetConnection().chat;
 			//chat.server.sendMessage("HI!");

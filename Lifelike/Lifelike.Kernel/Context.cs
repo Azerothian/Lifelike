@@ -72,7 +72,7 @@ namespace Lifelike.Kernel
 
 		public static void Initialise()
 		{
-			Microsoft.Web.Infrastructure.DynamicModuleHelper.DynamicModuleUtility.RegisterModule(typeof(Lifelike.Kernel.HttpModules.PageHttpModule));
+			//Microsoft.Web.Infrastructure.DynamicModuleHelper.DynamicModuleUtility.RegisterModule(typeof(Lifelike.Kernel.HttpModules.PageHttpModule));
 			//  Microsoft.Web.Infrastructure.DynamicModuleHelper.DynamicModuleUtility.RegisterModule(typeof(Lifelike.Kernel.HttpModules.DbSessionHttpModule));
 
 
