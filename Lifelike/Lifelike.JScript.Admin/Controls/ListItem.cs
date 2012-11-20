@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using jQueryApi.UI;
-using jQueryApi;
-
-using jQueryApi.UI.Widgets;
 using System.Html;
+using System.Text;
+
 namespace Lifelike.JScript.Admin.Controls
 {
-	public class Label : Control
+	public class ListItem : Control
 	{
-		public Label(string name)
-			: base(name) {
-
-		}
-		public Label(string name, string tag)
+		public ListItem(string name)
 			: base(name)
 		{
-			ControlContainer = Document.CreateElement(tag);
+			ControlContainer = Document.CreateElement("li");
 			Name = name;
+		}
+		public override void PreRender()
+		{
+
 		}
 		public string Text
 		{
@@ -30,12 +27,6 @@ namespace Lifelike.JScript.Admin.Controls
 			{
 				ControlContainer.InnerHTML = value;
 			}
-		}
-
-
-		public override void PreRender()
-		{
-			
 		}
 
 	}

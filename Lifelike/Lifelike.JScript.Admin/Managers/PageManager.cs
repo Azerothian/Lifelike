@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Html;
 using System.Text;
 using Lifelike.JScript.Admin.Modules.Chat;
+using Lifelike.JScript.Admin.Modules.Item;
 using Lifelike.JScript.Admin.Modules.Log;
+using Lifelike.JScript.Admin.Modules.Panels;
 
 namespace Lifelike.JScript.Admin.Managers
 {
@@ -23,6 +25,8 @@ namespace Lifelike.JScript.Admin.Managers
 		public bool IsLoggedIn { get; set; }
 		public ConsoleModule ConsoleModule { get; set; }
 		public ChatModule chatModule { get; set; }
+		public PanelLayout panelLayout { get; set; }
+		public ItemTreeModule itemTreeModule { get; set; }
 		private LoginForm _loginForm;
 
 		public PageManager()
@@ -30,10 +34,12 @@ namespace Lifelike.JScript.Admin.Managers
 			_loginForm = new LoginForm("frmLogin");
 			ConsoleModule = new ConsoleModule("console");
 			chatModule = new ChatModule("chat");
+			itemTreeModule = new ItemTreeModule("items");
+			panelLayout = new PanelLayout("pnlLayout");
 		}
 
 		public bool hasRendered { get; set; }
-		
+
 		public void Initialise()
 		{
 
@@ -57,10 +63,10 @@ namespace Lifelike.JScript.Admin.Managers
 			}
 		}
 
-		internal void LoginResponse(string username ,bool success)
+		internal void LoginResponse(string username, bool success)
 		{
 
-        //    Util.Console().log(".auth.client.loginResponse", username, success);
+			//    Util.Console().log(".auth.client.loginResponse", username, success);
 			IsLoggedIn = success;
 			if (success)
 			{
@@ -74,11 +80,19 @@ namespace Lifelike.JScript.Admin.Managers
 		}
 		public void InitateSystem()
 		{
+			PageRenderer.Context.AddChild(panelLayout);
+			PageRenderer.Context.AddChild(itemTreeModule);
 			PageRenderer.Context.AddChild(ConsoleModule);
 			PageRenderer.Context.AddChild(chatModule);
-			chatModule.Render();
-			ConsoleModule.Render();
+			PageRenderer.Context.Render();
+
+
+			
 			chatModule.registerName(PageManager.Context.Username);
+		}
+		public Control GetControlByClientId(string id)
+		{
+			return PageRenderer.Context.FindControlByClientId(id);
 		}
 
 	}

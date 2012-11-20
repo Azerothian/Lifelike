@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Html;
 using System.Linq;
 using System.Text;
-using Lifelike.JScript.Admin.jQueryUI;
 using jQueryApi;
 using jQueryApi.UI;
 using jQueryApi.UI.Widgets;
@@ -16,26 +15,7 @@ namespace Lifelike.JScript.Admin
 		{
 			jQuery.OnDocumentReady(() =>
 			{
-				//Tree tree = new Tree(".itemEditor");
-
-				//var node = new Node() { Text = "Text", Value = "Value" };
-				//node.Children = new List<Node>()
-				// {
-				//	 new Node() { Text = "Text", Value = "Value" , Parent = node },
-				//	 new Node() { Text = "Text", Value = "Value", Parent = node },
-				//	 new Node() { Text = "Text", Value = "Value", Parent = node },
-					 
-				// };
-				//var ss = new Node() { Text = "Text", Value = "Value", Parent = node };
-				//ss.Children = new List<Node>()
-				// {
-				//	 new Node() { Text = "Text", Value = "Value" , Parent = node },
-				//	 new Node() { Text = "Text", Value = "Value", Parent = node },
-				//	 new Node() { Text = "Text", Value = "Value", Parent = node },
-					 
-				// };
-				//node.Children.Add(ss);
-				//tree.AddNode(null, node);
+				
 
 				//tree.Render();
 

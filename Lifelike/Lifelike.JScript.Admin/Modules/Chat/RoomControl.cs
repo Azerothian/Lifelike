@@ -9,6 +9,7 @@ using jQueryApi.UI.Widgets;
 using jQueryApi;
 using System.Collections;
 using Lifelike.JScript.Admin.Managers;
+using Lifelike.JScript.Admin.Modules.Panels;
 namespace Lifelike.JScript.Admin.Modules.Chat
 {
 	public class RoomControl : Control
@@ -17,22 +18,22 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 		public string Colour { get; set; }
 		private Label _title;
 		private BaseControl _messageContainer;
-		private Dialog _dialog;
+		private DockableControl _dockable;
 		private MessengerControl _messenger;
 		public string Title { get { return _title.Text; } set { _title.Text = value; } }
 		public RoomControl(string room)
 			: base(room)
 		{
-			_dialog = new Dialog("MessageContainer");
-			_dialog.Options = new jQueryApi.UI.Widgets.DialogOptions()
-			{
-				AutoOpen = true,
-				Title = "Room - " + room,
-				Width = 350,
-				Height = 375
+			_dockable = new DockableControl("MessageContainer");
+			//_dockable.Options = new jQueryApi.UI.Widgets.DialogOptions()
+			//{
+			//	AutoOpen = true,
+			//	Title = ,
+			//	Width = 350,
+			//	Height = 375
 				
-			};
-			
+			//};
+			_dockable.Title = "Room - " + room;
 
 			_messageContainer = new BaseControl("MessageContainer");
 			_messageContainer.CssClass = "messageContainer";
@@ -40,9 +41,9 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 			_messenger.RoomControl = this;
 			_messenger.Room = room;
 			_messenger.CssClass = "messenger";
-			_dialog.AddChild(_messageContainer);
-			_dialog.AddChild(_messenger);
-			AddChild(_dialog);
+			_dockable.AddChild(_messageContainer);
+			_dockable.AddChild(_messenger);
+			AddChild(_dockable);
 		}
 
 		public void ResizeWindow(jQueryEvent e, ResizeEvent re)

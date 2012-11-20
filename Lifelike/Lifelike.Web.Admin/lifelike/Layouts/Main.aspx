@@ -17,6 +17,12 @@
 
 	<link href="/lifelike/Content/theme/jmetro/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
 	<style>
+		body
+		{
+			margin: 0;
+			padding: 0;
+		}
+
 		.messageContainer
 		{
 			height: 250px;
@@ -78,6 +84,10 @@
 		.clear
 		{
 			clear: both;
+		}
+		.droppable
+		{
+			position: absolute;
 		}
 	</style>
 </head>

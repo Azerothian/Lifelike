@@ -25,6 +25,7 @@ namespace Lifelike.JScript.Admin
 		public PageRenderer() : base("body")
 		{
 			this.ControlContainer = jQuery.Select("body").GetElement(0);
+			IsRendered = true;
 		}
 
 		public override void PreRender()
@@ -32,5 +33,6 @@ namespace Lifelike.JScript.Admin
 			
 			
 		}
+
 	}
 }
