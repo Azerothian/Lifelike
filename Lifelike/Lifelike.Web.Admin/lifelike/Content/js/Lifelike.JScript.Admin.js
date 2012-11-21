@@ -75,16 +75,22 @@ $Lifelike_JScript_Admin_Control.prototype = {
 		this.get_controlContainer().setAttribute('class', value);
 	},
 	get_height: function() {
-		return $(this.get_controlContainer()).height();
+		return $(this.get_controlContainer()).height().toString();
 	},
 	set_height: function(value) {
 		$(this.get_controlContainer()).height(value);
 	},
 	get_width: function() {
-		return $(this.get_controlContainer()).width();
+		return $(this.get_controlContainer()).width().toString();
 	},
 	set_width: function(value) {
 		$(this.get_controlContainer()).width(value);
+	},
+	get_background: function() {
+		return $(this.get_controlContainer()).css('background');
+	},
+	set_background: function(value) {
+		$(this.get_controlContainer()).css('background', value);
 	},
 	get_left: function() {
 		return $(this.get_controlContainer()).css('left');
@@ -996,8 +1002,10 @@ var $Lifelike_JScript_Admin_Modules_Chat_RoomControl = function(room) {
 	this.$_messageContainer = null;
 	this.$_dockable = null;
 	this.$_messenger = null;
+	this.$_userControl = null;
 	$Lifelike_JScript_Admin_Control.call(this, room);
 	this.$_dockable = new $Lifelike_JScript_Admin_Modules_Panels_DockableControl('MessageContainer');
+	this.$_userControl = new $Lifelike_JScript_Admin_Modules_Chat_UserControl('UserControl', room);
 	//_dockable.Options = new jQueryApi.UI.Widgets.DialogOptions()
 	//{
 	//	AutoOpen = true,
@@ -1012,6 +1020,7 @@ var $Lifelike_JScript_Admin_Modules_Chat_RoomControl = function(room) {
 	this.$_messenger.set_roomControl(this);
 	this.$_messenger.set_room(room);
 	this.$_messenger.set_cssClass('messenger');
+	this.$_dockable.addChild(this.$_userControl);
 	this.$_dockable.addChild(this.$_messageContainer);
 	this.$_dockable.addChild(this.$_messenger);
 	this.addChild(this.$_dockable);
@@ -1042,14 +1051,24 @@ $Lifelike_JScript_Admin_Modules_Chat_RoomControl.prototype = {
 	$addNewMessage$1: function(user, message, isAlert) {
 		$Lifelike_JScript_Admin_Util.console().log('.js.modules.chat.roomcontrol AddNewMessage', [user, message]);
 		var newcount = this.$_messageContainer.get_children().length + 1;
-		var msg = new $Lifelike_JScript_Admin_Modules_Chat_MessageControl('message_' + newcount);
-		msg.set_username(user);
-		msg.set_message(message);
+		var msg = null;
+		if (this.$_messageContainer.get_children().length > 1) {
+			var m = Type.cast(this.$_messageContainer.get_children()[this.$_messageContainer.get_children().length - 1], $Lifelike_JScript_Admin_Modules_Chat_MessageControl);
+			if (!!ss.referenceEquals(m.get_username(), user.Username)) {
+				msg = m;
+				msg.set_message(msg.get_message() + ' <br/>');
+			}
+		}
+		if (ss.isNullOrUndefined(msg)) {
+			msg = new $Lifelike_JScript_Admin_Modules_Chat_MessageControl('message_' + newcount);
+		}
+		msg.set_username(Type.cast(user, String));
+		msg.set_message(msg.get_message() + message);
 		msg.set_parent(this.$_messageContainer);
 		if (isAlert) {
 			msg.set_cssClass(' chatmessageContainer alert');
 		}
-		else if (!ss.referenceEquals(user, $Lifelike_JScript_Admin_Managers_PageManager.get_context().get_username())) {
+		else if (!!!ss.referenceEquals(user, $Lifelike_JScript_Admin_Managers_PageManager.get_context().get_username())) {
 			msg.set_cssClass(' chatmessageContainer outsider');
 		}
 		this.$_messageContainer.get_children().add(msg);
@@ -1066,6 +1085,20 @@ $Lifelike_JScript_Admin_Modules_Chat_RoomControl.prototype = {
 	},
 	$addNewMessage: function(message, isAlert) {
 		this.$addNewMessage$1(this.get_user(), message, isAlert);
+	}
+};
+////////////////////////////////////////////////////////////////////////////////
+// Lifelike.JScript.Admin.Modules.Chat.UserControl
+var $Lifelike_JScript_Admin_Modules_Chat_UserControl = function(name, room) {
+	this.$room = null;
+	$Lifelike_JScript_Admin_Control.call(this, name);
+	this.set_height('30');
+	this.set_width('100%');
+	this.set_background('#647687');
+	this.$room = room;
+};
+$Lifelike_JScript_Admin_Modules_Chat_UserControl.prototype = {
+	preRender: function() {
 	}
 };
 ////////////////////////////////////////////////////////////////////////////////
@@ -1284,8 +1317,8 @@ $Lifelike_JScript_Admin_Modules_Panels_Panel.prototype = {
 		control.set_left(left + 'px');
 		control.set_top(top + 'px');
 		;
-		control.set_width(this.get_width() - spacer * 2);
-		control.set_height(this.get_height() - spacer * 2);
+		control.set_width((parseInt(this.get_width()) - spacer * 2).toString());
+		control.set_height((parseInt(this.get_height()) - spacer * 2).toString());
 	}
 };
 ////////////////////////////////////////////////////////////////////////////////
@@ -1339,22 +1372,22 @@ $Lifelike_JScript_Admin_Modules_Panels_PanelLayout.prototype = {
 		var sidePanelWidth = ss.Int32.trunc(w * 0.2);
 		var middleWidth = w - sidePanelWidth * 2;
 		var rightsideLeft = middleWidth + sidePanelWidth;
-		this.get_pnlLeftSide().set_height(bottomTop);
-		this.get_pnlLeftSide().set_width(sidePanelWidth);
+		this.get_pnlLeftSide().set_height(bottomTop.toString());
+		this.get_pnlLeftSide().set_width(sidePanelWidth.toString());
 		this.get_pnlLeftSide().set_top('0px');
 		this.get_pnlLeftSide().set_left('0px');
-		this.get_pnlMiddle().set_width(middleWidth);
+		this.get_pnlMiddle().set_width(middleWidth.toString());
 		this.get_pnlMiddle().set_top('0px');
 		this.get_pnlMiddle().set_left(sidePanelWidth + 'px');
-		this.get_pnlMiddle().set_height(bottomTop);
-		this.get_pnlRightSide().set_height(bottomTop);
-		this.get_pnlRightSide().set_width(sidePanelWidth);
+		this.get_pnlMiddle().set_height(bottomTop.toString());
+		this.get_pnlRightSide().set_height(bottomTop.toString());
+		this.get_pnlRightSide().set_width(sidePanelWidth.toString());
 		this.get_pnlRightSide().set_top('0px');
 		this.get_pnlRightSide().set_left(rightsideLeft + 'px');
-		this.get_pnlBottom().set_height(bottomHeight);
+		this.get_pnlBottom().set_height(bottomHeight.toString());
 		this.get_pnlBottom().set_top(bottomTop + 'px');
 		this.get_pnlBottom().set_left('0px');
-		this.get_pnlBottom().set_width(w);
+		this.get_pnlBottom().set_width(w.toString());
 	},
 	preRender: function() {
 	},
@@ -1387,6 +1420,7 @@ Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Chat.ChatModule', $Li
 Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Chat.MessageControl', $Lifelike_JScript_Admin_Modules_Chat_MessageControl, $Lifelike_JScript_Admin_Control);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Chat.MessengerControl', $Lifelike_JScript_Admin_Modules_Chat_MessengerControl, $Lifelike_JScript_Admin_Control);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Chat.RoomControl', $Lifelike_JScript_Admin_Modules_Chat_RoomControl, $Lifelike_JScript_Admin_Control);
+Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Chat.UserControl', $Lifelike_JScript_Admin_Modules_Chat_UserControl, $Lifelike_JScript_Admin_Control);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Console.ConsoleView', $Lifelike_JScript_Admin_Modules_Console_ConsoleView, $Lifelike_JScript_Admin_Control);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Item.ItemTreeModule', $Lifelike_JScript_Admin_Modules_Item_ItemTreeModule, $Lifelike_JScript_Admin_Control);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Log.ConsoleModule', $Lifelike_JScript_Admin_Modules_Log_ConsoleModule, $Lifelike_JScript_Admin_Control);

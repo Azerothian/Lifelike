@@ -72,6 +72,7 @@
     <Compile Include="Controls\BaseControl.cs" />
     <Compile Include="Modules\Chat\MessengerControl.cs" />
     <Compile Include="Modules\Chat\RoomControl.cs" />
+    <Compile Include="Modules\Chat\UserControl.cs" />
     <Compile Include="Modules\Console\ConsoleModule.cs" />
     <Compile Include="Modules\Console\ConsoleView.cs" />
     <Compile Include="Modules\Item\ItemTreeModule.cs" />

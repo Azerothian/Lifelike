@@ -65,26 +65,72 @@ namespace Lifelike.JScript.Admin
 			}
 		}
 
-		public int Height
+		public string Height
 		{
 			get
 			{
-				return jQuery.FromElement(ControlContainer).GetHeight();
+				return jQuery.FromElement(ControlContainer).GetHeight().ToString();
 			}
 			set
 			{
 				jQuery.FromElement(ControlContainer).Height(value);
 			}
 		}
-		public int Width
+		public string Width
 		{
 			get
 			{
-				return jQuery.FromElement(ControlContainer).GetWidth();
+				return jQuery.FromElement(ControlContainer).GetWidth().ToString();
 			}
 			set
 			{
 				jQuery.FromElement(ControlContainer).Width(value);
+			}
+		}
+
+		public string Background
+		{
+			get
+			{
+				return jQuery.FromElement(ControlContainer).GetCSS("background");
+			}
+			set
+			{
+				jQuery.FromElement(ControlContainer).CSS("background", value);
+			}
+		}
+		public string Float
+		{
+			get
+			{
+				return jQuery.FromElement(ControlContainer).GetCSS("float");
+			}
+			set
+			{
+				jQuery.FromElement(ControlContainer).CSS("float", value);
+			}
+		}
+		public string Margin
+		{
+			get
+			{
+				return jQuery.FromElement(ControlContainer).GetCSS("margin");
+			}
+			set
+			{
+				jQuery.FromElement(ControlContainer).CSS("margin", value);
+			}
+		}
+		public string Title
+		{
+			get
+			{
+				return jQuery.FromElement(ControlContainer).GetAttribute("title");
+			}
+			set
+			{
+				jQuery.FromElement(ControlContainer).Attribute("title", value);
+
 			}
 		}
 		public string Left

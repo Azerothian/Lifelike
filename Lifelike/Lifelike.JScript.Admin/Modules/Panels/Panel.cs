@@ -77,8 +77,8 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 
 			control.Left = left + "px";
 			control.Top = top + "px"; ;
-			control.Width = this.Width - (spacer * 2);
-			control.Height = this.Height - (spacer * 2);
+			control.Width = (int.Parse(this.Width) - (spacer * 2)).ToString();
+			control.Height = (int.Parse(this.Height) - (spacer * 2)).ToString();
 		}
 	}
 }

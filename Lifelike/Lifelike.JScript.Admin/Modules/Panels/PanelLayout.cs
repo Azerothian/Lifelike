@@ -44,25 +44,25 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 			var rightsideLeft = middleWidth + sidePanelWidth;
 
 
-			pnlLeftSide.Height = bottomTop;
-			pnlLeftSide.Width = sidePanelWidth;
+			pnlLeftSide.Height = bottomTop.ToString();
+			pnlLeftSide.Width = sidePanelWidth.ToString();
 			pnlLeftSide.Top = "0px";
 			pnlLeftSide.Left = "0px";
 
-			pnlMiddle.Width = middleWidth;
+			pnlMiddle.Width = middleWidth.ToString();
 			pnlMiddle.Top = "0px";
 			pnlMiddle.Left = sidePanelWidth + "px";
-			pnlMiddle.Height = bottomTop;
+			pnlMiddle.Height = bottomTop.ToString();
 
-			pnlRightSide.Height = bottomTop;
-			pnlRightSide.Width = sidePanelWidth;
+			pnlRightSide.Height = bottomTop.ToString();
+			pnlRightSide.Width = sidePanelWidth.ToString();
 			pnlRightSide.Top = "0px";
 			pnlRightSide.Left = rightsideLeft + "px";
 
-			pnlBottom.Height = bottomHeight;
+			pnlBottom.Height = bottomHeight.ToString();
 			pnlBottom.Top = bottomTop + "px";
 			pnlBottom.Left = "0px";
-			pnlBottom.Width = w;
+			pnlBottom.Width = w.ToString();
 
 
 		}

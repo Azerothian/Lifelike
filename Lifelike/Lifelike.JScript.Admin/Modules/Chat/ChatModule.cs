@@ -41,7 +41,7 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 			Util.Console().log(".chat.client.registerNameResponse", success);
 			joinRoom("General");
 		}
-		public void recieveMessageResponse(string room, string user, string message, bool isAlert)
+		public void recieveMessageResponse(string room, dynamic user, string message, bool isAlert)
 		{
 			Util.Console().log(".chat.client.recieveMessageResponse", room, user, message, isAlert);
 			RoomControl roomEnt = null;

@@ -24,11 +24,17 @@ namespace Lifelike.JScript.Admin.Managers
 
 		public void Initialise()
 		{
+			registerFunction();
 			//GetConnection().chat.addMessage = new ChatMessage(msg => {  }); 
 			GetConnection().hub.logging = true;
 			GetConnection().hub.start()
 				.done(new EventHandler((object sender, EventArgs e) => { Connected(); }))
 				.fail(new EventHandler((object sender, EventArgs e) => { Failed(); }));
+		}
+
+		private void registerFunction()
+		{
+
 		}
 
 		private void Failed()

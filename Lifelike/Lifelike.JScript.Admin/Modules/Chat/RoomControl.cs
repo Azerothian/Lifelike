@@ -20,11 +20,14 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 		private BaseControl _messageContainer;
 		private DockableControl _dockable;
 		private MessengerControl _messenger;
+		private UserControl _userControl;
+
 		public string Title { get { return _title.Text; } set { _title.Text = value; } }
 		public RoomControl(string room)
 			: base(room)
 		{
 			_dockable = new DockableControl("MessageContainer");
+			_userControl = new UserControl("UserControl", room);
 			//_dockable.Options = new jQueryApi.UI.Widgets.DialogOptions()
 			//{
 			//	AutoOpen = true,
@@ -41,6 +44,7 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 			_messenger.RoomControl = this;
 			_messenger.Room = room;
 			_messenger.CssClass = "messenger";
+			_dockable.AddChild(_userControl);
 			_dockable.AddChild(_messageContainer);
 			_dockable.AddChild(_messenger);
 			AddChild(_dockable);
@@ -55,13 +59,29 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 		{
 		}
 
-		internal void AddNewMessage(string user, string message, bool isAlert)
+		internal void AddNewMessage(dynamic user, string message, bool isAlert)
 		{
 			Util.Console().log(".js.modules.chat.roomcontrol AddNewMessage", user, message);
 			var newcount =  _messageContainer.Children.Count + 1;
-			MessageControl msg = new MessageControl("message_" +newcount);
+			MessageControl msg = null;
+			if (_messageContainer.Children.Count > 1)
+			{
+				
+				var m = (MessageControl)_messageContainer.Children[_messageContainer.Children.Count - 1];
+				if (m.Username == user.Username)
+				{
+					msg = m;
+					msg.Message = msg.Message + " <br/>";
+				}
+			}
+			if(msg == null)
+			{
+				msg = new MessageControl("message_" +newcount);
+			}
+
+			
 			msg.Username = user;
-			msg.Message = message;
+			msg.Message = msg.Message + message;
 			msg.Parent = _messageContainer;
 
 
