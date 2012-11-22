@@ -4,6 +4,7 @@ using System.Html;
 using System.Text;
 using System.Linq;
 using jQueryApi;
+using System.Collections;
 namespace Lifelike.JScript.Admin
 {
 	public abstract class Control
@@ -18,18 +19,39 @@ namespace Lifelike.JScript.Admin
 			_children = new List<Control>();
 			ControlContainer = Document.CreateElement("div");
 			Name = name;
+
+			//OnResize += Control_OnResize;
 			
 		}
+
+		void Control_OnResize()
+		{
+			//if (Children.Count > 0)
+			//{
+			//	foreach (var c in Children)
+			//	{
+
+
+			//		Log.log("[Control] Resizing ", c.ClientId);
+			//		c.OnResize();
+			//	}
+			//}
+		}
+		public event Response OnResize;
+
+		private Control _parent;
 		private List<Control> _children;
+		private string _name;
+
 		public bool IsRendered { get; set; }
 		public Element ControlContainer { get; set; }
-		private Control _parent;
+
 		public Control Parent { get {
 			return _parent;
 		}
 			set { _parent = value; }
 		}
-		private string _name;
+		
 		public string Name
 		{
 			get { return _name; }
@@ -73,7 +95,13 @@ namespace Lifelike.JScript.Admin
 			}
 			set
 			{
+				
 				jQuery.FromElement(ControlContainer).Height(value);
+				if (OnResize != null)
+				{
+					Log.log("[Control] Resizing ", ClientId);
+					OnResize();
+				}
 			}
 		}
 		public string Width
@@ -84,7 +112,14 @@ namespace Lifelike.JScript.Admin
 			}
 			set
 			{
+
+				
 				jQuery.FromElement(ControlContainer).Width(value);
+				if (OnResize != null)
+				{
+					Log.log("[Control] Resizing ", ClientId);
+					OnResize();
+				}
 			}
 		}
 
@@ -174,6 +209,17 @@ namespace Lifelike.JScript.Admin
 			}
 
 		}
+		public void ScrollDown()
+		{
+			ScrollDown(ControlContainer);
+		}
+		public static void ScrollDown(Element element)
+		{
+			////Log.log("AmountToScroll = ", amount);
+			//JsDictionary _dictionary = new JsDictionary("scrollTop", amount + "px");
+			var h = jQueryApi.jQuery.FromElement(element).GetProperty("scrollHeight");
+			jQueryApi.jQuery.FromElement(element).Property("scrollTop", h);
+		}
 
 		public Control FindControl(List<Control> collection, Func<Control, bool> func)
 		{
@@ -221,7 +267,7 @@ namespace Lifelike.JScript.Admin
 			control.setClientId();
 			if (IsRendered)
 			{
-				Util.Console().log(".control.AddChild.render", control.ClientId);
+				Log.log(".control.AddChild.render", control.ClientId);
 				control.Render();
 			}
 			_children.Add(control);
@@ -255,7 +301,7 @@ namespace Lifelike.JScript.Admin
 			{
 				setClientId();
 				PreRender();
-				Util.Console().log(".control.render", ClientId);
+				Log.log(".control.render", ClientId);
 				if (Parent != null && Parent.ControlContainer != null)
 				{
 					Parent.ControlContainer.AppendChild(ControlContainer);
@@ -270,6 +316,10 @@ namespace Lifelike.JScript.Admin
 			}
 			if (!IsRendered)
 			{
+				if(OnResize != null)
+				{
+					OnResize();
+				}
 				PostRender();
 			}
 			IsRendered = true;
@@ -313,8 +363,17 @@ namespace Lifelike.JScript.Admin
 		{
 			ControlContainer.SetAttribute("data-" + name, value);
 		}
+		public void Resize()
+		{
+			if (OnResize != null)
+			{
+				OnResize();
+			}
+		}
 
 		public abstract void PreRender();
 		public virtual void PostRender() { }
+
+
 	}
 }

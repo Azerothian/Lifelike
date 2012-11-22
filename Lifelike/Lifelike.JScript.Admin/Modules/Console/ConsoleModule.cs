@@ -7,36 +7,40 @@ using jQueryApi;
 using Lifelike.JScript.Admin.Modules.Console;
 using Lifelike.JScript.Admin.Modules.Panels;
 using Lifelike.JScript.Admin.Managers;
-namespace Lifelike.JScript.Admin.Modules.Log
+using System.Html;
+namespace Lifelike.JScript.Admin.Modules.Console
 {
 	public class ConsoleModule : Control
 	{
 		Tabs tbViews;
 		ConsoleView cvLog;
 		ConsoleView cvDebug;
-		DockableControl dlgWindow;
+		ConsoleView cvSockets;
+		DockableControl dockConsole;
+
 		public ConsoleModule(string name)
 			: base(name)
 		{
-
-			//txtInput = new TextBox("txtInput");
-			//btnSend = new Button("btnSend");
-			dlgWindow = new DockableControl("dlgWindow");
-			dlgWindow.Title = "Console";
-			Util.RealConsole().log = new ResponseParams<string>(log);
-			Util.RealConsole().debug = new ResponseParams<string>(debug);
-
-			cvLog = new ConsoleView("cvLog");
-			cvDebug = new ConsoleView("cvDebug");
-			tbViews = new Tabs("tbViews");
-			//tbViews.AddTab("Log", cvLog);
-			//tbViews.AddTab("Debug", cvDebug);
-			dlgWindow.AddChild(tbViews);
+			
 		}
 		public override void PreRender()
 		{
 			CssClass = "consoleModule";
+			Log.log("[ConsoleModule] Creating Dockable");
+			dockConsole = new DockableControl("dockConsole");
+			dockConsole.Title = "Console";
+			dockConsole.OnResize += dockConsole_OnResize;
+			Log.log("[ConsoleModule] Creating Views");
+			cvLog = new ConsoleView("cvLog");
+			cvDebug = new ConsoleView("cvDebug");
+			cvSockets = new ConsoleView("cvSockets");
 
+			Log.log("[ConsoleModule] Creating Tabs");
+			tbViews = new Tabs("tbViews");
+			//tbViews.AddTab("Log", cvLog);
+			//tbViews.AddTab("Debug", cvDebug);
+			Log.log("[ConsoleModule] Adding Views and Tabs to Dockable");
+			dockConsole.AddChild(tbViews);
 			//dlgWindow.Options = new DialogOptions()
 			//{
 			//	AutoOpen = true,
@@ -45,26 +49,42 @@ namespace Lifelike.JScript.Admin.Modules.Log
 			//	Width = 500,
 			//	Title = "Console"
 			//};
-			AddChild(dlgWindow);
-			dlgWindow.AddChild(tbViews);
+			AddChild(dockConsole);
+			dockConsole.AddChild(tbViews);
 			tbViews.AddTab("Log", cvLog);
 			tbViews.AddTab("Debug", cvDebug);
-			
+			tbViews.AddTab("Sockets", cvSockets);
 			//txtInput.CssClass = "input";
 			//btnSend.Text = "Send";
 			
 			//dlgWindow.AddChild(txtInput);
 			//dlgWindow.AddChild(btnSend);
+			Log.LogEvent += log;
+			Log.DebugEvent += debug;
+			Log.SocketEvent += socket;
 			
 		}
-		public override void PostRender()
+
+
+		void dockConsole_OnResize()
 		{
-			PageManager.Context.panelLayout.pnlBottom.DropControl(dlgWindow);
-			base.PostRender();
+			Log.log("Resize Dock", Height, Width, this);
+			cvLog.Height = (int.Parse(dockConsole.Height) - 100) + "px";
+			cvLog.Width = dockConsole.Width;
+
+			cvDebug.Height = (int.Parse(dockConsole.Height) - 100) + "px";
+			cvDebug.Width = dockConsole.Width;
+			
+			cvSockets.Height = (int.Parse(dockConsole.Height) - 100) + "px";
+			cvSockets.Width = dockConsole.Width;
+			//Resize();
 		}
 
-
-
+		public override void PostRender()
+		{
+			PageManager.Context.panelLayout.pnlBottom.DropControl(dockConsole);
+			base.PostRender();
+		}
 		public void log(string message, params object[] arr)
 		{
 			cvLog.LogMessage(message, arr);
@@ -74,5 +94,10 @@ namespace Lifelike.JScript.Admin.Modules.Log
 		{
 			cvDebug.LogMessage(message, arr);
 		}
+		void socket(string msg1, params object[] arr)
+		{
+			cvSockets.LogMessage(msg1, arr);
+		}
+
 	}
 }

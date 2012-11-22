@@ -14,6 +14,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <NoStdLib>True</NoStdLib>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -62,9 +62,11 @@
     <Compile Include="Controls\TextBox.cs" />
     <Compile Include="Controls\Tree.cs" />
     <Compile Include="Guid.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Managers\HubManager.cs" />
     <Compile Include="Interfaces\ILogin.cs" />
     <Compile Include="Forms\LoginForm.cs" />
+    <Compile Include="Managers\Hubs\Chat.cs" />
     <Compile Include="Managers\LoginManager.cs" />
     <Compile Include="Managers\PageManager.cs" />
     <Compile Include="Modules\Chat\ChatModule.cs" />

@@ -63,9 +63,9 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 			pnlBottom.Top = bottomTop + "px";
 			pnlBottom.Left = "0px";
 			pnlBottom.Width = w.ToString();
-
-
+			Resize();
 		}
+
 
 
 		public override void PreRender()

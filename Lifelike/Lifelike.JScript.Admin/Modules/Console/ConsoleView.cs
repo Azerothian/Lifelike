@@ -13,16 +13,25 @@ namespace Lifelike.JScript.Admin.Modules.Console
 		{
 			lblMessages = new Label("lblMessages");
 			AddChild(lblMessages);
+			
+
+		}
+
+		void ConsoleView_OnResize()
+		{
+			Log.log("Resize View", Height, Width, this);
+			lblMessages.Height = Height;
+			lblMessages.Width = "100%";
+			lblMessages.CssClass = "vertical-scroll";
 		}
 
 		public override void PreRender()
 		{
-
+			OnResize += ConsoleView_OnResize;
 		}
 		public override void PostRender()
 		{
-
-			lblMessages.CssClass = "messages";
+			ConsoleView_OnResize();
 			base.PostRender();
 		}
 
@@ -40,8 +49,13 @@ namespace Lifelike.JScript.Admin.Modules.Console
 				}
 				message = message + r;
 			}
+			if (!string.IsNullOrEmpty(lblMessages.Text))
+			{
+				lblMessages.Text = lblMessages.Text + "<br/>";
+			}
 
-			lblMessages.Text = lblMessages.Text + "<br/>" + message;
+			lblMessages.Text = lblMessages.Text + message;
+			lblMessages.ScrollDown();
 		}
 	}
 }

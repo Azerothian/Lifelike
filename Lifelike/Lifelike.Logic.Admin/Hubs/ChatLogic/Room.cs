@@ -9,7 +9,7 @@ namespace Lifelike.Logic.Admin.Hubs.ChatLogic
 	public class Room
 	{
 		public string Name { get; set; }
-		public List<User> Users { get; set; }
+		public List<String> Users { get; set; }
 
 		//internal bool IsInGroup(string Name)
 		//{
@@ -24,13 +24,13 @@ namespace Lifelike.Logic.Admin.Hubs.ChatLogic
 		//	return false;
 		//}
 
-		internal User GetUser(string Name)
+		internal string GetUser(string Name)
 		{
 			if (Users != null)
 			{
 				foreach (var u in Users)
 				{
-					if (u.Username == Name)
+					if (u == Name)
 						return u;
 				}
 			}

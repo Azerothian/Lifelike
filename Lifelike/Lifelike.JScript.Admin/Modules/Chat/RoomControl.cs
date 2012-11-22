@@ -27,6 +27,7 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 			: base(room)
 		{
 			_dockable = new DockableControl("MessageContainer");
+			_dockable.OnResize += _dockable_OnResize;
 			_userControl = new UserControl("UserControl", room);
 			//_dockable.Options = new jQueryApi.UI.Widgets.DialogOptions()
 			//{
@@ -50,6 +51,12 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 			AddChild(_dockable);
 		}
 
+		void _dockable_OnResize()
+		{
+			_messageContainer.Height = (int.Parse(_dockable.Height) - 119) + "px";
+			_messenger.Width = _dockable.Width;
+		}
+
 		public void ResizeWindow(jQueryEvent e, ResizeEvent re)
 		{
 
@@ -59,16 +66,16 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 		{
 		}
 
-		internal void AddNewMessage(dynamic user, string message, bool isAlert)
+		internal void AddNewMessage(string user, string message, bool isAlert)
 		{
-			Util.Console().log(".js.modules.chat.roomcontrol AddNewMessage", user, message);
+			Log.log(".js.modules.chat.roomcontrol AddNewMessage", user, message);
 			var newcount =  _messageContainer.Children.Count + 1;
 			MessageControl msg = null;
 			if (_messageContainer.Children.Count > 1)
 			{
 				
-				var m = (MessageControl)_messageContainer.Children[_messageContainer.Children.Count - 1];
-				if (m.Username == user.Username)
+				var m = _messageContainer.Children[_messageContainer.Children.Count - 2] as MessageControl;
+				if (m.Username == user && !m.CssClass.EndsWith("alert") )
 				{
 					msg = m;
 					msg.Message = msg.Message + " <br/>";
@@ -79,7 +86,7 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 				msg = new MessageControl("message_" +newcount);
 			}
 
-			
+
 			msg.Username = user;
 			msg.Message = msg.Message + message;
 			msg.Parent = _messageContainer;
@@ -101,22 +108,33 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 			spacer.Parent = _messageContainer;
 			_messageContainer.Children.Add(spacer);
 			spacer.Render();
-			var result = ((_messageContainer.Children.Count /2) * 41) + "px";
-			Util.Console().log("result = ", result);
-			JsDictionary _dictionary = new JsDictionary("scrollTop", result);
-
-
-			jQueryApi.jQuery.FromElement(_messageContainer.ControlContainer).Animate(_dictionary, EffectDuration.Slow, EffectEasing.Linear);
-
-
-			
+			var result = ((_messageContainer.Children.Count /2) * 41);
+			_messageContainer.ScrollDown();
+			//Control.ScrollDown(result, _messageContainer.ControlContainer);
 
 
 		}
 
+
+
 		internal void AddNewMessage(string message, bool isAlert)
 		{
 			AddNewMessage(User, message, isAlert);
+		}
+
+		internal void RefreshUserList(List<dynamic> users)
+		{
+			_userControl.RefreshUserList(users);
+		}
+
+		internal void AddUser(dynamic username)
+		{
+			_userControl.AddUser(username);
+		}
+
+		internal void RemoveUser(dynamic username)
+		{
+			_userControl.RemoveUser(username);
 		}
 	}
 }

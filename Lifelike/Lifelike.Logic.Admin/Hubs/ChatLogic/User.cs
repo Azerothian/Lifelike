@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lifelike.Logic.Admin.Hubs.ChatLogic
 {
+	[Serializable]
 	public class User
 	{
 		public string Username { get; set; }

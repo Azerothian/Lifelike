@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Html;
 using System.Text;
 using Lifelike.JScript.Admin.Modules.Chat;
+using Lifelike.JScript.Admin.Modules.Console;
 using Lifelike.JScript.Admin.Modules.Item;
-using Lifelike.JScript.Admin.Modules.Log;
 using Lifelike.JScript.Admin.Modules.Panels;
 
 namespace Lifelike.JScript.Admin.Managers
@@ -17,7 +17,9 @@ namespace Lifelike.JScript.Admin.Managers
 		{
 			get
 			{
-				if (_context == null) { _context = new PageManager(); }
+				if (_context == null) { 
+					_context = new PageManager();
+				}
 				return _context;
 			}
 		}
@@ -31,19 +33,24 @@ namespace Lifelike.JScript.Admin.Managers
 
 		public PageManager()
 		{
-			_loginForm = new LoginForm("frmLogin");
-			ConsoleModule = new ConsoleModule("console");
-			chatModule = new ChatModule("chat");
-			itemTreeModule = new ItemTreeModule("items");
-			panelLayout = new PanelLayout("pnlLayout");
+			
 		}
 
 		public bool hasRendered { get; set; }
 
 		public void Initialise()
 		{
-
-			//HubManager.Context.GetConnection().auth.client.loginResponse = new Response<string, bool>(LoginResponse);
+			Log.log("Creating Controls..");
+			Log.log("Loading LoginForm");
+			_loginForm = new LoginForm("frmLogin");
+			Log.log("Loading Console");
+			ConsoleModule = new ConsoleModule("console");
+			Log.log("Loading Chat");
+			chatModule = new ChatModule("chat");
+			Log.log("Loading Item Tree");
+			itemTreeModule = new ItemTreeModule("items");
+			Log.log("Loading Layout");
+			panelLayout = new PanelLayout("pnlLayout");
 			Check();
 
 		}
@@ -59,6 +66,7 @@ namespace Lifelike.JScript.Admin.Managers
 		{
 			if (!IsLoggedIn && !_loginForm.IsRendered)
 			{
+				Log.log("Initialising LoginForm");
 				PageRenderer.Context.AddChild(_loginForm);
 			}
 		}
@@ -66,7 +74,8 @@ namespace Lifelike.JScript.Admin.Managers
 		internal void LoginResponse(string username, bool success)
 		{
 
-			//    Util.Console().log(".auth.client.loginResponse", username, success);
+			Log.log("IsLoggedIn", username , success);
+			//    Log.log(".auth.client.loginResponse", username, success);
 			IsLoggedIn = success;
 			if (success)
 			{
@@ -80,6 +89,8 @@ namespace Lifelike.JScript.Admin.Managers
 		}
 		public void InitateSystem()
 		{
+
+			Log.log("Initialising Main System");
 			PageRenderer.Context.AddChild(panelLayout);
 			PageRenderer.Context.AddChild(itemTreeModule);
 			PageRenderer.Context.AddChild(ConsoleModule);
@@ -87,8 +98,7 @@ namespace Lifelike.JScript.Admin.Managers
 			PageRenderer.Context.Render();
 
 
-			
-			chatModule.registerName(PageManager.Context.Username);
+			HubManager.Context.ChatHub.registerName(PageManager.Context.Username);
 		}
 		public Control GetControlByClientId(string id)
 		{

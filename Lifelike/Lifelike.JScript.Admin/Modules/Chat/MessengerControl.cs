@@ -17,19 +17,29 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 			: base(name)
 		{
 			_txtMessage = new TextBox("txtMessage");
+			_txtMessage.OnEnter += new jQueryApi.jQueryEventHandler(btnSend_OnClick);
 			_btnSend = new Button("btnSend");
 			_btnSend.OnClick += new jQueryApi.jQueryEventHandler(btnSend_OnClick);
 			_btnSend.Text = "Send";
 			AddChild(_txtMessage);
 			AddChild(_btnSend);
+			OnResize += MessengerControl_OnResize;
+		}
+
+		void MessengerControl_OnResize()
+		{
+			_txtMessage.Width = (int.Parse(Width) - 85) + "px";
 		}
 
 
 		public void btnSend_OnClick(jQueryApi.jQueryEvent e)
 		{
-			PageManager.Context.chatModule.sendMessage(Room, _txtMessage.Value);
-			RoomControl.AddNewMessage(_txtMessage.Value, false);
-			_txtMessage.Value = "";
+			if (!string.IsNullOrEmpty(_txtMessage.Value))
+			{
+				HubManager.Context.ChatHub.sendMessage(Room, _txtMessage.Value);
+				RoomControl.AddNewMessage(_txtMessage.Value, false);
+				_txtMessage.Value = "";
+			}
 		}
 
 		public override void PreRender()

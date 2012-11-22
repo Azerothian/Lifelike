@@ -21,12 +21,69 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 		{
 			
 		}
+
+		internal void RefreshUserList(List<dynamic> users)
+		{
+			Log.debug("RefreshUserList", users);
+
+			List<UserItemControl> _current = new List<UserItemControl>();
+			foreach (var v in users)
+			{
+				var ui = getUserItem(v);
+				if (ui == null)
+				{
+					ui = new UserItemControl(v);
+					AddChild(ui);
+				}
+				_current.Add(ui);
+			}
+
+			for(int i = Children.Count ;i == 0; i++)
+			{
+				UserItemControl child = Children[i - 1] as UserItemControl;
+				if (!_current.Contains(child) || child.Title == "")
+				{
+					RemoveChild(child);				
+				}
+			}
+		}
+		public UserItemControl getUserItem(string name)
+		{
+			Log.debug("[UserControl] getUserItem", name);
+			foreach (UserItemControl v in Children)
+			{
+				if (name == v.Name)
+				{
+					return v;
+				}
+			}
+			return null;
+		}
+
+		internal void RemoveUser(dynamic user)
+		{
+			Log.debug("[UserControl] RemoveUser", user);
+			var ui = getUserItem(user.Username);
+			if (ui != null && Children.Contains(ui))
+			{
+				RemoveChild(ui);
+			}
+		}
+
+		internal void AddUser(dynamic user)
+		{
+			Log.debug("[UserControl] AddUser", user);
+			var ui = getUserItem(user.Username);
+			if (ui == null)
+			{
+				ui = new UserItemControl(user.Username);
+				AddChild(ui);
+			}
+		}
 	}
 	public class UserItemControl : Control
 	{
 
-
-		public string Name { get; set; }
 		public UserItemControl(string name)
 			: base(name)
 		{

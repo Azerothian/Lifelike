@@ -22,7 +22,10 @@
 			margin: 0;
 			padding: 0;
 		}
-
+		.vertical-scroll
+		{
+			overflow-y: auto;
+		}
 		.messageContainer
 		{
 			height: 250px;

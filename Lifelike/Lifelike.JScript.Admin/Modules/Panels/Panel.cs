@@ -35,7 +35,7 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 		}
 		public override void PostRender()
 		{
-			Util.Console().log(".modules.panels.panel.postrender ", droppableOptions, ControlContainer);
+			Log.log(".modules.panels.panel.postrender ", droppableOptions, ControlContainer);
 			jQuery.FromElement(ControlContainer).Droppable(droppableOptions);
 
 			base.PostRender();
@@ -53,7 +53,7 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 		{
 
 			var id = dae.Draggable.GetAttribute("id");
-			Util.Console().log(".modules.panels.panel.ondrop ", id);
+			Log.log(".modules.panels.panel.ondrop ", id);
 
 			var control = (DockableControl)PageManager.Context.GetControlByClientId(id);
 			DropControl(control);
@@ -79,6 +79,7 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 			control.Top = top + "px"; ;
 			control.Width = (int.Parse(this.Width) - (spacer * 2)).ToString();
 			control.Height = (int.Parse(this.Height) - (spacer * 2)).ToString();
+			AddChild(control);
 		}
 	}
 }

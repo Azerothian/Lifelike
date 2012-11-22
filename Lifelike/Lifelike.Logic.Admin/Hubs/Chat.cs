@@ -13,13 +13,36 @@ namespace Lifelike.Logic.Admin.Hubs
 	{
 		public Chat()
 		{
-			Rooms = new Dictionary<string, Room>();
-			Usernames = new Dictionary<string, string>();
+			//Rooms = new Dictionary<string, Room>();
+			//Usernames = new Dictionary<string, string>();
 		}
 
-		public static Dictionary<string, string> Usernames { get; set; }
-		public static Dictionary<string, Room> Rooms { get; set; }
 
+		private static Dictionary<string, string> _usernames;
+		private static Dictionary<string, Room> _rooms;
+		public static Dictionary<string, string> Usernames
+		{
+			get
+			{
+				if (_usernames == null)
+				{
+					_usernames = new Dictionary<string, string>();
+				}
+				return _usernames;
+			}
+		}
+		
+		public static Dictionary<string, Room> Rooms
+		{
+			get
+			{
+				if (_rooms == null)
+				{
+					_rooms = new Dictionary<string, Room>();
+				}
+				return _rooms;
+			}
+		}
 		public string GetConnectionId { get { return this.Context.ConnectionId; } }
 
 
@@ -61,31 +84,37 @@ namespace Lifelike.Logic.Admin.Hubs
 		{
 			if (!Rooms.ContainsKey(room))
 			{
-				Rooms.Add(room, new Room() { Name = room, Users = new List<User>() });
+				Rooms.Add(room, new Room() { Name = room, Users = new List<string>() });
 			}
 			var u = Rooms[room].GetUser(Name);
 			if (u == null)
 			{
-				u = new User() { ConnectionId = GetConnectionId, Username = Name };
-				Rooms[room].Users.Add(u);
+				Rooms[room].Users.Add(Name);
 				Groups.Add(GetConnectionId, room);
-				Clients.OthersInGroup(room).recieveMessageResponse(room, u, Name + " has joined the room", true);
-				Clients.OthersInGroup(room).userJoinedRoomResponse(room, u);
+
+				Clients.OthersInGroup(room).recieveMessageResponse(room, Name, Name + " has joined the room", true);
+
+				Clients.OthersInGroup(room).userJoinedRoomResponse(room, Name);
 				Clients.Caller.joinRoomResponse(room, true);
+				Clients.OthersInGroup(room).getListOfUsersFromRoomResponse(room, Rooms[room].Users);
+				getListOfUsersFromRoom(room);
 			}
 		}
 		public void leaveRoom(string room)
 		{
 			if (!Rooms.ContainsKey(room))
 			{
-				Rooms.Add(room, new Room() { Name = room, Users = new List<User>() });
+				Rooms.Add(room, new Room() { Name = room, Users = new List<string>() });
 			}
 			var u = Rooms[room].GetUser(Name);
 			if (u != null)
 			{
 				Groups.Remove(GetConnectionId, room);
-				Rooms[room].Users.Remove(u);
+				Rooms[room].Users.Remove(Name);
+
 				Clients.OthersInGroup(room).recieveMessageResponse(room, u, Name + " has left the room", true);
+				Clients.OthersInGroup(room).userLeftRoomResponse(room, Name);
+				Clients.OthersInGroup(room).getListOfUsersFromRoomResponse(room, Rooms[room].Users);
 			}
 		}
 		public void getAvailableRooms()
@@ -96,7 +125,7 @@ namespace Lifelike.Logic.Admin.Hubs
 		{
 
 			var rooms = (from v in Rooms
-						 let user = (v.Value != null) ? v.Value.Users.Where(p => p.ConnectionId == Context.ConnectionId).FirstOrDefault() : null
+						 let user = (v.Value != null) ? v.Value.Users.Where(p => p == Name).FirstOrDefault() : null
 						 where
 						 user != null
 						 select v.Key).Distinct().ToArray();
@@ -107,7 +136,7 @@ namespace Lifelike.Logic.Admin.Hubs
 		{
 			if (Rooms.ContainsKey(room))
 			{
-				Clients.Caller.getListOfUsersFromRoomResponse(Rooms[room].Users);
+				Clients.Caller.getListOfUsersFromRoomResponse(room, Rooms[room].Users);
 			}
 
 		}
