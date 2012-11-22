@@ -58,12 +58,12 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 
 		void ChatHub_OnUserJoinedResponse(string room, dynamic username)
 		{
-			getRoom(room).AddUser(username);
+			//getRoom(room).AddUser(username);
 		}
 
 		void ChatHub_OnUserLeftRoomResponse(string room, dynamic username)
 		{
-			getRoom(room).RemoveUser(username);
+			//getRoom(room).RemoveUser(username);
 		}
 		void ChatHub_OnJoinRoomResponse(string room, bool success)
 		{

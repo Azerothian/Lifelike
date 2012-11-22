@@ -1176,10 +1176,10 @@ $Lifelike_JScript_Admin_Modules_Chat_ChatModule.prototype = {
 		this.$getRoom(room).$refreshUserList(users);
 	},
 	$chatHub_OnUserJoinedResponse: function(room, username) {
-		this.$getRoom(room).$addUser(username);
+		//getRoom(room).AddUser(username);
 	},
 	$chatHub_OnUserLeftRoomResponse: function(room, username) {
-		this.$getRoom(room).$removeUser(username);
+		//getRoom(room).RemoveUser(username);
 	},
 	$chatHub_OnJoinRoomResponse: function(room, success) {
 		if (success) {
@@ -1394,12 +1394,6 @@ $Lifelike_JScript_Admin_Modules_Chat_RoomControl.prototype = {
 	},
 	$refreshUserList: function(users) {
 		this.$_userControl.$refreshUserList(users);
-	},
-	$addUser: function(username) {
-		this.$_userControl.$addUser(username);
-	},
-	$removeUser: function(username) {
-		this.$_userControl.$removeUser(username);
 	}
 };
 ////////////////////////////////////////////////////////////////////////////////
@@ -1444,21 +1438,6 @@ $Lifelike_JScript_Admin_Modules_Chat_UserControl.prototype = {
 			}
 		}
 		return null;
-	},
-	$removeUser: function(user) {
-		$Lifelike_JScript_Admin_Log.debug('[UserControl] RemoveUser', [user]);
-		var ui = this.getUserItem(Type.cast(user.Username, String));
-		if (ss.isValue(ui) && this.get_children().contains(ui)) {
-			this.removeChild(ui);
-		}
-	},
-	$addUser: function(user) {
-		$Lifelike_JScript_Admin_Log.debug('[UserControl] AddUser', [user]);
-		var ui = this.getUserItem(Type.cast(user.Username, String));
-		if (ss.isNullOrUndefined(ui)) {
-			ui = new $Lifelike_JScript_Admin_Modules_Chat_UserItemControl(Type.cast(user.Username, String));
-			this.addChild(ui);
-		}
 	}
 };
 ////////////////////////////////////////////////////////////////////////////////
@@ -1477,7 +1456,7 @@ $Lifelike_JScript_Admin_Modules_Chat_UserItemControl.prototype = {
 	preRender: function() {
 	},
 	postRender: function() {
-		$(this.get_controlContainer()).tooltip();
+		$(this.get_controlContainer()).tooltip({ tooltipClass: 'tooltip' });
 	}
 };
 ////////////////////////////////////////////////////////////////////////////////

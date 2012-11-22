@@ -127,14 +127,14 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 			_userControl.RefreshUserList(users);
 		}
 
-		internal void AddUser(dynamic username)
-		{
-			_userControl.AddUser(username);
-		}
+		//internal void AddUser(dynamic username)
+		//{
+		//	_userControl.AddUser(username);
+		//}
 
-		internal void RemoveUser(dynamic username)
-		{
-			_userControl.RemoveUser(username);
-		}
+		//internal void RemoveUser(dynamic username)
+		//{
+		//	_userControl.RemoveUser(username);
+		//}
 	}
 }

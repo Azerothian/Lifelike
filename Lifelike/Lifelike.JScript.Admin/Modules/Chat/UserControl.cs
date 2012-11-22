@@ -60,26 +60,26 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 			return null;
 		}
 
-		internal void RemoveUser(dynamic user)
-		{
-			Log.debug("[UserControl] RemoveUser", user);
-			var ui = getUserItem(user.Username);
-			if (ui != null && Children.Contains(ui))
-			{
-				RemoveChild(ui);
-			}
-		}
+		//internal void RemoveUser(dynamic user)
+		//{
+		//	Log.debug("[UserControl] RemoveUser", user);
+		//	var ui = getUserItem(user.Username);
+		//	if (ui != null && Children.Contains(ui))
+		//	{
+		//		RemoveChild(ui);
+		//	}
+		//}
 
-		internal void AddUser(dynamic user)
-		{
-			Log.debug("[UserControl] AddUser", user);
-			var ui = getUserItem(user.Username);
-			if (ui == null)
-			{
-				ui = new UserItemControl(user.Username);
-				AddChild(ui);
-			}
-		}
+		//internal void AddUser(dynamic user)
+		//{
+		//	Log.debug("[UserControl] AddUser", user);
+		//	var ui = getUserItem(user.Username);
+		//	if (ui == null)
+		//	{
+		//		ui = new UserItemControl(user.Username);
+		//		AddChild(ui);
+		//	}
+		//}
 	}
 	public class UserItemControl : Control
 	{
@@ -104,7 +104,10 @@ namespace Lifelike.JScript.Admin.Modules.Chat
 
 		public override void PostRender()
 		{
-			jQueryApi.jQuery.FromElement(ControlContainer).Tooltip();
+			jQueryApi.jQuery.FromElement(ControlContainer).Tooltip(new TooltipOptions()
+			{
+				TooltipClass = "tooltip"
+			});
 		}
 	}
 }
