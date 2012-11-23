@@ -127,6 +127,12 @@ $Lifelike_JScript_Admin_Control.prototype = {
 	set_float: function(value) {
 		$(this.get_controlContainer()).css('float', value);
 	},
+	get_position: function() {
+		return $(this.get_controlContainer()).css('position');
+	},
+	set_position: function(value) {
+		$(this.get_controlContainer()).css('position', value);
+	},
 	get_margin: function() {
 		return $(this.get_controlContainer()).css('margin');
 	},
@@ -923,14 +929,14 @@ $Lifelike_JScript_Admin_Managers_PageManager.prototype = {
 		$Lifelike_JScript_Admin_Log.log('Creating Controls..', []);
 		$Lifelike_JScript_Admin_Log.log('Loading LoginForm', []);
 		this.$_loginForm = new $Lifelike_JScript_Admin_LoginForm('frmLogin');
+		$Lifelike_JScript_Admin_Log.log('Loading Layout', []);
+		this.set_panelLayout(new $Lifelike_JScript_Admin_Modules_Panels_PanelLayout('pnlLayout'));
 		$Lifelike_JScript_Admin_Log.log('Loading Console', []);
 		this.set_consoleModule(new $Lifelike_JScript_Admin_Modules_Console_ConsoleModule('console'));
 		$Lifelike_JScript_Admin_Log.log('Loading Chat', []);
 		this.set_chatModule(new $Lifelike_JScript_Admin_Modules_Chat_ChatModule('chat'));
 		$Lifelike_JScript_Admin_Log.log('Loading Item Tree', []);
 		this.set_itemTreeModule(new $Lifelike_JScript_Admin_Modules_Item_ItemTreeModule('items'));
-		$Lifelike_JScript_Admin_Log.log('Loading Layout', []);
-		this.set_panelLayout(new $Lifelike_JScript_Admin_Modules_Panels_PanelLayout('pnlLayout'));
 		this.check();
 	},
 	check: function() {
@@ -1625,13 +1631,15 @@ var $Lifelike_JScript_Admin_Modules_Panels_DockableControl = function(name) {
 	this.$_headerContainer = null;
 	this.$_header = null;
 	this.$2$draggableOptionsField = null;
+	this.$2$resizableOptionsField = null;
 	$Lifelike_JScript_Admin_Control.call(this, name);
 	this.$_header = new $Lifelike_JScript_Admin_Controls_Label('Header');
 	this.$_headerContainer = new $Lifelike_JScript_Admin_Modules_Chat_BaseControl('HeaderContainer');
 	this.$_headerContainer.set_cssClass('ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix');
 	this.$_header.set_cssClass('ui-dialog-title');
 	this.set_cssClass('ui-dialog ui-widget ui-widget-content ui-corner-all');
-	this.set_draggableOptions({ handle: this.$_headerContainer.get_controlContainer(), zIndex: 10, scope: 'draggable' });
+	this.set_draggableOptions({ handle: this.$_headerContainer.get_controlContainer(), zIndex: 10, scope: 'draggable', containment: $Lifelike_JScript_Admin_Managers_PageManager.get_context().get_panelLayout().get_controlContainer() });
+	this.set_resizableOptions({ minHeight: 100, minWidth: 100, maxHeight: window.innerHeight, maxWidth: window.innerWidth });
 	this.$_headerContainer.addChild(this.$_header);
 	this.addChild(this.$_headerContainer);
 };
@@ -1648,12 +1656,19 @@ $Lifelike_JScript_Admin_Modules_Panels_DockableControl.prototype = {
 	set_draggableOptions: function(value) {
 		this.$2$draggableOptionsField = value;
 	},
+	get_resizableOptions: function() {
+		return this.$2$resizableOptionsField;
+	},
+	set_resizableOptions: function(value) {
+		this.$2$resizableOptionsField = value;
+	},
 	dockableControl_Draggable_OnCreate: function(e) {
 	},
 	preRender: function() {
 	},
 	postRender: function() {
 		$(this.get_controlContainer()).draggable(this.get_draggableOptions());
+		$(this.get_controlContainer()).resizable(this.get_resizableOptions());
 		$Lifelike_JScript_Admin_Control.prototype.postRender.call(this);
 	}
 };
@@ -1724,6 +1739,9 @@ var $Lifelike_JScript_Admin_Modules_Panels_PanelLayout = function(name) {
 	this.set_pnlMiddle(new $Lifelike_JScript_Admin_Modules_Panels_Panel('pnlMiddle'));
 	this.set_pnlBottom(new $Lifelike_JScript_Admin_Modules_Panels_Panel('pnlBottom'));
 	window.addEventListener('resize', Function.mkdel(this, this.resize$1));
+	this.set_position('absolute');
+	this.set_height(window.innerHeight + 'px');
+	this.set_width(window.innerWidth + 'px');
 	this.addChild(this.get_pnlLeftSide());
 	this.addChild(this.get_pnlRightSide());
 	this.addChild(this.get_pnlMiddle());

@@ -21,6 +21,11 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 			pnlBottom = new Panel("pnlBottom");
 			Window.AddEventListener("resize", new ElementEventListener(Resize));
 
+            Position = "absolute";
+
+
+            Height = Window.InnerHeight+ "px";
+            Width = Window.InnerWidth + "px";
 
 			AddChild(pnlLeftSide);
 			AddChild(pnlRightSide);

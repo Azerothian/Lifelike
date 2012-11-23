@@ -43,14 +43,15 @@ namespace Lifelike.JScript.Admin.Managers
 			Log.log("Creating Controls..");
 			Log.log("Loading LoginForm");
 			_loginForm = new LoginForm("frmLogin");
+            Log.log("Loading Layout");
+			panelLayout = new PanelLayout("pnlLayout");
 			Log.log("Loading Console");
 			ConsoleModule = new ConsoleModule("console");
 			Log.log("Loading Chat");
 			chatModule = new ChatModule("chat");
 			Log.log("Loading Item Tree");
 			itemTreeModule = new ItemTreeModule("items");
-			Log.log("Loading Layout");
-			panelLayout = new PanelLayout("pnlLayout");
+
 			Check();
 
 		}

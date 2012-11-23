@@ -145,6 +145,17 @@ namespace Lifelike.JScript.Admin
 				jQuery.FromElement(ControlContainer).CSS("float", value);
 			}
 		}
+        public string Position
+        {
+            get
+            {
+                return jQuery.FromElement(ControlContainer).GetCSS("position");
+            }
+            set
+            {
+                jQuery.FromElement(ControlContainer).CSS("position", value);
+            }
+        }
 		public string Margin
 		{
 			get
