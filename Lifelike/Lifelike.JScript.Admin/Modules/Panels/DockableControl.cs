@@ -8,6 +8,7 @@ using jQueryApi.UI.Interactions;
 using jQueryApi.UI.Effects;
 using Lifelike.JScript.Admin.Modules.Chat;
 using Lifelike.JScript.Admin.Managers;
+using Lifelike.JScript.Admin.Modules.Dock;
 namespace Lifelike.JScript.Admin.Modules.Panels
 {
 	public class DockableControl : Control
@@ -15,12 +16,17 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 		public string Title { get { return _header.Text; } set { _header.Text = value; } }
 		private BaseControl _headerContainer;
 		private Label _header;
+		private Launcher _launcher;
+
 		public DraggableOptions draggableOptions { get; set; }
         public ResizableOptions resizableOptions { get; set; }
 		//
 		public DockableControl(string name)
 			: base(name)
 		{
+			_launcher = new Launcher("launcher"+name);
+			_launcher.Remote = this;
+			PageManager.Context.dockModule.AddChild(_launcher);
 			_header = new Label("Header");
 			_headerContainer = new BaseControl("HeaderContainer");
 
@@ -65,6 +71,9 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 
 			jQueryApi.jQuery.FromElement(ControlContainer).Draggable(draggableOptions);
             jQueryApi.jQuery.FromElement(ControlContainer).Resizable(resizableOptions);
+
+			_launcher.Text = _header.Text;
+			PageManager.Context.dockModule.AddChild(_launcher);
 			base.PostRender();
 		}
 	}

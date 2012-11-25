@@ -32,12 +32,13 @@ namespace Lifelike.JScript.Admin
 				//	node.Close();
 
 				//});
+				Log.log("Starting HubManager");
+				HubManager.Context.Initialise();
 				Log.log("Starting PageManager");
 				PageManager.Context.Initialise();
 				Log.log("Starting PageRenderer");
 				PageRenderer.Context.Render();
-				Log.log("Starting HubManager");
-				HubManager.Context.Initialise();
+
 				HubManager.Context.OnConnection += Context_OnConnection;
 			});
 

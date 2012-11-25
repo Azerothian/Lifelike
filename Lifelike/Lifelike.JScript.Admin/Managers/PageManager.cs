@@ -4,6 +4,7 @@ using System.Html;
 using System.Text;
 using Lifelike.JScript.Admin.Modules.Chat;
 using Lifelike.JScript.Admin.Modules.Console;
+using Lifelike.JScript.Admin.Modules.Dock;
 using Lifelike.JScript.Admin.Modules.Item;
 using Lifelike.JScript.Admin.Modules.Panels;
 
@@ -29,6 +30,7 @@ namespace Lifelike.JScript.Admin.Managers
 		public ChatModule chatModule { get; set; }
 		public PanelLayout panelLayout { get; set; }
 		public ItemTreeModule itemTreeModule { get; set; }
+		public DockModule dockModule { get; set; }
 		private LoginForm _loginForm;
 
 		public PageManager()
@@ -43,6 +45,8 @@ namespace Lifelike.JScript.Admin.Managers
 			Log.log("Creating Controls..");
 			Log.log("Loading LoginForm");
 			_loginForm = new LoginForm("frmLogin");
+			Log.log("Loading DockModule");
+			dockModule = new DockModule("dock");
             Log.log("Loading Layout");
 			panelLayout = new PanelLayout("pnlLayout");
 			Log.log("Loading Console");
@@ -92,10 +96,12 @@ namespace Lifelike.JScript.Admin.Managers
 		{
 
 			Log.log("Initialising Main System");
+			PageRenderer.Context.AddChild(dockModule);
 			PageRenderer.Context.AddChild(panelLayout);
 			PageRenderer.Context.AddChild(itemTreeModule);
 			PageRenderer.Context.AddChild(ConsoleModule);
 			PageRenderer.Context.AddChild(chatModule);
+			
 			PageRenderer.Context.Render();
 
 

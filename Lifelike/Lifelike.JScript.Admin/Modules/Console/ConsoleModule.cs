@@ -94,7 +94,7 @@ namespace Lifelike.JScript.Admin.Modules.Console
 		{
 			cvDebug.LogMessage(message, arr);
 		}
-		void socket(string msg1, params object[] arr)
+		public void socket(string msg1, params object[] arr)
 		{
 			cvSockets.LogMessage(msg1, arr);
 		}

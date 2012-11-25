@@ -77,6 +77,9 @@
     <Compile Include="Modules\Chat\UserControl.cs" />
     <Compile Include="Modules\Console\ConsoleModule.cs" />
     <Compile Include="Modules\Console\ConsoleView.cs" />
+    <Compile Include="Modules\Dock\DockModule.cs" />
+    <Compile Include="Modules\Dock\Launcher.cs" />
+    <Compile Include="Modules\Dock\StartMenu.cs" />
     <Compile Include="Modules\Item\ItemTreeModule.cs" />
     <Compile Include="Modules\Panels\DockableControl.cs" />
     <Compile Include="Modules\Panels\Panel.cs" />
@@ -92,21 +95,26 @@
   <ItemGroup>
     <Reference Include="mscorlib">
       <HintPath>$(SolutionDir)packages\Saltarelle.Runtime.1.6.2\tools\Assemblies\mscorlib.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Script.jQuery">
       <HintPath>..\packages\Saltarelle.jQuery.1.6.2\lib\Script.jQuery.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Script.jQuery.UI">
       <HintPath>..\packages\Saltarelle.jQuery.UI.1.6.2\lib\Script.jQuery.UI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Script.Web">
       <HintPath>..\packages\Saltarelle.Web.1.6.2\lib\Script.Web.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Saltarelle.SignalR\Saltarelle.SignalR.csproj">
       <Project>{15a4d603-461a-4cb4-8c36-da504c1fc25c}</Project>
       <Name>Saltarelle.SignalR</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

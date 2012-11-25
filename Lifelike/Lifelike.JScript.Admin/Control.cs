@@ -134,6 +134,32 @@ namespace Lifelike.JScript.Admin
 				jQuery.FromElement(ControlContainer).CSS("background", value);
 			}
 		}
+
+
+
+		public string zIndex
+		{
+			get
+			{
+				return jQuery.FromElement(ControlContainer).GetCSS("z-index");
+			}
+			set
+			{
+				jQuery.FromElement(ControlContainer).CSS("z-index", value);
+			}
+		}
+
+		public string BackgroundImage
+		{
+			get
+			{
+				return jQuery.FromElement(ControlContainer).GetCSS("background-image");
+			}
+			set
+			{
+				jQuery.FromElement(ControlContainer).CSS("background-image", value);
+			}
+		}
 		public string Float
 		{
 			get
@@ -167,6 +193,17 @@ namespace Lifelike.JScript.Admin
 				jQuery.FromElement(ControlContainer).CSS("margin", value);
 			}
 		}
+		public string Padding
+		{
+			get
+			{
+				return jQuery.FromElement(ControlContainer).GetCSS("padding");
+			}
+			set
+			{
+				jQuery.FromElement(ControlContainer).CSS("padding", value);
+			}
+		}
 		public string Title
 		{
 			get
@@ -179,6 +216,7 @@ namespace Lifelike.JScript.Admin
 
 			}
 		}
+
 		public string Left
 		{
 			get
@@ -188,6 +226,17 @@ namespace Lifelike.JScript.Admin
 			set
 			{
 				jQuery.FromElement(ControlContainer).CSS("left",value);
+			}
+		}
+				public string PointerEvents
+		{
+			get
+			{
+				return jQuery.FromElement(ControlContainer).GetCSS("pointer-events");
+			}
+			set
+			{
+				jQuery.FromElement(ControlContainer).CSS("pointer-events",value);
 			}
 		}
 		public string Top
@@ -201,11 +250,23 @@ namespace Lifelike.JScript.Admin
 				jQuery.FromElement(ControlContainer).CSS("top", value);
 			}
 		}
+		public string Border
+		{
+			get
+			{
+				return jQuery.FromElement(ControlContainer).GetCSS("border");
+			}
+			set
+			{
+				jQuery.FromElement(ControlContainer).CSS("border", value);
+			}
+		}
 		public bool Visible
 		{
 			get
 			{
-				return jQuery.FromElement(ControlContainer).GetCSS("display") == "none";
+				var e = jQuery.FromElement(ControlContainer);
+				return e.GetCSS("display") != "none" || string.IsNullOrEmpty(e.GetCSS("display")) ;
 			}
 			set
 			{
@@ -219,6 +280,10 @@ namespace Lifelike.JScript.Admin
 				}
 			}
 
+		}
+		public void OnClick(jQueryEventHandler e)
+		{
+			jQueryApi.jQuery.FromElement(ControlContainer).Click(e);
 		}
 		public void ScrollDown()
 		{

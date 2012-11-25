@@ -14,16 +14,60 @@ $Lifelike_JScript_Admin_$Program.$main = function() {
 		//{
 		//	node.Close();
 		//});
+		$Lifelike_JScript_Admin_Log.log('Starting HubManager', []);
+		$Lifelike_JScript_Admin_Managers_HubManager.get_context().initialise();
 		$Lifelike_JScript_Admin_Log.log('Starting PageManager', []);
 		$Lifelike_JScript_Admin_Managers_PageManager.get_context().initialise();
 		$Lifelike_JScript_Admin_Log.log('Starting PageRenderer', []);
 		$Lifelike_JScript_Admin_PageRenderer.get_context().render();
-		$Lifelike_JScript_Admin_Log.log('Starting HubManager', []);
-		$Lifelike_JScript_Admin_Managers_HubManager.get_context().initialise();
 		$Lifelike_JScript_Admin_Managers_HubManager.get_context().add_onConnection($Lifelike_JScript_Admin_$Program.$context_OnConnection);
 	}));
 };
 $Lifelike_JScript_Admin_$Program.$context_OnConnection = function(msg1) {
+};
+////////////////////////////////////////////////////////////////////////////////
+// Lifelike.JScript.Admin.Colour
+var $Lifelike_JScript_Admin_Colour = function() {
+	this.$1$RField = 0;
+	this.$1$GField = 0;
+	this.$1$BField = 0;
+	this.$1$AField = 0;
+	this.$1$PositionField = 0;
+};
+$Lifelike_JScript_Admin_Colour.prototype = {
+	get_r: function() {
+		return this.$1$RField;
+	},
+	set_r: function(value) {
+		this.$1$RField = value;
+	},
+	get_g: function() {
+		return this.$1$GField;
+	},
+	set_g: function(value) {
+		this.$1$GField = value;
+	},
+	get_b: function() {
+		return this.$1$BField;
+	},
+	set_b: function(value) {
+		this.$1$BField = value;
+	},
+	get_a: function() {
+		return this.$1$AField;
+	},
+	set_a: function(value) {
+		this.$1$AField = value;
+	},
+	get_position: function() {
+		return this.$1$PositionField;
+	},
+	set_position: function(value) {
+		this.$1$PositionField = value;
+	},
+	toString: function() {
+		return String.format('rgba({0},{1},{2},{3})', this.get_r(), this.get_g(), this.get_b(), this.get_a());
+	}
 };
 ////////////////////////////////////////////////////////////////////////////////
 // Lifelike.JScript.Admin.Control
@@ -121,6 +165,18 @@ $Lifelike_JScript_Admin_Control.prototype = {
 	set_background: function(value) {
 		$(this.get_controlContainer()).css('background', value);
 	},
+	get_zIndex: function() {
+		return $(this.get_controlContainer()).css('z-index');
+	},
+	set_zIndex: function(value) {
+		$(this.get_controlContainer()).css('z-index', value);
+	},
+	get_backgroundImage: function() {
+		return $(this.get_controlContainer()).css('background-image');
+	},
+	set_backgroundImage: function(value) {
+		$(this.get_controlContainer()).css('background-image', value);
+	},
 	get_float: function() {
 		return $(this.get_controlContainer()).css('float');
 	},
@@ -139,6 +195,12 @@ $Lifelike_JScript_Admin_Control.prototype = {
 	set_margin: function(value) {
 		$(this.get_controlContainer()).css('margin', value);
 	},
+	get_padding: function() {
+		return $(this.get_controlContainer()).css('padding');
+	},
+	set_padding: function(value) {
+		$(this.get_controlContainer()).css('padding', value);
+	},
 	get_title: function() {
 		return $(this.get_controlContainer()).attr('title');
 	},
@@ -151,14 +213,27 @@ $Lifelike_JScript_Admin_Control.prototype = {
 	set_left: function(value) {
 		$(this.get_controlContainer()).css('left', value);
 	},
+	get_pointerEvents: function() {
+		return $(this.get_controlContainer()).css('pointer-events');
+	},
+	set_pointerEvents: function(value) {
+		$(this.get_controlContainer()).css('pointer-events', value);
+	},
 	get_top: function() {
 		return $(this.get_controlContainer()).css('top');
 	},
 	set_top: function(value) {
 		$(this.get_controlContainer()).css('top', value);
 	},
+	get_border: function() {
+		return $(this.get_controlContainer()).css('border');
+	},
+	set_border: function(value) {
+		$(this.get_controlContainer()).css('border', value);
+	},
 	get_visible: function() {
-		return $(this.get_controlContainer()).css('display') === 'none';
+		var e = $(this.get_controlContainer());
+		return e.css('display') !== 'none' || String.isNullOrEmpty(e.css('display'));
 	},
 	set_visible: function(value) {
 		if (value) {
@@ -167,6 +242,9 @@ $Lifelike_JScript_Admin_Control.prototype = {
 		else {
 			$(this.get_controlContainer()).hide();
 		}
+	},
+	onClick: function(e) {
+		$(this.get_controlContainer()).click(e);
 	},
 	scrollDown: function() {
 		$Lifelike_JScript_Admin_Control.scrollDown(this.get_controlContainer());
@@ -438,7 +516,7 @@ $Lifelike_JScript_Admin_LoginForm.prototype = {
 		this.set_$btnLogin(new $Lifelike_JScript_Admin_Controls_Button('btnLogin'));
 		this.get_$btnLogin().set_text('LOGIN');
 		var $t1 = this.get_$btnLogin();
-		$t1.onClick = Function.combine($t1.onClick, Function.mkdel(this, this.btnLogin_OnClick));
+		$t1.onClick$1 = Function.combine($t1.onClick$1, Function.mkdel(this, this.btnLogin_OnClick));
 		this.get_$dlgLoginForm().addChild(this.get_$txtUsername());
 		this.get_$dlgLoginForm().addChild(this.get_$txtPassword());
 		this.get_$dlgLoginForm().addChild(this.get_$btnLogin());
@@ -476,10 +554,22 @@ var $Lifelike_JScript_Admin_Util = function() {
 $Lifelike_JScript_Admin_Util.console = function() {
 	return $Lifelike_JScript_Admin_Managers_PageManager.get_context().get_consoleModule();
 };
+$Lifelike_JScript_Admin_Util.gradientGenerator = function(colours) {
+	var linear = 'linear-gradient(top';
+	var webkit = ' -webkit-gradient(linear, left bottom, left top';
+	for (var $t1 = 0; $t1 < colours.length; $t1++) {
+		var c = colours[$t1];
+		linear = linear + ', ' + c.toString() + c.get_position() + '% ';
+		webkit = webkit + ', ' + 'color-stop(' + ((c.get_position() === 0) ? 0 : (c.get_position() / 100)) + ', ' + c.toString() + ' ) ';
+	}
+	linear = linear + ')';
+	webkit = webkit + ')';
+	return webkit;
+};
 ////////////////////////////////////////////////////////////////////////////////
 // Lifelike.JScript.Admin.Controls.Button
 var $Lifelike_JScript_Admin_Controls_Button = function(name) {
-	this.onClick = null;
+	this.onClick$1 = null;
 	this.$_element = null;
 	$Lifelike_JScript_Admin_Control.call(this, name);
 	this.$_element = document.createElement('a');
@@ -489,8 +579,8 @@ $Lifelike_JScript_Admin_Controls_Button.prototype = {
 	preRender: function() {
 	},
 	postRender: function() {
-		if (ss.isValue(this.onClick)) {
-			$(this.$_element).click(this.onClick);
+		if (ss.isValue(this.onClick$1)) {
+			$(this.$_element).click(this.onClick$1);
 		}
 		$(this.$_element).button();
 		$Lifelike_JScript_Admin_Control.prototype.postRender.call(this);
@@ -879,6 +969,7 @@ var $Lifelike_JScript_Admin_Managers_PageManager = function() {
 	this.$1$chatModuleField = null;
 	this.$1$panelLayoutField = null;
 	this.$1$itemTreeModuleField = null;
+	this.$1$dockModuleField = null;
 	this.$_loginForm = null;
 	this.$1$hasRenderedField = false;
 };
@@ -919,6 +1010,12 @@ $Lifelike_JScript_Admin_Managers_PageManager.prototype = {
 	set_itemTreeModule: function(value) {
 		this.$1$itemTreeModuleField = value;
 	},
+	get_dockModule: function() {
+		return this.$1$dockModuleField;
+	},
+	set_dockModule: function(value) {
+		this.$1$dockModuleField = value;
+	},
 	get_hasRendered: function() {
 		return this.$1$hasRenderedField;
 	},
@@ -929,6 +1026,8 @@ $Lifelike_JScript_Admin_Managers_PageManager.prototype = {
 		$Lifelike_JScript_Admin_Log.log('Creating Controls..', []);
 		$Lifelike_JScript_Admin_Log.log('Loading LoginForm', []);
 		this.$_loginForm = new $Lifelike_JScript_Admin_LoginForm('frmLogin');
+		$Lifelike_JScript_Admin_Log.log('Loading DockModule', []);
+		this.set_dockModule(new $Lifelike_JScript_Admin_Modules_Dock_DockModule('dock'));
 		$Lifelike_JScript_Admin_Log.log('Loading Layout', []);
 		this.set_panelLayout(new $Lifelike_JScript_Admin_Modules_Panels_PanelLayout('pnlLayout'));
 		$Lifelike_JScript_Admin_Log.log('Loading Console', []);
@@ -964,6 +1063,7 @@ $Lifelike_JScript_Admin_Managers_PageManager.prototype = {
 	},
 	initateSystem: function() {
 		$Lifelike_JScript_Admin_Log.log('Initialising Main System', []);
+		$Lifelike_JScript_Admin_PageRenderer.get_context().addChild(this.get_dockModule());
 		$Lifelike_JScript_Admin_PageRenderer.get_context().addChild(this.get_panelLayout());
 		$Lifelike_JScript_Admin_PageRenderer.get_context().addChild(this.get_itemTreeModule());
 		$Lifelike_JScript_Admin_PageRenderer.get_context().addChild(this.get_consoleModule());
@@ -1000,6 +1100,7 @@ var $Lifelike_JScript_Admin_Managers_Hubs_Chat = function() {
 	$.connection.chat.client.getAvailableRoomsResponsee = Function.mkdel(this, this.getAvailableRoomsResponse);
 	$.connection.chat.client.getCurrentRoomsResponsee = Function.mkdel(this, this.getCurrentRoomsResponse);
 	$.connection.chat.client.getListOfUsersFromRoomResponse = Function.mkdel(this, this.getListOfUsersFromRoomResponse);
+	$Lifelike_JScript_Admin_Log.log('.chat.init.complete', []);
 };
 $Lifelike_JScript_Admin_Managers_Hubs_Chat.prototype = {
 	add_onRegisterNameResponse: function(value) {
@@ -1269,7 +1370,7 @@ var $Lifelike_JScript_Admin_Modules_Chat_MessengerControl = function(name) {
 	this.$_txtMessage = new $Lifelike_JScript_Admin_Controls_TextBox('txtMessage');
 	this.$_txtMessage.onEnter = Function.combine(this.$_txtMessage.onEnter, Function.mkdel(this, this.btnSend_OnClick));
 	this.$_btnSend = new $Lifelike_JScript_Admin_Controls_Button('btnSend');
-	this.$_btnSend.onClick = Function.combine(this.$_btnSend.onClick, Function.mkdel(this, this.btnSend_OnClick));
+	this.$_btnSend.onClick$1 = Function.combine(this.$_btnSend.onClick$1, Function.mkdel(this, this.btnSend_OnClick));
 	this.$_btnSend.set_text('Send');
 	this.addChild(this.$_txtMessage);
 	this.addChild(this.$_btnSend);
@@ -1511,7 +1612,7 @@ $Lifelike_JScript_Admin_Modules_Console_ConsoleModule.prototype = {
 		//dlgWindow.AddChild(btnSend);
 		$Lifelike_JScript_Admin_Log.add_logEvent(Function.mkdel(this, this.log));
 		$Lifelike_JScript_Admin_Log.add_debugEvent(Function.mkdel(this, this.debug));
-		$Lifelike_JScript_Admin_Log.add_socketEvent(Function.mkdel(this, this.$socket));
+		$Lifelike_JScript_Admin_Log.add_socketEvent(Function.mkdel(this, this.socket));
 	},
 	$dockConsole_OnResize: function() {
 		$Lifelike_JScript_Admin_Log.log('Resize Dock', [this.get_height(), this.get_width(), this]);
@@ -1533,7 +1634,7 @@ $Lifelike_JScript_Admin_Modules_Console_ConsoleModule.prototype = {
 	debug: function(message, arr) {
 		this.$cvDebug.logMessage(message, arr);
 	},
-	$socket: function(msg1, arr) {
+	socket: function(msg1, arr) {
 		this.$cvSockets.logMessage(msg1, arr);
 	}
 };
@@ -1575,6 +1676,120 @@ $Lifelike_JScript_Admin_Modules_Console_ConsoleView.prototype = {
 		}
 		this.$lblMessages.set_text(this.$lblMessages.get_text() + message);
 		this.$lblMessages.scrollDown();
+	}
+};
+////////////////////////////////////////////////////////////////////////////////
+// Lifelike.JScript.Admin.Modules.Dock.DockModule
+var $Lifelike_JScript_Admin_Modules_Dock_DockModule = function(name) {
+	this.$menuItem = null;
+	$Lifelike_JScript_Admin_Control.call(this, name);
+	this.$menuItem = new $Lifelike_JScript_Admin_Modules_Dock_StartMenu('startmenu');
+	this.addChild(this.$menuItem);
+	this.set_height('50px');
+	this.set_width('100%');
+	this.set_position('absolute');
+	this.set_float('left');
+	var $t1 = new $Lifelike_JScript_Admin_Colour();
+	$t1.set_r(145);
+	$t1.set_g(178);
+	$t1.set_b(210);
+	$t1.set_a(255);
+	$t1.set_position(0);
+	var c1 = $t1;
+	var $t2 = new $Lifelike_JScript_Admin_Colour();
+	$t2.set_r(145);
+	$t2.set_g(178);
+	$t2.set_b(210);
+	$t2.set_a(128);
+	$t2.set_position(50);
+	var c2 = $t2;
+	var $t3 = new $Lifelike_JScript_Admin_Colour();
+	$t3.set_r(97);
+	$t3.set_g(140);
+	$t3.set_b(179);
+	$t3.set_a(128);
+	$t3.set_position(100);
+	var c3 = $t3;
+	var msg = $Lifelike_JScript_Admin_Util.gradientGenerator([c1, c2, c3]);
+	this.set_background(msg);
+};
+$Lifelike_JScript_Admin_Modules_Dock_DockModule.prototype = {
+	preRender: function() {
+	}
+};
+////////////////////////////////////////////////////////////////////////////////
+// Lifelike.JScript.Admin.Modules.Dock.Launcher
+var $Lifelike_JScript_Admin_Modules_Dock_Launcher = function(name) {
+	this.$2$lblDisplayField = null;
+	this.$2$RemoteField = null;
+	$Lifelike_JScript_Admin_Control.call(this, name);
+	this.set_$lblDisplay(new $Lifelike_JScript_Admin_Controls_Label('launcherLabel'));
+	this.set_height('40px');
+	this.set_width('50px');
+	this.set_margin('5px');
+	this.set_float('left');
+	this.get_$lblDisplay().set_border('2px solid #000');
+};
+$Lifelike_JScript_Admin_Modules_Dock_Launcher.prototype = {
+	get_$lblDisplay: function() {
+		return this.$2$lblDisplayField;
+	},
+	set_$lblDisplay: function(value) {
+		this.$2$lblDisplayField = value;
+	},
+	get_remote: function() {
+		return this.$2$RemoteField;
+	},
+	set_remote: function(value) {
+		this.$2$RemoteField = value;
+	},
+	launcher_Click: function(e) {
+		if (ss.isValue(this.get_remote())) {
+			this.get_remote().set_visible(!this.get_remote().get_visible());
+		}
+	},
+	get_text: function() {
+		return this.get_$lblDisplay().get_text();
+	},
+	set_text: function(value) {
+		this.get_$lblDisplay().set_text(value);
+	},
+	preRender: function() {
+		this.addChild(this.get_$lblDisplay());
+	},
+	postRender: function() {
+		this.onClick(Function.mkdel(this, this.launcher_Click));
+		$Lifelike_JScript_Admin_Control.prototype.postRender.call(this);
+	}
+};
+////////////////////////////////////////////////////////////////////////////////
+// Lifelike.JScript.Admin.Modules.Dock.StartMenu
+var $Lifelike_JScript_Admin_Modules_Dock_StartMenu = function(name) {
+	this._menu = null;
+	$Lifelike_JScript_Admin_Control.call(this, name);
+};
+$Lifelike_JScript_Admin_Modules_Dock_StartMenu.prototype = {
+	startmenu_Click: function(e) {
+		this._menu.set_visible(!this._menu.get_visible());
+	},
+	preRender: function() {
+		this.set_cssClass('startmenu');
+		this.set_height('40px');
+		this.set_width('40px');
+		this.set_margin('5px');
+		this.set_background('#1d74bb');
+		this.set_float('left');
+		this.onClick(Function.mkdel(this, this.startmenu_Click));
+		this._menu = new $Lifelike_JScript_Admin_Modules_Panels_Panel('Menu');
+		this._menu.set_float('left');
+		this._menu.set_cssClass(this._menu.get_cssClass() + ' menu');
+		this._menu.set_top('50px');
+		this._menu.set_height(window.innerHeight - 50 + 'px');
+		this._menu.set_width(window.innerWidth + 'px');
+		this._menu.set_visible(false);
+		this._menu.set_background('#16499a');
+		this._menu.set_zIndex('9999');
+		this.get_parent().addChild(this._menu);
 	}
 };
 ////////////////////////////////////////////////////////////////////////////////
@@ -1630,9 +1845,13 @@ $Lifelike_JScript_Admin_Modules_Item_ItemTreeModule.prototype = {
 var $Lifelike_JScript_Admin_Modules_Panels_DockableControl = function(name) {
 	this.$_headerContainer = null;
 	this.$_header = null;
+	this.$_launcher = null;
 	this.$2$draggableOptionsField = null;
 	this.$2$resizableOptionsField = null;
 	$Lifelike_JScript_Admin_Control.call(this, name);
+	this.$_launcher = new $Lifelike_JScript_Admin_Modules_Dock_Launcher('launcher' + name);
+	this.$_launcher.set_remote(this);
+	$Lifelike_JScript_Admin_Managers_PageManager.get_context().get_dockModule().addChild(this.$_launcher);
 	this.$_header = new $Lifelike_JScript_Admin_Controls_Label('Header');
 	this.$_headerContainer = new $Lifelike_JScript_Admin_Modules_Chat_BaseControl('HeaderContainer');
 	this.$_headerContainer.set_cssClass('ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix');
@@ -1669,6 +1888,8 @@ $Lifelike_JScript_Admin_Modules_Panels_DockableControl.prototype = {
 	postRender: function() {
 		$(this.get_controlContainer()).draggable(this.get_draggableOptions());
 		$(this.get_controlContainer()).resizable(this.get_resizableOptions());
+		this.$_launcher.set_text(this.$_header.get_text());
+		$Lifelike_JScript_Admin_Managers_PageManager.get_context().get_dockModule().addChild(this.$_launcher);
 		$Lifelike_JScript_Admin_Control.prototype.postRender.call(this);
 	}
 };
@@ -1676,9 +1897,14 @@ $Lifelike_JScript_Admin_Modules_Panels_DockableControl.prototype = {
 // Lifelike.JScript.Admin.Modules.Panels.Panel
 var $Lifelike_JScript_Admin_Modules_Panels_Panel = function(name) {
 	this.$2$droppableOptionsField = null;
+	this.$2$DockableField = false;
 	$Lifelike_JScript_Admin_Control.call(this, name);
+	this.set_dockable(true);
+	this.add_onResize(Function.mkdel(this, this.$panel_OnResize));
 	this.set_droppableOptions({ scope: 'draggable', activate: Function.mkdel(this, this.$onActive), deactivate: Function.mkdel(this, this.$onDeactivate), drop: Function.mkdel(this, this.$onDrop), out: Function.mkdel(this, this.$onOut), over: Function.mkdel(this, this.$onOver) });
-	this.set_cssClass('droppable');
+	this.set_cssClass(' ');
+	//			Margin = "
+	this.set_position('absolute');
 };
 $Lifelike_JScript_Admin_Modules_Panels_Panel.prototype = {
 	get_droppableOptions: function() {
@@ -1686,6 +1912,11 @@ $Lifelike_JScript_Admin_Modules_Panels_Panel.prototype = {
 	},
 	set_droppableOptions: function(value) {
 		this.$2$droppableOptionsField = value;
+	},
+	$panel_OnResize: function() {
+		if ($Lifelike_JScript_Admin_Modules_Panels_Panel._currentDocked.containsKey(this.get_name()) && ss.isValue($Lifelike_JScript_Admin_Modules_Panels_Panel._currentDocked.get_item(this.get_name()))) {
+			$Lifelike_JScript_Admin_Modules_Panels_Panel._currentDocked.get_item(this.get_name()).resize();
+		}
 	},
 	preRender: function() {
 		//jQuery.FromElement(ControlContainer).CSS("position", "absolute");
@@ -1703,10 +1934,16 @@ $Lifelike_JScript_Admin_Modules_Panels_Panel.prototype = {
 		//Window.Alert("deact");
 	},
 	$onDrop: function(e, dae) {
-		var id = dae.draggable.attr('id');
-		$Lifelike_JScript_Admin_Log.log('.modules.panels.panel.ondrop ', [id]);
-		var control = Type.cast($Lifelike_JScript_Admin_Managers_PageManager.get_context().getControlByClientId(id), $Lifelike_JScript_Admin_Modules_Panels_DockableControl);
-		this.dropControl(control);
+		$Lifelike_JScript_Admin_Log.log('.modules.panels.panel.test_ondrop ', [this.get_dockable()]);
+		if (this.get_dockable()) {
+			var id = dae.draggable.attr('id');
+			$Lifelike_JScript_Admin_Log.log('.modules.panels.panel.ondrop ', [id]);
+			var control = $Lifelike_JScript_Admin_Managers_PageManager.get_context().getControlByClientId(id);
+			debugger;
+			if (!$Lifelike_JScript_Admin_Modules_Panels_Panel._currentDocked.containsKey(this.get_name()) || ss.isNullOrUndefined($Lifelike_JScript_Admin_Modules_Panels_Panel._currentDocked.get_item(this.get_name()))) {
+				this.dropControl(control);
+			}
+		}
 	},
 	$onOut: function(e, dae) {
 		//Window.Alert("out");
@@ -1724,6 +1961,31 @@ $Lifelike_JScript_Admin_Modules_Panels_Panel.prototype = {
 		control.set_width((parseInt(this.get_width()) - spacer * 2).toString());
 		control.set_height((parseInt(this.get_height()) - spacer * 2).toString());
 		this.addChild(control);
+		var $t1 = $Lifelike_JScript_Admin_Modules_Panels_Panel._currentDocked.get_keys().getEnumerator();
+		try {
+			while ($t1.moveNext()) {
+				var v = $t1.get_current();
+				if (ss.referenceEquals($Lifelike_JScript_Admin_Modules_Panels_Panel._currentDocked.get_item(v), control)) {
+					$Lifelike_JScript_Admin_Modules_Panels_Panel._currentDocked.remove(v);
+					break;
+				}
+			}
+		}
+		finally {
+			$t1.dispose();
+		}
+		if (!$Lifelike_JScript_Admin_Modules_Panels_Panel._currentDocked.containsKey(this.get_name())) {
+			$Lifelike_JScript_Admin_Modules_Panels_Panel._currentDocked.add(this.get_name(), control);
+		}
+		else {
+			$Lifelike_JScript_Admin_Modules_Panels_Panel._currentDocked.set_item(this.get_name(), control);
+		}
+	},
+	get_dockable: function() {
+		return this.$2$DockableField;
+	},
+	set_dockable: function(value) {
+		this.$2$DockableField = value;
 	}
 };
 ////////////////////////////////////////////////////////////////////////////////
@@ -1737,11 +1999,14 @@ var $Lifelike_JScript_Admin_Modules_Panels_PanelLayout = function(name) {
 	this.set_pnlLeftSide(new $Lifelike_JScript_Admin_Modules_Panels_Panel('pnlLeftSide'));
 	this.set_pnlRightSide(new $Lifelike_JScript_Admin_Modules_Panels_Panel('pnlRightSide'));
 	this.set_pnlMiddle(new $Lifelike_JScript_Admin_Modules_Panels_Panel('pnlMiddle'));
+	//pnlTopBar = new Panel("pnlTopBar");
 	this.set_pnlBottom(new $Lifelike_JScript_Admin_Modules_Panels_Panel('pnlBottom'));
 	window.addEventListener('resize', Function.mkdel(this, this.resize$1));
 	this.set_position('absolute');
-	this.set_height(window.innerHeight + 'px');
+	this.set_pointerEvents('none');
+	this.set_height(window.innerHeight - 50 + 'px');
 	this.set_width(window.innerWidth + 'px');
+	//AddChild(pnlTopBar);
 	this.addChild(this.get_pnlLeftSide());
 	this.addChild(this.get_pnlRightSide());
 	this.addChild(this.get_pnlMiddle());
@@ -1775,27 +2040,43 @@ $Lifelike_JScript_Admin_Modules_Panels_PanelLayout.prototype = {
 	resize$1: function(e) {
 		var w = $(window).width();
 		var h = $(window).height();
-		var bottomHeight = 250;
-		var bottomTop = h - bottomHeight;
-		var sidePanelWidth = ss.Int32.trunc(w * 0.2);
-		var middleWidth = w - sidePanelWidth * 2;
-		var rightsideLeft = middleWidth + sidePanelWidth;
-		this.get_pnlLeftSide().set_height(bottomTop.toString());
-		this.get_pnlLeftSide().set_width(sidePanelWidth.toString());
-		this.get_pnlLeftSide().set_top('0px');
+		var top = 50;
+		var bottomHeight = 225;
+		var panelHeight = h - top - bottomHeight;
+		var panelWidth = ss.Int32.trunc(w * 0.2);
+		var middleWidth = w - panelWidth * 2;
+		var rightsideLeft = middleWidth + panelWidth;
+		$Lifelike_JScript_Admin_Log.log('Sizes', [w, h, top, bottomHeight, panelWidth, panelHeight, middleWidth, rightsideLeft]);
+		//pnlTopBar.Height = "75px";
+		//pnlTopBar.Width = "100%";
+		//pnlTopBar.Top = "0";
+		//pnlTopBar.Left = "0";
+		//pnlTopBar.Dockable = false;
+		this.get_pnlLeftSide().set_position('absolute');
+		this.get_pnlLeftSide().set_height(panelHeight + 'px');
+		this.get_pnlLeftSide().set_width(panelWidth + 'px');
+		this.get_pnlLeftSide().set_top(top + 'px');
 		this.get_pnlLeftSide().set_left('0px');
-		this.get_pnlMiddle().set_width(middleWidth.toString());
-		this.get_pnlMiddle().set_top('0px');
-		this.get_pnlMiddle().set_left(sidePanelWidth + 'px');
-		this.get_pnlMiddle().set_height(bottomTop.toString());
-		this.get_pnlRightSide().set_height(bottomTop.toString());
-		this.get_pnlRightSide().set_width(sidePanelWidth.toString());
-		this.get_pnlRightSide().set_top('0px');
+		this.get_pnlMiddle().set_width(middleWidth + 'px');
+		this.get_pnlMiddle().set_top(top + 'px');
+		this.get_pnlMiddle().set_left(panelWidth + 'px');
+		this.get_pnlMiddle().set_height(panelHeight + 'px');
+		this.get_pnlMiddle().set_position('absolute');
+		this.get_pnlRightSide().set_height(panelHeight + 'px');
+		this.get_pnlRightSide().set_width(panelWidth + 'px');
+		this.get_pnlRightSide().set_top(top + 'px');
 		this.get_pnlRightSide().set_left(rightsideLeft + 'px');
-		this.get_pnlBottom().set_height(bottomHeight.toString());
-		this.get_pnlBottom().set_top(bottomTop + 'px');
+		this.get_pnlRightSide().set_position('absolute');
+		this.get_pnlBottom().set_height(bottomHeight + 'px');
+		this.get_pnlBottom().set_top(panelHeight + top + 'px');
 		this.get_pnlBottom().set_left('0px');
-		this.get_pnlBottom().set_width(w.toString());
+		this.get_pnlBottom().set_width(w + 'px');
+		this.get_pnlBottom().set_position('absolute');
+		var $t1 = this.get_children();
+		for (var $t2 = 0; $t2 < $t1.length; $t2++) {
+			var c = $t1[$t2];
+			c.resize();
+		}
 		this.resize();
 	},
 	preRender: function() {
@@ -1806,6 +2087,7 @@ $Lifelike_JScript_Admin_Modules_Panels_PanelLayout.prototype = {
 	}
 };
 Type.registerClass(null, 'Lifelike.JScript.Admin.$Program', $Lifelike_JScript_Admin_$Program, Object);
+Type.registerClass(global, 'Lifelike.JScript.Admin.Colour', $Lifelike_JScript_Admin_Colour, Object);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Control', $Lifelike_JScript_Admin_Control, Object);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Guid', $Lifelike_JScript_Admin_Guid, Object);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Log', $Lifelike_JScript_Admin_Log, Object);
@@ -1835,6 +2117,9 @@ Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Chat.UserControl', $L
 Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Chat.UserItemControl', $Lifelike_JScript_Admin_Modules_Chat_UserItemControl, $Lifelike_JScript_Admin_Control);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Console.ConsoleModule', $Lifelike_JScript_Admin_Modules_Console_ConsoleModule, $Lifelike_JScript_Admin_Control);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Console.ConsoleView', $Lifelike_JScript_Admin_Modules_Console_ConsoleView, $Lifelike_JScript_Admin_Control);
+Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Dock.DockModule', $Lifelike_JScript_Admin_Modules_Dock_DockModule, $Lifelike_JScript_Admin_Control);
+Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Dock.Launcher', $Lifelike_JScript_Admin_Modules_Dock_Launcher, $Lifelike_JScript_Admin_Control);
+Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Dock.StartMenu', $Lifelike_JScript_Admin_Modules_Dock_StartMenu, $Lifelike_JScript_Admin_Control);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Item.ItemTreeModule', $Lifelike_JScript_Admin_Modules_Item_ItemTreeModule, $Lifelike_JScript_Admin_Control);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Panels.DockableControl', $Lifelike_JScript_Admin_Modules_Panels_DockableControl, $Lifelike_JScript_Admin_Control);
 Type.registerClass(global, 'Lifelike.JScript.Admin.Modules.Panels.Panel', $Lifelike_JScript_Admin_Modules_Panels_Panel, $Lifelike_JScript_Admin_Control);
@@ -1846,4 +2131,5 @@ $Lifelike_JScript_Admin_Log.$1$SocketEventField = null;
 $Lifelike_JScript_Admin_PageRenderer.$_context = null;
 $Lifelike_JScript_Admin_Managers_HubManager.$_context = null;
 $Lifelike_JScript_Admin_Managers_PageManager.$_context = null;
+$Lifelike_JScript_Admin_Modules_Panels_Panel._currentDocked = new (Type.makeGenericType(ss.Dictionary$2, [String, $Lifelike_JScript_Admin_Control]))();
 $Lifelike_JScript_Admin_$Program.$main();

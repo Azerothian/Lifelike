@@ -10,12 +10,14 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 {
 	public class Panel : Control
 	{
+
+		public static Dictionary<string, Control> _currentDocked = new Dictionary<string, Control>();
 		public DroppableOptions droppableOptions { get; set; }
 		public Panel(string name)
 			: base(name)
 		{
-
-
+			Dockable = true;
+			OnResize += Panel_OnResize;
 			droppableOptions = new DroppableOptions()
 			{
 				Scope = "draggable",
@@ -25,7 +27,18 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 				OnOut = new jQueryApi.UI.jQueryUIEventHandler<jQueryObject>(OnOut),
 				OnOver = new jQueryApi.UI.jQueryUIEventHandler<DropOverEvent>(OnOver)
 			};
-			CssClass = "droppable";
+			CssClass = " ";
+//			Margin = "
+			Position = "absolute";
+		}
+
+		void Panel_OnResize()
+		{
+
+			if (_currentDocked.ContainsKey(Name) && _currentDocked[Name] != null)
+			{
+				_currentDocked[Name].Resize();
+			}
 		}
 
 		public override void PreRender()
@@ -52,11 +65,20 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 		private void OnDrop(jQueryEvent e, DropEvent dae)
 		{
 
-			var id = dae.Draggable.GetAttribute("id");
-			Log.log(".modules.panels.panel.ondrop ", id);
+			Log.log(".modules.panels.panel.test_ondrop ", Dockable);
+			if (Dockable)
+			{
+				var id = dae.Draggable.GetAttribute("id");
+				Log.log(".modules.panels.panel.ondrop ", id);
 
-			var control = (DockableControl)PageManager.Context.GetControlByClientId(id);
-			DropControl(control);
+				var control = PageManager.Context.GetControlByClientId(id);
+				Util.Debugger();
+				if (!_currentDocked.ContainsKey(Name) || _currentDocked[Name] == null)
+				{
+					DropControl(control);
+					
+				}
+			}
 
 		}
 		private void OnOut(jQueryEvent e, jQueryObject dae)
@@ -68,7 +90,7 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 			//Window.Alert("over");
 		}
 
-		public void DropControl(DockableControl control)
+		public void DropControl(Control control)
 		{
 			int spacer = 5;
 			var left = int.Parse(this.Left) + spacer;
@@ -80,6 +102,27 @@ namespace Lifelike.JScript.Admin.Modules.Panels
 			control.Width = (int.Parse(this.Width) - (spacer * 2)).ToString();
 			control.Height = (int.Parse(this.Height) - (spacer * 2)).ToString();
 			AddChild(control);
+
+			foreach (var v in _currentDocked.Keys)
+			{
+				if (_currentDocked[v] == control)
+				{
+					_currentDocked.Remove(v);
+					break;
+				}
+			}
+			
+			if (!_currentDocked.ContainsKey(Name))
+			{
+				_currentDocked.Add(Name, control);
+			}
+			else
+			{
+				_currentDocked[Name] = control;
+			}
+			
 		}
+
+		public bool Dockable { get; set; }
 	}
 }

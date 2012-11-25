@@ -27,6 +27,7 @@ namespace Lifelike.JScript.Admin.Managers.Hubs
 			HubManager.Context.GetConnection().chat.client.getAvailableRoomsResponsee = new Response<List<string>>(getAvailableRoomsResponse);
 			HubManager.Context.GetConnection().chat.client.getCurrentRoomsResponsee = new Response<List<string>>(getCurrentRoomsResponse);
 			HubManager.Context.GetConnection().chat.client.getListOfUsersFromRoomResponse = new Response<string, List<dynamic>>(getListOfUsersFromRoomResponse);
+			Log.log(".chat.init.complete");
 		}
 
 		private void userJoinedRoomResponse(string room, dynamic user)
